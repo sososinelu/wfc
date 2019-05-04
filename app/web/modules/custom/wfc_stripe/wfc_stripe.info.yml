@@ -1,0 +1,8 @@
+name: Wanderers' Flight Club Stripe module
+description: Wanderers' Flight Club Stripe custom interactions and blocks
+package: Custom
+
+type: module
+core: 8.x
+
+configure: wfc_stripe.configure
