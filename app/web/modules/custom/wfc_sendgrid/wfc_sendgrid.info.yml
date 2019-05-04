@@ -1,0 +1,8 @@
+name: Wanderers' Flight Club sendgrid module
+description: Wanderers' Flight Club SendGrid API integration
+package: Custom
+
+type: module
+core: 8.x
+
+configure: wfc_sendgrid.configure

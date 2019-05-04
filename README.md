@@ -1,6 +1,6 @@
-# Clubul Calatorilor Website
+# Wanderers' Flight Club Website
 
-Developer information for the Clubul Calatorilor website.
+Developer information for the Wanderers' Flight Club website.
 
 - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
@@ -31,7 +31,7 @@ Run ```composer install``` in ```/app/``` to build Drupal and dependencies.
 
 Navigate to ```/app/web/themes/contrib/neato``` and run ```bower install``` (if you don't have Bower installed already run  ```npm install bower``` before ```bower install```).
 
-Run ```npm install``` in ```/app/web/themes/custom/clubulcalatorilor_theme``` to install dependencies.
+Run ```npm install``` in ```/app/web/themes/custom/wfc_theme``` to install dependencies.
 
 Navigate to ```/web/sites/default/``` then copy ```default.settings.php``` and rename to ```settings.php``` and configure the database connection.
 
@@ -101,7 +101,7 @@ Clear cache using drush:
 drush cr
 ```
 
-Compile assets in ```web/themes/custom/clubulcalatorilor_theme```
+Compile assets in ```web/themes/custom/wfc_theme```
 ```
 gulp
 ```

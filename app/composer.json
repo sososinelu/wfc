@@ -1,6 +1,6 @@
 {
     "name": "drupal-composer/roche-fphi",
-    "description": "Clubul Calatorilor - Drupal 8 project with composer",
+    "description": "Wanderers' Flight Club - Drupal 8 project with composer",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "authors": [

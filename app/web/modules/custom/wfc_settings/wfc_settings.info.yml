@@ -1,0 +1,8 @@
+name: Wanderers' Flight Club settings module
+description: Wanderers' Flight Club configuration settings
+package: Custom
+
+type: module
+core: 8.x
+
+configure: wfc_settings.configure
