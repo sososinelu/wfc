@@ -2,7 +2,7 @@ wfc_settings.configure:
   path: '/admin/config/wfc-settings'
   defaults:
     _form: '\Drupal\wfc_settings\Form\WfcSettingsConfigForm'
-    _title: 'Wanderers' Flight Club Settings'
-    _description: 'Configure the Wanderers' Flight Club website settings'
+    _title: 'WFC Settings'
+    _description: 'Configure the WFC website settings'
   requirements:
     _permission: 'administer wfc settings'
