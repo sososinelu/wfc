@@ -35,8 +35,8 @@ class WfcSendgridController extends ControllerBase
 
               // Send Bine ai venit in club email
 
-              $markup .= '<h4>Adresa ta de email a fost confirmată. <br> Bine ai venit în club! </h4>';
-              $markup .= '<p class="back-link"><a href="/">Înapoi la pagina principală.</a></p>';
+              $markup .= '<h4>Your email address has been verified. <br> Welcome to the club! </h4>';
+              $markup .= '<p class="back-link"><a href="/">Back to homepage.</a></p>';
               $markup .= '</div>';
 
               return array(
@@ -53,8 +53,8 @@ class WfcSendgridController extends ControllerBase
       }
     }
 
-    $markup .= '<h4>Nu ți-am găsit detaliile ca să te putem înscrie! <br> Mai încearcă să te înscrii odată sau contactează-ne la <a class="info" href="mailto:info@wfc.ro">info@clubulcalatorilor.ro</a></h4>';
-    $markup .= '<p class="back-link"><a href="/">Înapoi la pagina principală.</a></p>';
+    $markup .= '<h4>We couldn\'t verify you! <br> Please try to register again or contact us at <a class="info" href="mailto:info@wanderersflightclub.com">info@wanderersflightclub.com</a></h4>';
+    $markup .= '<p class="back-link"><a href="/">Back to homepage.</a></p>';
     $markup .= '</div>';
 
     return array(
@@ -79,8 +79,8 @@ class WfcSendgridController extends ControllerBase
 
     $email = new \SendGrid\Mail\Mail();
 
-    $email->setFrom("info@clubulcalatorilor.ro", "Clubul Călătorilor");
-    $email->setSubject("Confirmă abonarea la Clubul Călătorilor!");
+    $email->setFrom("info@wanderersflightclub.com", "Wanderers\' Flight Club");
+    $email->setSubject("Please confirm your subscription to Wanderers\' Flight Club!");
     $email->addTo($email_address, "");
 
     $body_data = array (

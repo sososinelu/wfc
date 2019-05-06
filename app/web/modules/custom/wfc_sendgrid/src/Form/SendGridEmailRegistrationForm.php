@@ -38,9 +38,9 @@ class SendGridEmailRegistrationForm extends FormBase {
 
     $form['email'] = array(
       '#type' => 'email',
-      '#title' => t('Adresa ta de email'),
+      '#title' => t('I want cheap flights!'),
       '#attributes' => array(
-        'placeholder' => t('Adresa ta de email'),
+        'placeholder' => t('I want cheap flights!'),
       ),
       '#required' => FALSE
     );
@@ -53,7 +53,7 @@ class SendGridEmailRegistrationForm extends FormBase {
     // Submit button
     $form['actions']['submit'] = array(
       '#type' => 'submit',
-      '#value' => t('Înscrie-te'),
+      '#value' => t('Sign-up!'),
       '#ajax' => [
         'callback' => '::processSubmit',
       ],
@@ -83,7 +83,7 @@ class SendGridEmailRegistrationForm extends FormBase {
       $response->addCommand(
         new HtmlCommand(
           '.result_message',
-          'Adresa de email este necesară pentru a te înscrie.'
+          'Please enter your email address to signup.'
         )
       );
 
@@ -96,7 +96,7 @@ class SendGridEmailRegistrationForm extends FormBase {
       $response->addCommand(
         new HtmlCommand(
           '.result_message',
-          'Adresa de email nu este validă. Verifică adresa de email și mai încearcă odată.'
+          'Your email address is invalid. Please check your email address and try again.'
         )
       );
 
@@ -110,7 +110,7 @@ class SendGridEmailRegistrationForm extends FormBase {
       $response->addCommand(
         new HtmlCommand(
           '.result_message',
-          'Se pare că ești înregistrat deja în club! <br> Dacă nu primești emailurile cu oferte contactează-ne la <a href="mailto:info@clubulcalatorilor.ro">info@clubulcalatorilor.ro</a>'
+          'It looks like your email address is already registered! <br> If you don\'t receive our flight offers please contact us on <a href="mailto:info@wanderersflightclub.com">info@wanderersflightclub.com</a>'
         )
       );
 
@@ -136,7 +136,7 @@ class SendGridEmailRegistrationForm extends FormBase {
       $response->addCommand(
         new HtmlCommand(
           '.result_message',
-          'Emailul de confirmare a fost trimis. <br> Verifică căsuța ta de email și confirmă abonarea.'
+          'Your confirmation email has been sent. <br> Please check your inbox and confirm your subscription .'
         )
       );
 
@@ -147,7 +147,7 @@ class SendGridEmailRegistrationForm extends FormBase {
       $response->addCommand(
         new HtmlCommand(
           '.result_message',
-          'Emailul de confirmare nu a fost trimis. Te rugăm mai încearcă odată.'
+          'Your confirmation email failed to sent. Please try again.'
         )
       );
 

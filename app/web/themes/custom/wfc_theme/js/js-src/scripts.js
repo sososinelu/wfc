@@ -54,7 +54,7 @@
     //equalizeHeights($('#block-homepagepremiumblock  .panel'));
 
     // Add placeholder to signup form
-    $('.form-email').attr('placeholder', 'Adresa ta de email');
+    $('.form-email').attr('placeholder', 'I want cheap flights!');
 
     $('input.error, select.error').each(function() {
       $(this).parents('.form-item').first().addClass('error');
@@ -67,7 +67,6 @@
         }
       });
     });
-
   });
 }(jQuery));
 
