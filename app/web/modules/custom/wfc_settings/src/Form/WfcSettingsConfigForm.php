@@ -32,6 +32,10 @@ class WfcSettingsConfigForm extends FormBase
         '#type' => 'vertical_tabs',
     );
 
+    /**
+     * General tab
+     */
+
     $form['general'] = array(
       '#type' => 'details',
       '#title' => t('General'),
@@ -80,6 +84,10 @@ class WfcSettingsConfigForm extends FormBase
       '#default_value' => ($sign_up_text_default) ? $sign_up_text_default['value'] : '',
     );
 
+    /**
+     * Footer tab
+     */
+
     $form['footer'] = array(
       '#type' => 'details',
       '#title' => t('Footer'),
@@ -103,6 +111,10 @@ class WfcSettingsConfigForm extends FormBase
       '#title' => t('Footer contact text'),
       '#default_value' => (\Drupal::state()->get('footer_contact_text')) ? \Drupal::state()->get('footer_contact_text'): '',
     );
+
+    /**
+     * Overlay tab
+     */
 
     $form['overlay'] = array(
       '#type' => 'details',
@@ -128,6 +140,10 @@ class WfcSettingsConfigForm extends FormBase
       '#default_value' => ($message_default) ? $message_default['value'] : '',
     );
 
+    /**
+     * SendGrid tab
+     */
+
     $form['sendgrid'] = array(
       '#type' => 'details',
       '#title' => t('SendGrid'),
@@ -147,7 +163,85 @@ class WfcSettingsConfigForm extends FormBase
       '#default_value' => (\Drupal::state()->get('sendgrid_wfc_list_id')) ? \Drupal::state()->get('sendgrid_wfc_list_id'): '',
     );
 
-    // Submit button
+    $form['sendgrid']['sendgrid_wfc_premiumlist_id'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Wanderers\' Flight Club Premium List ID'),
+      '#default_value' => (\Drupal::state()->get('sendgrid_wfc_premiumlist_id')) ? \Drupal::state()->get('sendgrid_wfc_premiumlist_id'): '',
+    );
+
+    /**
+     * Stripe tab
+     */
+
+    $form['stripe'] = array(
+      '#type' => 'details',
+      '#title' => t('Stripe'),
+      '#collapsible' => TRUE,
+      '#group'       => 'wfc'
+    );
+
+    // Secret Api key
+    $form['stripe']['stripe_secret_api_key'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Stripe Secret API Key'),
+      '#default_value' => (\Drupal::state()->get('stripe_secret_api_key')) ? \Drupal::state()->get('stripe_secret_api_key'): '',
+    );
+
+    // Quarterly
+    $form['stripe']['quarterly_text'] = [
+      '#markup' => $this->t('Quarterly plan'),
+    ];
+
+    $form['stripe']['quarterly_key'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Quarterly plan product key'),
+      '#default_value' => (\Drupal::state()->get('quarterly_key')) ? \Drupal::state()->get('quarterly_key'): '',
+    );
+
+    $form['stripe']['quarterly_price'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Quarterly plan product price'),
+      '#default_value' => (\Drupal::state()->get('quarterly_price')) ? \Drupal::state()->get('quarterly_price'): '',
+    );
+
+    // Semi-annual
+    $form['stripe']['semiannual_text'] = [
+      '#markup' => $this->t('Semi-annual plan'),
+    ];
+
+    $form['stripe']['semiannual_key'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Semi-annual plan product key'),
+      '#default_value' => (\Drupal::state()->get('semiannual_key')) ? \Drupal::state()->get('semiannual_key'): '',
+    );
+
+    $form['stripe']['semiannual_price'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Semi-annual plan product price'),
+      '#default_value' => (\Drupal::state()->get('semiannual_price')) ? \Drupal::state()->get('semiannual_price'): '',
+    );
+
+    // Annual
+    $form['stripe']['annual_text'] = [
+      '#markup' => $this->t('Annual plan'),
+    ];
+
+    $form['stripe']['annual_key'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Annual plan product key'),
+      '#default_value' => (\Drupal::state()->get('annual_key')) ? \Drupal::state()->get('annual_key'): '',
+    );
+
+    $form['stripe']['annual_price'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Annual plan product price'),
+      '#default_value' => (\Drupal::state()->get('annual_price')) ? \Drupal::state()->get('annual_price'): '',
+    );
+
+    /**
+     * Submit button
+     */
+
     $form['submit'] = array(
       '#type' => 'submit',
       '#value' => t('Submit'),

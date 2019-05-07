@@ -8,61 +8,50 @@ use Drupal\Core\Controller\ControllerBase;
 
 class WfcStripeController extends ControllerBase
 {
-  public function monthlyPlan()
+  public function stripePlan($plan)
   {
-    // @todo get product key from settings form
-    $productKey = 'plan_EOHrFKCZKjQhGa';
-    // @todo get price from settings form
-    $price = 20.00;
-    $stripeToken = \Drupal::request()->request->get('stripeToken');
-    $email = \Drupal::request()->request->get('stripeEmail');
+    // TO BE REMOVED
 
-    $this->processStripePayment($productKey, $price, $stripeToken, $email);
+    // switch ($plan) {
+    //   case 'quaterly':
+    //     $stripeDetails['product_key'] = (\Drupal::state()->get('quarterly_key')) ? \Drupal::state()->get('quarterly_key'): '';
+    //     $stripeDetails['price'] = (\Drupal::state()->get('quarterly_price')) ? \Drupal::state()->get('quarterly_price'): '';
+    //     break;
+    //   case 'semiannual':
+    //     $stripeDetails['product_key'] = (\Drupal::state()->get('semiannual_key')) ? \Drupal::state()->get('semiannual_key'): '';
+    //     $stripeDetails['price'] = (\Drupal::state()->get('semiannual_price')) ? \Drupal::state()->get('semiannual_price'): '';
+    //     break;
+    //   case 'annual':
+    //     $stripeDetails['product_key'] = (\Drupal::state()->get('annual_key')) ? \Drupal::state()->get('annual_key'): '';
+    //     $stripeDetails['price'] = (\Drupal::state()->get('annual_price')) ? \Drupal::state()->get('annual_price'): '';
+    //     break;
+
+    //   default:
+    //     // @todo Throw exception
+    //     break;
+    // }
+
+    if ($plan) {
+      $stripeDetails['product_key'] = (\Drupal::state()->get($plan.'_key')) ? \Drupal::state()->get($plan.'_key'): '';
+      $stripeDetails['price'] = (\Drupal::state()->get($plan.'_price')) ? \Drupal::state()->get($plan.'_price'): '';
+      $stripeDetails['stripe_token'] = \Drupal::request()->request->get('stripeToken');
+      $stripeDetails['email'] = \Drupal::request()->request->get('stripeEmail');
+
+      $this->processStripePayment($stripeDetails);
+    } else {
+      // @todo Throw exception
+    }
+
   }
 
-  public function trimesterPlan()
-  {
-    // @todo get product key from settings form
-    $productKey = 'plan_EOHpJ0s66rXhS8';
-    // @todo get price from settings form
-    $price = 48.00;
-    $stripeToken = \Drupal::request()->request->get('stripeToken');
-    $email = \Drupal::request()->request->get('stripeEmail');
-
-    $this->processStripePayment($productKey, $price, $stripeToken, $email);
-  }
-
-  public function byannualPlan()
-  {
-    // @todo get product key from settings form
-    $productKey = 'plan_EOHtnYGXajHNZb';
-    // @todo get price from settings form
-    $price = 84.00;
-    $stripeToken = \Drupal::request()->request->get('stripeToken');
-    $email = \Drupal::request()->request->get('stripeEmail');
-
-    $this->processStripePayment($productKey, $price, $stripeToken, $email);
-  }
-
-  public function annualPlan()
-  {
-    // @todo get product key from settings form
-    $productKey = 'plan_EOHt8m1dIa7UX9';
-    // @todo get price from settings form
-    $price = 144.00;
-    $stripeToken = \Drupal::request()->request->get('stripeToken');
-    $email = \Drupal::request()->request->get('stripeEmail');
-
-    $this->processStripePayment($productKey, $price, $stripeToken, $email);
-  }
-
-  public function processStripePayment($productKey, $price, $stripeToken, $email)
+  public function processStripePayment($stripeDetailsl)
   {
     // 4242 4242 4242 4242
 
     // Stripe secret API key
-    // @todo get secret API key from settings form
-    \Stripe\Stripe::setApiKey("sk_test_pRgltPtYdkjnr3skB3NkQMxo");
+    //\Stripe\Stripe::setApiKey("sk_test_pRgltPtYdkjnr3skB3NkQMxo");
+    $stripeSecretPpiKey = (\Drupal::state()->get('stripe_secret_api_key')) ? \Drupal::state()->get('stripe_secret_api_key'): '';
+    \Stripe\Stripe::setApiKey($stripeSecretPpiKey);
 
     try
     {
@@ -70,15 +59,15 @@ class WfcStripeController extends ControllerBase
       // https://stackoverflow.com/questions/27588258/stripe-check-if-a-customer-exists
 
       $customer = \Stripe\Customer::create([
-        'email' => $email,
-        'source'  => $stripeToken
+        'email' => $stripeDetails['email'],
+        'source'  => $stripeDetails['stripe_token']
       ]);
 
       //\Drupal::logger('clubulcalatorilor_stripe')->notice($customer);
 
       $subscription = \Stripe\Subscription::create([
         'customer' => $customer->id,
-        'items' => [['plan' => $productKey]],
+        'items' => [['plan' => $stripeDetails['product_key']]],
       ]);
 
 
@@ -98,7 +87,7 @@ class WfcStripeController extends ControllerBase
     catch(Exception $exception)
     {
       // @todo Redirect to fail page / Ajax return
-      \Drupal::logger('wfc_stripe')->notice('Unable to sign up customer ' . $email . ' >>> '.$exception);
+      \Drupal::logger('wfc_stripe')->notice('Unable to sign up customer ' . $stripeDetails['email'] . ' >>> '.$exception);
       exit('Stripe fail');
     }
   }

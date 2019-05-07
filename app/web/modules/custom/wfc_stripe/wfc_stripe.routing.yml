@@ -1,24 +1,6 @@
-wfc_stripe.monthlyPlan:
-  path: '/monthly-plan'
+wfc_stripe.plan:
+  path: '/plan/{plan}' # Plan params: quarterly, semiannual, annual
   defaults:
-    _controller: '\Drupal\wfc_stripe\Controller\WfcStripeController::monthlyPlan'
-  requirements:
-    _permission: 'access content'
-wfc_stripe.trimesterPlan:
-  path: '/trimester-plan'
-  defaults:
-    _controller: '\Drupal\wfc_stripe\Controller\WfcStripeController::trimesterPlan'
-  requirements:
-    _permission: 'access content'
-wfc_stripe.byannualPlan:
-  path: '/biannual-plan'
-  defaults:
-    _controller: '\Drupal\wfc_stripe\Controller\WfcStripeController::byannualPlan'
-  requirements:
-    _permission: 'access content'
-wfc_stripe.annualPlan:
-  path: '/annual-plan'
-  defaults:
-    _controller: '\Drupal\wfc_stripe\Controller\WfcStripeController::annualPlan'
+    _controller: '\Drupal\wfc_stripe\Controller\WfcStripeController::stripePlan'
   requirements:
     _permission: 'access content'
