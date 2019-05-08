@@ -19,6 +19,16 @@ use Drupal\wfc_sendgrid\Entity\WfcUserConfirmation;
  * SendGrid email registration form.
  */
 class SendGridEmailRegistrationForm extends FormBase {
+
+  /**
+   * @var SendGrid controller
+   */
+  private $sendgrid;
+
+  public function __construct(WfcSendgridController $sendgrid) {
+    $this->sendgrid = $sendgrid;
+  }
+
   /**
    * {@inheritdoc}
    */
@@ -29,7 +39,7 @@ class SendGridEmailRegistrationForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $formState) {
 
     $form['message'] = [
       '#type' => 'markup',
@@ -73,8 +83,8 @@ class SendGridEmailRegistrationForm extends FormBase {
     return $form;
   }
 
-  public function processSubmit(array $form, FormStateInterface $form_state) {
-    $email = $form_state->getValue('email');
+  public function processSubmit(array $form, FormStateInterface $formState) {
+    $email = $formState->getValue('email');
     $response = new AjaxResponse();
 
     // No email address provided
@@ -104,8 +114,10 @@ class SendGridEmailRegistrationForm extends FormBase {
     }
 
     // Check if the user is already subscribed
-    $sendgrid = new \SendGrid(\Drupal::state()->get('sendgrid_api_key') ? \Drupal::state()->get('sendgrid_api_key') : '');
-    if(WfcSendgridController::checkIfUserIsSubscribed($sendgrid, $email)) {
+
+    // @todo To remove
+    //$sendgrid = new \SendGrid(\Drupal::state()->get('sendgrid_api_key') ? \Drupal::state()->get('sendgrid_api_key') : '');
+    if($this->sendgrid->checkIfUserIsSubscribed($email)) {
 
       $response->addCommand(
         new HtmlCommand(
@@ -117,10 +129,10 @@ class SendGridEmailRegistrationForm extends FormBase {
       return $response;
     }
 
-    $local_user_record = WfcUserConfirmation::getUserByEmail($email);
+    $localUserRecord = WfcUserConfirmation::getUserByEmail($email);
 
     // Check if the user already tried to register
-    if(!$local_user_record) {
+    if(!$localUserRecord) {
       $token = Crypt::hashBase64($email);
       $details = WfcUserConfirmation::create([
         'email' => $email,
@@ -129,10 +141,10 @@ class SendGridEmailRegistrationForm extends FormBase {
       ]);
       $details->save();
     }else{
-      $token = $local_user_record->get('token')->value;
+      $token = $localUserRecord->get('token')->value;
     }
 
-    if(WfcSendgridController::sendConfirmationEmail($sendgrid, $token, $email)) {
+    if($this->sendgrid->sendConfirmationEmail($token, $email)) {
       $response->addCommand(
         new HtmlCommand(
           '.result_message',
@@ -158,6 +170,6 @@ class SendGridEmailRegistrationForm extends FormBase {
 
   }
 
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $formState) {
   }
 }

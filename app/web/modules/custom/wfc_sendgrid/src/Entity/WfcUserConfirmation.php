@@ -54,11 +54,11 @@ class WfcUserConfirmation extends ContentEntityBase implements ContentEntityInte
    */
   public static function getUserByToken($token) {
     try {
-      $user_details = \Drupal::entityTypeManager()->getStorage('wfc_user_conf_entity')->loadByProperties(['token' => $token]);
+      $userDetails = \Drupal::entityTypeManager()->getStorage('wfc_user_conf_entity')->loadByProperties(['token' => $token]);
     } catch (InvalidPluginDefinitionException $e) {
     }
 
-    return reset($user_details);
+    return reset($userDetails);
   }
 
     /**
@@ -67,10 +67,10 @@ class WfcUserConfirmation extends ContentEntityBase implements ContentEntityInte
    */
   public static function getUserByEmail($email) {
     try {
-      $user_details = \Drupal::entityTypeManager()->getStorage('wfc_user_conf_entity')->loadByProperties(['email' => $email]);
+      $userDetails = \Drupal::entityTypeManager()->getStorage('wfc_user_conf_entity')->loadByProperties(['email' => $email]);
     } catch (InvalidPluginDefinitionException $e) {
     }
 
-    return reset($user_details);
+    return reset($userDetails);
   }
 }

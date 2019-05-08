@@ -25,7 +25,7 @@ class WfcSettingsConfigForm extends FormBase
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state)
+  public function buildForm(array $form, FormStateInterface $formState)
   {
 
     $form['wfc'] = array(
@@ -65,23 +65,23 @@ class WfcSettingsConfigForm extends FormBase
     );
 
     // Site slogan
-    $site_slogan_default = \Drupal::state()->get('site_slogan');
+    $siteSloganDefault = \Drupal::state()->get('site_slogan');
     $form['general']['site_slogan'] = array(
       '#type' => 'text_format',
       '#title' => t('Site slogan'),
       '#format' => 'basic_html',
       '#allowed_formats' => array('basic_html'),
-      '#default_value' => ($site_slogan_default) ? $site_slogan_default['value'] : '',
+      '#default_value' => ($siteSloganDefault) ? $site_slogan_default['value'] : '',
     );
 
     // Sign up text
-    $sign_up_text_default = \Drupal::state()->get('sign_up_text');
+    $signUpTextDefault = \Drupal::state()->get('sign_up_text');
     $form['general']['sign_up_text'] = array(
       '#type' => 'text_format',
       '#title' => t('Sign up text'),
       '#format' => 'basic_html',
       '#allowed_formats' => array('basic_html'),
-      '#default_value' => ($sign_up_text_default) ? $sign_up_text_default['value'] : '',
+      '#default_value' => ($signUpTextDefault) ? $signUpTextDefault['value'] : '',
     );
 
     /**
@@ -96,13 +96,13 @@ class WfcSettingsConfigForm extends FormBase
     );
 
     // Footer sign up text
-    $footer_sign_up_text_default = \Drupal::state()->get('footer_sign_up_text');
+    $footerSignUpTextDefault = \Drupal::state()->get('footer_sign_up_text');
     $form['footer']['footer_sign_up_text'] = array(
       '#type' => 'text_format',
       '#title' => t('Footer sign up text'),
       '#format' => 'basic_html',
       '#allowed_formats' => array('basic_html'),
-      '#default_value' => ($footer_sign_up_text_default) ? $footer_sign_up_text_default['value'] : '',
+      '#default_value' => ($footerSignUpTextDefault) ? $footerSignUpTextDefault['value'] : '',
     );
 
     // Info email address
@@ -131,13 +131,13 @@ class WfcSettingsConfigForm extends FormBase
     );
 
     // Overlay message text
-    $message_default = \Drupal::state()->get('overlay_text');
+    $messageDefault = \Drupal::state()->get('overlay_text');
     $form['overlay']['overlay_text'] = array(
       '#type' => 'text_format',
       '#title' => t('Overlay message'),
       '#format' => 'restricted_html',
       '#allowed_formats' => array('restricted_html'),
-      '#default_value' => ($message_default) ? $message_default['value'] : '',
+      '#default_value' => ($messageDefault) ? $messageDefault['value'] : '',
     );
 
     /**
@@ -250,10 +250,10 @@ class WfcSettingsConfigForm extends FormBase
     return $form;
   }
 
-  public function submitForm(array &$form, FormStateInterface $form_state)
+  public function submitForm(array &$form, FormStateInterface $formState)
   {
-    $form_values = $form_state->getValues();
-    foreach ($form_values as $key => $value) {
+    $formValues = $formState->getValues();
+    foreach ($formValues as $key => $value) {
       \Drupal::state()->set($key, $value);
       if ($key == 'hub_default_image' || $key == 'article_default_image') {
         if (isset($value[0])) {
