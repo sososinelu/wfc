@@ -2,38 +2,45 @@
 
 namespace Drupal\wfc_sendgrid\Controller;
 
-
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\wfc_sendgrid\Entity\WfcUserConfirmation;
 
-
 class WfcSendgridController extends ControllerBase
 {
+  /**
+   * @var SendGrid library
+   */
+    private $sendgrid;
+
   /**
    * WfcSendgridController constructor.
    */
   public function __construct()
   {
-
+    $this->sendgrid = new \SendGrid(\Drupal::state()->get('sendgrid_api_key') ? \Drupal::state()->get('sendgrid_api_key') : '');
   }
 
   public function emailConfirmationProcessing()
   {
     $token = \Drupal::request()->query->get('token');
-    $sendgrid = new \SendGrid(\Drupal::state()->get('sendgrid_api_key') ? \Drupal::state()->get('sendgrid_api_key') : '');
+
+    // @todo To remove
+    //$sendgrid = new \SendGrid(\Drupal::state()->get('sendgrid_api_key') ? \Drupal::state()->get('sendgrid_api_key') : '');
     $markup = '<div class="email-confirmation outer-wrapper">';
 
     if($token) {
-      if($local_user_record = WfcUserConfirmation::getUserByToken($token)) {
+      if($localUserRecord = WfcUserConfirmation::getUserByToken($token)) {
 
-        $email = $local_user_record->get('email')->value;
+        $email = $localUserRecord->get('email')->value;
 
-        if($sendgrid_id = self::sendUserToSendgrid($sendgrid, $email)) {
-          if(self::moveUserToList($sendgrid, $sendgrid_id[0])) {
+        if($sendgridId = $this->sendUserToSendgrid($email)) {
+
+          $listId = (\Drupal::state()->get('sendgrid_wfc_list_id')) ? \Drupal::state()->get('sendgrid_wfc_list_id'): '';
+          if($this->moveUserToList($sendgridId[0], $listId)) {
             try {
-              $local_user_record->delete();
+              $localUserRecord->delete();
 
-              // Send Bine ai venit in club email
+              // Send Welcome to the club email
 
               $markup .= '<h4>Your email address has been verified. <br> Welcome to the club! </h4>';
               $markup .= '<p class="back-link"><a href="/">Back to homepage.</a></p>';
@@ -66,15 +73,16 @@ class WfcSendgridController extends ControllerBase
 
   public function testSendgrid()
   {
-    $sendgrid = new \SendGrid(\Drupal::state()->get('sendgrid_api_key') ? \Drupal::state()->get('sendgrid_api_key') : '');
-    $sendgrid_id = self::sendUserToSendgrid($sendgrid, "example3@email.com");
+    // @todo To remove
+    //$sendgrid = new \SendGrid(\Drupal::state()->get('sendgrid_api_key') ? \Drupal::state()->get('sendgrid_api_key') : '');
+    $sendgridId = $this->sendUserToSendgrid('example3@email.com');
 
-    var_dump($sendgrid_id);exit;
+    var_dump($sendgridId);exit;
 
     return true;
   }
 
-  public static function sendConfirmationEmail($sendgrid, $token, $email_address)
+  public function sendConfirmationEmail($token, $email_address)
   {
 
     $email = new \SendGrid\Mail\Mail();
@@ -94,7 +102,7 @@ class WfcSendgridController extends ControllerBase
     $email->addContent("text/html", $body->__toString());
 
     try {
-      $response = $sendgrid->send($email);
+      $response = $this->sendgrid->send($email);
 
       // print $response->statusCode() . "\n";
       // print_r($response->headers());
@@ -111,19 +119,18 @@ class WfcSendgridController extends ControllerBase
     }
   }
 
-  public static function checkIfUserIsSubscribed($sendgrid, $email)
-  {
-    $query_params = json_decode('{"email": "'.$email.'"}');
+  public function checkIfUserIsSubscribed($email)  {
+    $queryParams = json_decode('{"email": "'.$email.'"}');
 
     try {
-      $response = $sendgrid->client->contactdb()->recipients()->search()->get(null, $query_params);
+      $response = $this->sendgrid->client->contactdb()->recipients()->search()->get(null, $queryParams);
       // print $response->statusCode() . "\n";
       // print_r($response->headers());
       // print $response->body() . "\n";
 
-      $recipient_count = json_decode($response->body())->{'recipient_count'};
+      $recipientCount = json_decode($response->body())->{'recipient_count'};
 
-      if($recipient_count !== 0) {
+      if($recipientCount !== 0) {
         return true;
       }
     } catch (Exception $e) {
@@ -133,14 +140,12 @@ class WfcSendgridController extends ControllerBase
     return false;
   }
 
-  public static function moveUserToList($sendgrid, $user_id)
+  public function moveUserToList($userId, $listId)
    {
-    $list_id = (\Drupal::state()->get('sendgrid_wfc_list_id')) ? \Drupal::state()->get('sendgrid_wfc_list_id'): '';
-
-    if($user_id && $list_id) {
+    if($userId && $listId) {
       try {
 
-        $response = $sendgrid->client->contactdb()->lists()->_($list_id)->recipients()->_($user_id)->post();
+        $response = $this->sendgrid->client->contactdb()->lists()->_($listId)->recipients()->_($userId)->post();
         // print $response->statusCode() . "\n";
         // print_r($response->headers());
         // print $response->body() . "\n";
@@ -156,9 +161,8 @@ class WfcSendgridController extends ControllerBase
     }
   }
 
-  public static function sendUserToSendgrid($sendgrid, $email)
+  public function sendUserToSendgrid($email)
   {
-
     $new_contact = json_decode('[
       {
         "email": "'.$email.'",
@@ -169,15 +173,15 @@ class WfcSendgridController extends ControllerBase
 
     try {
 
-      $response = $sendgrid->client->contactdb()->recipients()->post($new_contact);
+      $response = $this->sendgrid->client->contactdb()->recipients()->post($new_contact);
       //print $response->statusCode() . "\n";
       //print_r($response->headers());
       //print $response->body() . "\n";
 
-      $response_data = json_decode($response->body());
+      $responseData = json_decode($response->body());
 
-      if($response_data->{"new_count"} == 1) {
-        return $response_data->{"persisted_recipients"};
+      if($responseData->{"new_count"} == 1) {
+        return $responseData->{"persisted_recipients"};
       }else {
         return false;
       }
