@@ -4,33 +4,23 @@ namespace Drupal\wfc_stripe\Controller;
 
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\wfc_sendgrid\Controller\WfcSendgridController;
 
 
 class WfcStripeController extends ControllerBase
 {
+  /**
+   * @var SendGrid Controller
+   */
+  private $sendgrid;
+
+  public function __construct(WfcSendgridController $sendgrid)
+  {
+    $this->sendgrid = $sendgrid;
+  }
+
   public function stripePlan($plan)
   {
-    // TO BE REMOVED
-
-    // switch ($plan) {
-    //   case 'quaterly':
-    //     $stripeDetails['product_key'] = (\Drupal::state()->get('quarterly_key')) ? \Drupal::state()->get('quarterly_key'): '';
-    //     $stripeDetails['price'] = (\Drupal::state()->get('quarterly_price')) ? \Drupal::state()->get('quarterly_price'): '';
-    //     break;
-    //   case 'semiannual':
-    //     $stripeDetails['product_key'] = (\Drupal::state()->get('semiannual_key')) ? \Drupal::state()->get('semiannual_key'): '';
-    //     $stripeDetails['price'] = (\Drupal::state()->get('semiannual_price')) ? \Drupal::state()->get('semiannual_price'): '';
-    //     break;
-    //   case 'annual':
-    //     $stripeDetails['product_key'] = (\Drupal::state()->get('annual_key')) ? \Drupal::state()->get('annual_key'): '';
-    //     $stripeDetails['price'] = (\Drupal::state()->get('annual_price')) ? \Drupal::state()->get('annual_price'): '';
-    //     break;
-
-    //   default:
-    //     // @todo Throw exception
-    //     break;
-    // }
-
     if ($plan) {
       $stripeDetails['product_key'] = (\Drupal::state()->get($plan.'_key')) ? \Drupal::state()->get($plan.'_key'): '';
       $stripeDetails['price'] = (\Drupal::state()->get($plan.'_price')) ? \Drupal::state()->get($plan.'_price'): '';
@@ -39,9 +29,8 @@ class WfcStripeController extends ControllerBase
 
       $this->processStripePayment($stripeDetails);
     } else {
-      // @todo Throw exception
+      \Drupal::logger('wfc_stripe')->notice('Stripe subscription plan missing.');
     }
-
   }
 
   public function processStripePayment($stripeDetailsl)
@@ -55,33 +44,61 @@ class WfcStripeController extends ControllerBase
 
     try
     {
-      // @todo  Check if the customer exists and use existing customer id to create the payment
+      // @todo
+      // Check if the customer exists and use existing customer id to create the payment
       // https://stackoverflow.com/questions/27588258/stripe-check-if-a-customer-exists
 
-      $customer = \Stripe\Customer::create([
-        'email' => $stripeDetails['email'],
-        'source'  => $stripeDetails['stripe_token']
-      ]);
 
-      //\Drupal::logger('clubulcalatorilor_stripe')->notice($customer);
 
+      $user = \Drupal::user_load_by_email($stripeDetails['email']);
+      $stripeCustomerId = $user->get('field_stripe_customer_id')->value ?? false;
+
+      // If user doens't exists create new Stripe customer
+      if (!$stripeCustomerId) {
+        $customer = \Stripe\Customer::create([
+          'email' => $stripeDetails['email'],
+          'source'  => $stripeDetails['stripe_token']
+        ]);
+
+        $stripeCustomerId = $customer->id;
+      }
+
+      // If we have a customer ID create a new Stripe subscription
       $subscription = \Stripe\Subscription::create([
-        'customer' => $customer->id,
+        'customer' => $stripeCustomerId,
         'items' => [['plan' => $stripeDetails['product_key']]],
       ]);
 
-
+      $premiumListId = (\Drupal::state()->get('sendgrid_wfc_premiumlist_id')) ? \Drupal::state()->get('sendgrid_wfc_premiumlist_id'): '';
+      $basicListId = (\Drupal::state()->get('sendgrid_wfc_list_id')) ? \Drupal::state()->get('sendgrid_wfc_list_id'): '';
 
       // @todo
-      // Add user to Sendgrid premium list
+      // Check if the user is on SendGrid
+
+      // Modify checkIfUserIsSubscribed to return the id of the user if subscribed
+      if($userId = $this->sendgrid->checkIfUserIsSubscribed($stripeDetails['email'])) {
+        // Add user to Sendgrid premium list
+        $this->sendgrid->moveUserToList($userId, $premiumListId);
+      } else {
+        // Add user to Sendgrid premium & basic lists
+        if($sendgridId = $this->sendgrid->sendUserToSendgrid($stripeDetails['email'])) {
+          // Move user to basic list on SendGrid
+          $this->sendgrid->moveUserToList($sendgridId[0], $basicListId);
+
+          // Move user to premium list on SendGrid
+          $this->sendgrid->moveUserToList($sendgridId[0], $premiumListId);
+        }
+      }
+
+      // @todo
+      // check if user exists
+      // Update details
       // OR
-      // move user from standard to premium list
-
-      // @todo
       // create user and send password email
       // set email, price paid, product ID, product name, stripe customer id
 
-      // @todo Redirect to success page / Ajax return
+      // @todo
+      // Redirect to success page / Ajax return
       exit('Stripe success');
     }
     catch(Exception $exception)
