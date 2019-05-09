@@ -48,7 +48,7 @@
         "drupal/webform": "^5.0@RC",
         "drush/drush": "^9.0.0",
         "sendgrid/sendgrid": "~7",
-        "stripe/stripe-php": "^6.28",
+        "stripe/stripe-php": "^6.34",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "wikimedia/composer-merge-plugin": "^1.4"

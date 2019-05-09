@@ -25,8 +25,8 @@ class SendGridEmailRegistrationForm extends FormBase {
    */
   private $sendgrid;
 
-  public function __construct(WfcSendgridController $sendgrid) {
-    $this->sendgrid = $sendgrid;
+  public function __construct() {
+    $this->sendgrid = new WfcSendgridController;
   }
 
   /**

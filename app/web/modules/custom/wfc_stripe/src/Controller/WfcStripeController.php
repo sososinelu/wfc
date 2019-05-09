@@ -14,9 +14,9 @@ class WfcStripeController extends ControllerBase
    */
   private $sendgrid;
 
-  public function __construct(WfcSendgridController $sendgrid)
+  public function __construct()
   {
-    $this->sendgrid = $sendgrid;
+    $this->sendgrid = new WfcSendgridController;
   }
 
   public function stripePlan($plan)
@@ -33,7 +33,7 @@ class WfcStripeController extends ControllerBase
     }
   }
 
-  public function processStripePayment($stripeDetailsl)
+  public function processStripePayment($stripeDetails)
   {
     // 4242 4242 4242 4242
 
@@ -50,8 +50,8 @@ class WfcStripeController extends ControllerBase
 
 
 
-      $user = \Drupal::user_load_by_email($stripeDetails['email']);
-      $stripeCustomerId = $user->get('field_stripe_customer_id')->value ?? false;
+      $user = user_load_by_mail($stripeDetails['email']);
+      $stripeCustomerId = false;// $user->get('field_stripe_customer_id')->value ?? false;
 
       // If user doens't exists create new Stripe customer
       if (!$stripeCustomerId) {
