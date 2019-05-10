@@ -5,6 +5,7 @@ namespace Drupal\wfc_stripe\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\wfc_sendgrid\Controller\WfcSendgridController;
+use Drupal\user\Entity\User;
 
 
 class WfcStripeController extends ControllerBase
@@ -38,7 +39,6 @@ class WfcStripeController extends ControllerBase
     // 4242 4242 4242 4242
 
     // Stripe secret API key
-    //\Stripe\Stripe::setApiKey("sk_test_pRgltPtYdkjnr3skB3NkQMxo");
     $stripeSecretPpiKey = (\Drupal::state()->get('stripe_secret_api_key')) ? \Drupal::state()->get('stripe_secret_api_key'): '';
     \Stripe\Stripe::setApiKey($stripeSecretPpiKey);
 
@@ -47,8 +47,6 @@ class WfcStripeController extends ControllerBase
       // @todo
       // Check if the customer exists and use existing customer id to create the payment
       // https://stackoverflow.com/questions/27588258/stripe-check-if-a-customer-exists
-
-
 
       $user = user_load_by_mail($stripeDetails['email']);
       $stripeCustomerId = false;// $user->get('field_stripe_customer_id')->value ?? false;
@@ -92,10 +90,26 @@ class WfcStripeController extends ControllerBase
 
       // @todo
       // check if user exists
-      // Update details
-      // OR
-      // create user and send password email
+      if (!$user) {
+          // Create user object.
+          $user = User::create();
+
+          //Mandatory settings
+          $user->setPassword("password");
+          $user->enforceIsNew();
+          $user->setEmail($stripeDetails['email']);
+          $user->setUsername($stripeDetails['email']); //This username must be unique and accept only a-Z,0-9, - _ @ .
+          $user->addRole('premium'); //E.g: authenticated
+      }
+
       // set email, price paid, product ID, product name, stripe customer id
+      $user->set('field_price',  $stripeDetails['price']);
+      $user->set('field_product_id', $value);
+      $user->set('field_product_name', $value);
+      $user->set('field_stripe_customer_id', $stripeCustomerId);
+      $user->save();
+
+       // If new user send custom password confirmation email
 
       // @todo
       // Redirect to success page / Ajax return
