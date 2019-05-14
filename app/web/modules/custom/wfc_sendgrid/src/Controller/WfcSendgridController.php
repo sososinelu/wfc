@@ -23,9 +23,6 @@ class WfcSendgridController extends ControllerBase
   public function emailConfirmationProcessing()
   {
     $token = \Drupal::request()->query->get('token');
-
-    // @todo To remove
-    //$sendgrid = new \SendGrid(\Drupal::state()->get('sendgrid_api_key') ? \Drupal::state()->get('sendgrid_api_key') : '');
     $markup = '<div class="email-confirmation outer-wrapper">';
 
     if($token) {
@@ -73,9 +70,7 @@ class WfcSendgridController extends ControllerBase
 
   public function testSendgrid()
   {
-    // @todo To remove
-    //$sendgrid = new \SendGrid(\Drupal::state()->get('sendgrid_api_key') ? \Drupal::state()->get('sendgrid_api_key') : '');
-    $sendgridId = $this->sendUserToSendgrid('example3@email.com');
+    $sendgridId = $this->checkIfUserIsSubscribed('example3@email.com');
 
     var_dump($sendgridId);exit;
 
@@ -129,9 +124,10 @@ class WfcSendgridController extends ControllerBase
       // print $response->body() . "\n";
 
       $recipientCount = json_decode($response->body())->{'recipient_count'};
+      $recipients = json_decode($response->body())->{'recipients'};
 
-      if($recipientCount !== 0) {
-        return true;
+      if($recipientCount !== 0 && $recipients) {
+        return $recipients[0]->id;
       }
     } catch (Exception $e) {
       echo 'Caught exception: ',  $e->getMessage(), "\n";

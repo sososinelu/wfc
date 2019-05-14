@@ -114,9 +114,6 @@ class SendGridEmailRegistrationForm extends FormBase {
     }
 
     // Check if the user is already subscribed
-
-    // @todo To remove
-    //$sendgrid = new \SendGrid(\Drupal::state()->get('sendgrid_api_key') ? \Drupal::state()->get('sendgrid_api_key') : '');
     if($this->sendgrid->checkIfUserIsSubscribed($email)) {
 
       $response->addCommand(
