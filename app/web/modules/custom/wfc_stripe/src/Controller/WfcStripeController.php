@@ -98,7 +98,7 @@ class WfcStripeController extends ControllerBase
           $user->enforceIsNew();
           $user->setEmail($stripeDetails['email']);
           $user->setUsername($stripeDetails['email']);
-          $user->addRole('premium'); //E.g: authenticated
+          $user->addRole('premium'); // premium
       }
 
       // set price paid, product ID, product name, stripe customer id, subscription date
@@ -109,7 +109,7 @@ class WfcStripeController extends ControllerBase
       $user->save();
 
        // If new user send custom password confirmation email
-
+       user_pass_reset_url()
       // @todo
       // Redirect to success page / Ajax return
       exit('Stripe success');
