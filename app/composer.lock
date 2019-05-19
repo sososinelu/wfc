@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "253912f34f591a06029723e9489ad2e5",
+    "content-hash": "5ffdedf7d8d91d0a353bec3f8be72240",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3031,6 +3031,57 @@
                 "source": "http://cgit.drupalcode.org/libraries",
                 "issues": "http://drupal.org/project/issues/libraries",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
+            }
+        },
+        {
+            "name": "drupal/mailcontrol",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/mailcontrol.git",
+                "reference": "8.x-1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/mailcontrol-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "a118885ed9a58ba9eff666b9d8963f28ee33dbb9"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.2",
+                    "datestamp": "1549258684",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "reszli",
+                    "homepage": "https://www.drupal.org/user/710368"
+                },
+                {
+                    "name": "soaratul",
+                    "homepage": "https://www.drupal.org/user/2783135"
+                }
+            ],
+            "description": "Extends original account settings page with the ability to turn on/off all standard mails.",
+            "homepage": "https://www.drupal.org/project/mailcontrol",
+            "support": {
+                "source": "https://git.drupalcode.org/project/mailcontrol"
             }
         },
         {
