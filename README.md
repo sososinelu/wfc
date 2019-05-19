@@ -1,5 +1,7 @@
 # Wanderers' Flight Club Website
 
+![WFC Logo](https://github.com/sososinelu/wfc/blob/develop/app/web/themes/custom/wfc_theme/images/wfc_logo_stroke_filled.png?raw=true)
+
 Developer information for the Wanderers' Flight Club website.
 
 - [Getting Started](#getting-started)
@@ -8,21 +10,22 @@ Developer information for the Wanderers' Flight Club website.
 - [Git](#git)
     - [Workflow](#workflow)
 - [Technologies](#technologies)
-- [Service integration](#service-integration)
+- [APIs integration](#apis-integration)
 - [Cheatsheet](#cheatsheet)
 
-<a name="getting-started"></a>
+<a id="getting-started"></a>
 ## 1. Getting Started
-![Start](https://png.icons8.com/color/96/000000/start.png)
 
-<a name="prerequisites"></a>
+<a id="prerequisites"></a>
 ### 1.1 Prerequisites
+
+Install [Git](https://git-scm.com/downloads)
 
 Install [Composer](https://getcomposer.org/download/).
 
 Install [Node.js](https://nodejs.org/en/download/).
 
-<a name="installing"></a>
+<a id="installing"></a>
 ### 1.2 Installing
 
 Checkout the latest codebase.
@@ -39,12 +42,10 @@ An existing database backup of the Drupal site can be imported through the 'Back
 
 Any required public files should be copied to web/sites/default/files.
 
-<a name="git"></a>
+<a id="git"></a>
 ## 2. Git
-![Git](https://png.icons8.com/color/96/000000/git.png)
 
-
-<a name="workflow"></a>
+<a id="workflow"></a>
 ### 2.1 Workflow
 
 At any given time the repo should contain the following branches:
@@ -59,9 +60,8 @@ Only after a task is completed and tested should it be merged into the develop b
 
 Prior to deployments to the production site the develop branch should be merged into master. In cases where only a subset of the commits in the develop branch need to be included in the master branch, these commits should instead be cherry picked (with the develop branch rebased off master following this).
 
-<a name="technologies"></a>
+<a id="technologies"></a>
 ## 3. Technologies
-![Robot](https://png.icons8.com/color/96/000000/robot.png)
 
 The Drupal site is scaffolded using the Drupal Composer template (documentation for this is included in drupal-composer.md in the root of the project). Module/theme/patch dependencies should all be managed using Composer.
 
@@ -69,17 +69,16 @@ The Configuration synchronization module is used to manage site config. Any chan
 
 The custom theme uses npm for package management and Webpack for compiling assets. Run ```npm run build``` in the root of the custom theme to compile assets (or ```npm run dev``` to watch for file changes).
 
-<a name="service-integration"></a>
-## 4. Service integration
-![Services](https://png.icons8.com/color/96/000000/services.png)
+<a id="apis-integration"></a>
+## 4. APIs integration
 
-Sendgrid
+Sendgrid - <a href="https://sendgrid.com/docs/API_Reference/api_v3.html">Documentation</a>
 
-Stripe
 
-<a name="cheatsheet"></a>
+Stripe - <a href="https://stripe.com/docs/api">Documentation</a>
+
+<a id="cheatsheet"></a>
 ## 5. Cheatsheet
-![Copybook](https://png.icons8.com/color/96/000000/copybook.png)
 
 Install contrib module:
 ```
