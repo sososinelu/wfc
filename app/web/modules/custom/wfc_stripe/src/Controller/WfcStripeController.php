@@ -110,22 +110,16 @@ class WfcStripeController extends ControllerBase
        // If new user send custom password confirmation email
       if ($newUser) {
         $passResetUrl = user_pass_reset_url($user);
-        if($this->sendgrid->sendSendgridEmail(
+        if(!$this->sendgrid->sendSendgridEmail(
           'Create account on Wanderers\' Flight Club!',
           $email,
           'new_user_template',
           $passResetUrl,
           false
         )) {
-        $response->addCommand(
-          new HtmlCommand(
-            '.result_message',
-            'Your confirmation email has been sent. <br> Please check your inbox and confirm your subscription .'
-          )
-        );
 
-        $response->addCommand(new InvokeCommand('.form-email', 'val', ['']));
-      }
+          // Redirect to failed page
+        }
       }
 
       // @todo
