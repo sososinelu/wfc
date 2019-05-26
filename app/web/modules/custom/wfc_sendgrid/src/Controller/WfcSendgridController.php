@@ -33,7 +33,7 @@ class WfcSendgridController extends ControllerBase
         if($sendgridId = $this->sendUserToSendgrid($email)) {
 
           $listId = (\Drupal::state()->get('sendgrid_wfc_list_id')) ? \Drupal::state()->get('sendgrid_wfc_list_id'): '';
-          if($this->moveUserToList($sendgridId[0], $listId)) {
+          if($this->manageUserLists('add', $sendgridId[0], $listId)) {
             try {
               $localUserRecord->delete();
 
@@ -43,11 +43,11 @@ class WfcSendgridController extends ControllerBase
               $markup .= '<p class="back-link"><a href="/">Back to homepage.</a></p>';
               $markup .= '</div>';
 
-              return array(
+              return [
                 '#type' => 'markup',
                 '#markup' => $markup,
-                '#cache' => array('max-age' => 0),
-              );
+                '#cache' => ['max-age' => 0],
+              ];
 
             }catch (Exception $exception) {
               \Drupal::logger('wfc_sendgrid')->notice('Delete local user error: $email >>> '.$exception);
@@ -61,11 +61,11 @@ class WfcSendgridController extends ControllerBase
     $markup .= '<p class="back-link"><a href="/">Back to homepage.</a></p>';
     $markup .= '</div>';
 
-    return array(
+    return [
       '#type' => 'markup',
       '#markup' => $markup,
-      '#cache' => array('max-age' => 0),
-    );
+      '#cache' => ['max-age' => 0],
+      ];
   }
 
   public function testSendgrid()
@@ -77,23 +77,35 @@ class WfcSendgridController extends ControllerBase
     return true;
   }
 
-  public function sendConfirmationEmail($token, $email_address)
+  public function sendSendgridEmail($subject, $toEmailAddress, $template, $passResetUrl, $token)
   {
 
     $email = new \SendGrid\Mail\Mail();
 
     $email->setFrom("info@wanderersflightclub.com", "Wanderers\' Flight Club");
-    $email->setSubject("Please confirm your subscription to Wanderers\' Flight Club!");
-    $email->addTo($email_address, "");
+    $email->setSubject($subject);
+    $email->addTo($toEmailAddress, "");
 
-    $body_data = array (
-      '#theme' => 'email_confirmation_template',
-      '#vars' => array(
-        "unique_url" => \Drupal::request()->getSchemeAndHttpHost().'/email-confirmation?token='.$token
-      )
-    );
+    switch ($template) {
+      case 'email_confirmation_template':
+        $bodyData = [
+          '#theme' => 'email_confirmation_template',
+          '#vars' => [
+            "unique_url" => \Drupal::request()->getSchemeAndHttpHost().'/email-confirmation?token='.$token
+          ]
+        ];
+        break;
+      case 'new_user_template':
+        $bodyData = [
+          '#theme' => 'new_user_template',
+          '#vars' => [
+            "pass_reset" => $passResetUrl
+          ]
+        ];
+        break;
+    }
 
-    $body =  \Drupal::service('renderer')->render($body_data);
+    $body =  \Drupal::service('renderer')->render($bodyData);
     $email->addContent("text/html", $body->__toString());
 
     try {
@@ -136,16 +148,51 @@ class WfcSendgridController extends ControllerBase
     return false;
   }
 
-  public function moveUserToList($userId, $listId)
-   {
+  /**
+   * Add / delete users to Sendgrid lists
+   *
+   * @param string $type add/delete
+   * @param int $userId
+   * @param int $listId
+   * @return boolean
+   */
+  public function manageUserLists($type, $userId, $listId)
+  {
     if($userId && $listId) {
       try {
+        switch ($type) {
+          case 'add':
+            $response = $this->sendgrid->client->contactdb()->lists()->_($listId)->recipients()->_($userId)->post();
+            break;
+          case 'remove':
+            $response = $this->sendgrid->client->contactdb()->lists()->_($listId)->recipients()->_($userId)->delete();
+            break;
+          default:
+            throw new Exception('type not defined');
+            break;
+        }
 
-        $response = $this->sendgrid->client->contactdb()->lists()->_($listId)->recipients()->_($userId)->post();
         // print $response->statusCode() . "\n";
         // print_r($response->headers());
         // print $response->body() . "\n";
 
+        if (strpos($response->statusCode(), '20') !== false) {
+          return true;
+        }else {
+          return false;
+        }
+      } catch (Exception $e) {
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+      }
+    }
+  }
+
+  public function removeUserFromList($userId, $listId)
+  {
+    if($userId && $listId) {
+      try {
+
+        $response = $this->sendgrid->client->contactdb()->lists()->_($listId)->recipients()->_($userId)->delete();
         if (strpos($response->statusCode(), '20') !== false) {
           return true;
         }else {

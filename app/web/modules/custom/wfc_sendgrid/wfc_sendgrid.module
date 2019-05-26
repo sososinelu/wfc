@@ -9,10 +9,14 @@
  */
 function wfc_sendgrid_theme($existing, $type, $theme, $path)
 {
-  return array(
-    'email_confirmation_template' => array(
-      'variables' => array('vars' => NULL),
+  return [
+    'email_confirmation_template' => [
+      'variables' => ['vars' => NULL],
       'template' => 'email-confirmation-template'
-    ),
-  );
+    ],
+    'new_user_template' => [
+      'variables' => ['vars' => NULL],
+      'template' => 'new-user-template'
+    ]
+  ];
 }

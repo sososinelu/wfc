@@ -46,14 +46,14 @@ class SendGridEmailRegistrationForm extends FormBase {
       '#markup' => '<div class="result_message"></div>'
     ];
 
-    $form['email'] = array(
+    $form['email'] = [
       '#type' => 'email',
       '#title' => t('I want cheap flights!'),
-      '#attributes' => array(
+      '#attributes' => [
         'placeholder' => t('I want cheap flights!'),
-      ),
+      ],
       '#required' => FALSE
-    );
+    ];
 
     $form['markup'] = [
       '#type' => 'markup',
@@ -61,13 +61,13 @@ class SendGridEmailRegistrationForm extends FormBase {
     ];
 
     // Submit button
-    $form['actions']['submit'] = array(
+    $form['actions']['submit'] = [
       '#type' => 'submit',
       '#value' => t('Sign-up!'),
       '#ajax' => [
         'callback' => '::processSubmit',
       ],
-    );
+    ];
 
     $form['markup1'] = [
       '#type' => 'markup',
@@ -76,9 +76,9 @@ class SendGridEmailRegistrationForm extends FormBase {
 
     \Drupal::service('page_cache_kill_switch')->trigger();
 
-    $form['#cache'] = array(
+    $form['#cache'] = [
       'max-age' => 0
-    );
+    ];
 
     return $form;
   }
@@ -89,7 +89,6 @@ class SendGridEmailRegistrationForm extends FormBase {
 
     // No email address provided
     if (empty($email)) {
-
       $response->addCommand(
         new HtmlCommand(
           '.result_message',
@@ -102,7 +101,6 @@ class SendGridEmailRegistrationForm extends FormBase {
 
     // Email address is not valid
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-
       $response->addCommand(
         new HtmlCommand(
           '.result_message',
@@ -115,7 +113,6 @@ class SendGridEmailRegistrationForm extends FormBase {
 
     // Check if the user is already subscribed
     if($this->sendgrid->checkIfUserIsSubscribed($email)) {
-
       $response->addCommand(
         new HtmlCommand(
           '.result_message',
@@ -141,7 +138,13 @@ class SendGridEmailRegistrationForm extends FormBase {
       $token = $localUserRecord->get('token')->value;
     }
 
-    if($this->sendgrid->sendConfirmationEmail($token, $email)) {
+    if($this->sendgrid->sendSendgridEmail(
+        'Please confirm your subscription to Wanderers\' Flight Club!',
+        $email,
+        'email_confirmation_template',
+        false,
+        $token
+      )) {
       $response->addCommand(
         new HtmlCommand(
           '.result_message',
@@ -150,8 +153,6 @@ class SendGridEmailRegistrationForm extends FormBase {
       );
 
       $response->addCommand(new InvokeCommand('.form-email', 'val', ['']));
-
-      return $response;
     }else {
       $response->addCommand(
         new HtmlCommand(
@@ -159,12 +160,9 @@ class SendGridEmailRegistrationForm extends FormBase {
           'Your confirmation email failed to sent. Please try again.'
         )
       );
-
-      return $response;
     }
 
     return $response;
-
   }
 
   public function submitForm(array &$form, FormStateInterface $formState) {

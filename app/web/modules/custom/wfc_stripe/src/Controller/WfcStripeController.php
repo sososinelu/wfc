@@ -72,26 +72,25 @@ class WfcStripeController extends ControllerBase
       // Check if the user is on SendGrid
       if($userSendgridId = $this->sendgrid->checkIfUserIsSubscribed($stripeDetails['email'])) {
         // Add user to Sendgrid premium list
-        $this->sendgrid->moveUserToList($userSendgridId, $premiumListId);
+        $this->sendgrid->manageUserLists('add', $userSendgridId, $premiumListId);
 
-        // @todo
-        // remove from WFC list
-
+        // Remove from Sendgrid basic list
+        $this->sendgrid->manageUserLists('remove', $userSendgridId, $premiumListId);
       } else {
-        // Add user to Sendgrid premium & basic lists
+        // Add user to Sendgrid premium list
         if($sendgridId = $this->sendgrid->sendUserToSendgrid($stripeDetails['email'])) {
-          // Move user to basic list on SendGrid
-          // $this->sendgrid->moveUserToList($sendgridId[0], $basicListId);
-
           // Move user to premium list on SendGrid
-          $this->sendgrid->moveUserToList($sendgridId[0], $premiumListId);
+          $this->sendgrid->manageUserLists('add', $sendgridId[0], $premiumListId);
         }
       }
+
+      $newUser = false;
 
       // Check if user exists
       if (!$user) {
           // Create user object.
           $user = User::create();
+          $newUser = true;
 
           // Mandatory settings
           $user->setPassword("password");
@@ -109,7 +108,26 @@ class WfcStripeController extends ControllerBase
       $user->save();
 
        // If new user send custom password confirmation email
-       user_pass_reset_url()
+      if ($newUser) {
+        $passResetUrl = user_pass_reset_url($user);
+        if($this->sendgrid->sendSendgridEmail(
+          'Create account on Wanderers\' Flight Club!',
+          $email,
+          'new_user_template',
+          $passResetUrl,
+          false
+        )) {
+        $response->addCommand(
+          new HtmlCommand(
+            '.result_message',
+            'Your confirmation email has been sent. <br> Please check your inbox and confirm your subscription .'
+          )
+        );
+
+        $response->addCommand(new InvokeCommand('.form-email', 'val', ['']));
+      }
+      }
+
       // @todo
       // Redirect to success page / Ajax return
       exit('Stripe success');
