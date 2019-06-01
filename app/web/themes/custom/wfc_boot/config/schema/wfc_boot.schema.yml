@@ -1,0 +1,5 @@
+# Schema for the configuration files of the Bootstrap SASS Subtheme.
+
+wfc_boot.settings:
+  type: theme_settings
+  label: 'WFC Bootstrap SASS Subtheme settings'
