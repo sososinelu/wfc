@@ -1,32 +1,30 @@
-<div class="top-clouds"></div>
-<div class="background-color-white">
-  <div class="outer-wrapper cols-4">
-    <h2>{{ vars.title }}</h2>
-    <div class="panel-container">
-      <div class="panel">
+<div class="container">
+  <h2>{{ vars.title }}</h2>
+  <div class="row">
+
+      <div class="col-lg-3 col-md-6  panel">
         <img src="{{ file_url(vars.sections.section_1_image.entity.uri.value) }}" title="Sign-up" alt="Sign-up">
         <h3>{{ vars.sections.section_1_title }}</h3>
         {{ vars.sections.section_1_text|raw }}
       </div>
-      <div class="panel">
+      <div class="col-lg-3 col-md-6  panel">
         <img src="{{ file_url(vars.sections.section_2_image.entity.uri.value) }}" title="Sign-up" alt="Sign-up">
         <h3>{{ vars.sections.section_2_title }}</h3>
         {{ vars.sections.section_2_text|raw }}
       </div>
-      <div class="panel">
+      <div class="col-lg-3 col-md-6  panel">
         <img src="{{ file_url(vars.sections.section_3_image.entity.uri.value) }}" title="Sign-up" alt="Sign-up">
         <h3>{{ vars.sections.section_3_title }}</h3>
         {{ vars.sections.section_3_text|raw}}
       </div>
-      <div class="panel">
+      <div class="col-lg-3 col-md-6  panel">
         <img src="{{ file_url(vars.sections.section_4_image.entity.uri.value) }}" title="Sign-up" alt="Sign-up">
         <h3>{{ vars.sections.section_4_title }}</h3>
         {{ vars.sections.section_4_text|raw }}
       </div>
-    </div>
-    <div class="read-more">
-      <a href="/faqs" class="btn--block" title="FAQs">FAQs</a>
-    </div>
+
+  </div>
+  <div class="read-more">
+    <a href="/faqs" class="btn--block" title="FAQs">FAQs</a>
   </div>
 </div>
-<div class="bottom-clouds"></div>

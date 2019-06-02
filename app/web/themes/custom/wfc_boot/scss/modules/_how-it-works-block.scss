@@ -1,7 +1,8 @@
-#block-homepagehowitworksblock {
+#block-wfc-boot-homepagehowitworksblock {
   margin-top: -5rem;
   z-index: 1;
   position: relative;
+  background-color: $white;
   h2 {
     text-align: center;
     margin-top: 2rem;
@@ -12,6 +13,7 @@
     border: none;
     text-align: center;
     margin-bottom: 4rem;
+    padding: 0 2rem;
     img {
       height: 10rem;
       margin-bottom: 2rem;
@@ -22,6 +24,10 @@
     }
     p {
       text-align: left;
+      text-align: center;
+      @include media-breakpoint-up(sm) {
+        text-align: left;
+      }
     }
     span {
       text-decoration: none;
@@ -37,16 +43,11 @@
         padding-left: 1rem;
       }
     }
-    @include media-breakpoint-up(md) {
-
-    }
     @include media-breakpoint-up(lg) {
-
       margin-bottom: 0;
     }
   }
   .read-more {
-
     text-align: center;
     margin-top: 2rem;
   }
