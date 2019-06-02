@@ -8,8 +8,7 @@
   position: absolute;
   z-index: -1;
 }
-
 .gradient-no-back {
-  @extend  .gradient;
+  @extend .gradient;
   background: none;
 }

@@ -1,4 +1,9 @@
-<div class="deal" style="background: url({{ vars.deal_image }});background-repeat: no-repeat;background-size: cover;background-color: #02a5ff;">
-  <p>Recent deals:</p>
-  {{ vars.deals.value|raw }}
+<div class="gradient-no-back" style="background: url({{ vars.deal_image }});background-repeat: no-repeat; background-position: center; background-size: cover;background-color: #02a5ff;"></div>
+<div class="container">
+  <div class="row">
+     <div class="col deal">
+      <p>Recent deals:</p>
+      {{ vars.deals.value|raw }}
+    </div>
+  </div>
 </div>

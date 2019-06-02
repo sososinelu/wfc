@@ -1,8 +1,8 @@
 #block-wfc-boot-homepagesignupblock {
   text-align: center;
   padding-bottom: 7rem;
-  h2 {
-    margin-bottom: 2rem;
+  &.block {
+    padding-top: 0;
   }
   .sign-up-text {
     @include media-breakpoint-up(xl) {
@@ -11,7 +11,6 @@
   }
   .sendgrid-email-registration-form {
     margin-bottom: 2rem;
-    color: red;
     label {
       display: none;
     }

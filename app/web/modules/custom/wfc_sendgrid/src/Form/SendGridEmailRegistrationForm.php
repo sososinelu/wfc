@@ -40,12 +40,6 @@ class SendGridEmailRegistrationForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $formState) {
-
-    $form['message'] = [
-      '#type' => 'markup',
-      '#markup' => '<div class="result_message"></div>'
-    ];
-
     $form['email'] = [
       '#type' => 'email',
       '#title' => t('I want cheap flights!'),
@@ -72,6 +66,11 @@ class SendGridEmailRegistrationForm extends FormBase {
     $form['markup1'] = [
       '#type' => 'markup',
       '#markup' => '</div>'
+    ];
+
+    $form['message'] = [
+      '#type' => 'markup',
+      '#markup' => '<div class="result_message"></div>'
     ];
 
     \Drupal::service('page_cache_kill_switch')->trigger();

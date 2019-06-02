@@ -1,13 +1,18 @@
-#block-homepagedealsblock {
-  margin-top: -50px;
+#block-wfc-boot-homepagedealsblock {
   z-index: 0;
   position: relative;
+  margin-top: 3rem;
+  @include media-breakpoint-up(lg) {
+    margin-top: 7rem;
+  }
+  @include media-breakpoint-up(xl) {
+    margin-top: 7rem;
+  }
   .deal {
     width: 100%;
     background-size: cover;
     min-height: 45rem;
     padding-top: 5rem;
-    padding-bottom: 7rem;
     color: #fff;
     text-align: center;
     @include media-breakpoint-up(md) {
@@ -15,6 +20,7 @@
     }
     @include media-breakpoint-up(xl) {
       min-height: 55rem;
+      padding-bottom: 7rem;
     }
     p {
       font-size: 3rem;
@@ -34,7 +40,7 @@
     p, h2, h3 {
       color: $white;
       font-weight: bold;
-      text-shadow: 1px 1px 2px $prussian_blue;
+      text-shadow: 2px 2px 2px $prussian_blue;
       font-family: "Hind","Avenir","Helvetica",arial;
       margin-bottom: 0;
     }
