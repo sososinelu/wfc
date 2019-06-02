@@ -1,0 +1,10 @@
+.page-node-type-blog-post {
+
+  .node--blog_post {
+    .field--name-body {
+      @include media-breakpoint-up(xl) {
+        padding: 0 15rem;
+      }
+    }
+  }
+}

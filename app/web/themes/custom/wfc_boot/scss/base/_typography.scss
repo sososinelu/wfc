@@ -1,0 +1,102 @@
+$gputek: 'Gputeks-Regular';
+$gputek-bold: 'Gputeks-Bold';
+
+@font-face {
+  font-family: 'Gputeks-Regular';
+  src:  url('../fonts/Gputeks-Regular.ttf?lqkaoq') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gputeks-Bold';
+  src:  url('../fonts/Gputeks-Bold.ttf?lqkaoq') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// convert px to em
+$browser-context: 16; // Default
+
+// Font Sizes
+$base-font-size: 1.9rem;
+
+// Modular Scale
+// $modularscale: (
+//   base: $base-font-size,
+//   ratio: $minor-third
+// );
+
+html {
+  font-size: 62.5%;
+}
+
+// Typography
+$base-font: 'verdana';
+$heading-font: 'astoria', sans-serif;
+
+
+body {
+  font-family: $base-font;
+  color: $dark-grey;
+  font-size: ms(-1);
+  line-height: $base-line-height;
+  font-weight: $normal;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: ms(4-$i);
+    font-family: $gputek-bold;
+    line-height: $heading-line-height;
+    font-weight: $normal;
+    margin-top: 0;
+    color: $prussian_blue;
+  }
+}
+
+h1 {
+  text-align: center;
+  padding-top: 2rem;
+  margin-bottom: 6rem;
+}
+
+h2 {
+  text-align: center;
+  padding-top: 2rem;
+  margin-bottom: 6rem;
+}
+
+h3 {
+  margin-bottom: 1.5rem;
+  @include media-breakpoint-up(md) {
+    margin-bottom: 2rem;
+  }
+}
+
+h4 {
+    margin-bottom: 1rem;
+}
+
+h5 {
+  margin-bottom: 0.5rem;
+  @include media-breakpoint-up(md) {
+    margin-bottom: 1rem;
+  }
+}
+
+h6 {
+  margin-bottom: 0.5rem;
+}
+a {
+  text-decoration: none;
+  color: $prussian_blue;
+  font-weight: $bold;
+  &:visited {
+    color: $prussian_blue;
+  }
+  &:hover {
+    color: $deep-cerulean;
+    text-decoration: underline;
+  }
+}

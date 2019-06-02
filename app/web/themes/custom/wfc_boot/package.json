@@ -1,7 +1,7 @@
 {
-  "name": "barrio_sass",
+  "name": "wfc_boot",
   "version": "8.4.1",
-  "description": "Barrio SASS implementation",
+  "description": "WFC Bottstrap Barrio SASS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,8 @@
     "SASS",
     "Bootstrap",
     "Drupal",
-    "Barrio"
+    "Barrio",
+    "WFC"
   ],
   "author": "@hatuhay",
   "license": "MIT",

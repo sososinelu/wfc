@@ -1,0 +1,13 @@
+#block-homepagesignupblock {
+  text-align: center;
+  padding-bottom: 7rem;
+  h2 {
+    margin-bottom: 2rem;
+  }
+  .sign-up-text {
+    @include media-breakpoint-up(xl) {
+      padding: 0 20rem;
+    }
+  }
+}
+
