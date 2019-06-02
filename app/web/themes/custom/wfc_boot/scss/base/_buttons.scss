@@ -1,4 +1,4 @@
-button, input[type=submit], input[type=reset], .btn--block {
+button, input[type=submit], input[type=reset], .btn--block, .btn {
   font-weight: $normal;
   border-radius: 0;
   border: 0;
@@ -30,7 +30,6 @@ button, input[type=submit], input[type=reset], .btn--block {
     color: #666666;
   }
 }
-
 
 .background--dark {
   button, input[type=submit], input[type=reset], .btn--block {

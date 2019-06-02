@@ -1,4 +1,4 @@
-#block-homepagesignupblock {
+#block-wfc-boot-homepagesignupblock {
   text-align: center;
   padding-bottom: 7rem;
   h2 {
@@ -6,7 +6,58 @@
   }
   .sign-up-text {
     @include media-breakpoint-up(xl) {
-      padding: 0 20rem;
+      padding: 0 15rem;
+    }
+  }
+  .sendgrid-email-registration-form {
+    margin-bottom: 2rem;
+    color: red;
+    label {
+      display: none;
+    }
+    .result_message {
+      min-height: 2.3rem;
+      text-align: center;
+      color: $prussian_blue;
+      font-weight: $bold;
+      padding-bottom: 2rem;
+      a::after {
+        content: '↬';
+        padding-left: 0.5rem;
+      }
+    }
+    .ajax-progress-throbber {
+      position: absolute;
+      right: 4rem;
+      top: 2rem;
+      .message {
+        display: none;
+      }
+    }
+    input[type="email"] {
+      height: 6.5rem;
+    }
+    .form-item-email,
+    .submit-wrapper {
+      @include media-breakpoint-up(md) {
+        display: inline-block;
+      }
+    }
+    .form-item-email {
+      width: 100%;
+      @include media-breakpoint-up(md) {
+        width: 40rem;
+      }
+    }
+    .submit-wrapper {
+      position: relative;
+      button[type=submit] {
+        height: auto;
+        padding: 2.3rem 8rem;
+      }
+      @include media-breakpoint-up(md) {
+        margin-left: 2rem;
+      }
     }
   }
 }

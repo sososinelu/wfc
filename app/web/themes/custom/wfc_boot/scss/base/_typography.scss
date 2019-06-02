@@ -22,19 +22,17 @@ $browser-context: 16; // Default
 $base-font-size: 1.9rem;
 
 // Modular Scale
-// $modularscale: (
-//   base: $base-font-size,
-//   ratio: $minor-third
-// );
+$modularscale: (
+  base: $base-font-size,
+  ratio: 1.2
+);
 
 html {
   font-size: 62.5%;
 }
 
 // Typography
-$base-font: 'verdana';
-$heading-font: 'astoria', sans-serif;
-
+$base-font: Verdana, Geneva, sans-serif;
 
 body {
   font-family: $base-font;
