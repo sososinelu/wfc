@@ -4,13 +4,12 @@ button, input[type=submit], input[type=reset], .btn--block, .btn {
   border: 0;
   text-decoration: none;
   padding: 1.5rem 2.8rem;
-  background: $tonys-pink;
+  background: $tonys-purple;
   color: $white;
   transition: all 0.3s ease;
-  font-size: ms(-1);
+  font-size: ms(0);
   box-sizing: border-box;
   width: auto;
-  height: 5rem;
   line-height: 2rem;
   display: inline-block;
   text-align: center;
@@ -38,5 +37,11 @@ button, input[type=submit], input[type=reset], .btn--block, .btn {
     &:hover, &:focus {
       background: $tropical-blue;
     }
+  }
+}
+
+.arrow {
+  &:after {
+    content: '  ↬';
   }
 }

@@ -1,25 +1,19 @@
-<div class="top-clouds"></div>
-<div class="background-color-white">
-  <div class="outer-wrapper cols-2">
-    <h2>{{ vars.title }}</h2>
-    <div class="panel-container">
-      <div class="panel">
-        {#<img src="/themes/custom/wfc_theme/images/excursionist.png" title="Excursionist" alt="Excursionist">#}
-        <span class="img excursionist-img"></span>
-        {{ vars.text.0.value|raw }}
-        <div class="bottom">
-          <a href="#top" class="btn--block" title="Sign-up">Sign-up</a>
-        </div>
+<div class="container">
+  <h2>{{ vars.title }}</h2>
+  <div class="row panel-container">
+    <div class="col-md-6 panel">
+      <span class="img excursionist-img"></span>
+      {{ vars.text.0.value|raw }}
+      <div class="bottom">
+        <a href="#top" class="btn--block" title="Sign-up">Sign-up</a>
       </div>
-      <div class="panel">
-        {#<img src="/themes/custom/wfc_theme/images/calator.png" title="Calator" alt="Calator">#}
-        <span class="img calator-img"></span>
-        {{ vars.text.1.value|raw }}
-        <div class="bottom">
-          <span class="btn--block btn-disabled" title="Sign-up">Sign-up</span>
-        </div>
+    </div>
+    <div class="col-md-6 panel">
+      <span class="img calator-img"></span>
+      {{ vars.text.1.value|raw }}
+      <div class="bottom">
+        <a href="/wonder" class="btn--block" title="Sign-up">Sign-up</a>
       </div>
     </div>
   </div>
 </div>
-<div class="bottom-clouds"></div>
