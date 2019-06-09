@@ -1,42 +1,47 @@
-#block-homepageaboutusblock {
+#block-wfc-boot-homepageaboutusblock{
   z-index: 0;
-  background-color: $malibu;
-  padding-top: 2rem;
-  margin-bottom: 5rem;
-  h2 {
-    text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 6rem;
-  }
-  img {
-    height: 24.4rem;
-  }
-  a {
-    &:after {
-      content: '↬';
-      padding-left: 1rem;
-    }
-  }
-  .panel {
-    margin-bottom: 5rem;
-    text-align: center;
-    p {
-      text-align: left;
-    }
-  }
+  position: relative;
   @include media-breakpoint-up(lg) {
-    .panel:nth-child(odd) {
-      img {
-        float: left;
-        margin-right: 2rem;
-      }
+    margin-top: 10rem;
+  }
+  h2, p {
+    color: white;
+    text-shadow: 1px 1px 1px #013549;
+  }
+  h2 {
+    padding-top: 5rem;
+  }
+  p {
+    font-size: ms(0);
+    text-align: center;
+  }
+  .about-us-content {
+    padding: 0 3rem;
+    margin-bottom: 5rem;
+    @include media-breakpoint-up(lg) {
+      padding: 0 15rem;
+      margin-bottom: 10rem;
     }
-    .panel:nth-child(even) {
-      img {
-        float: right;
-        margin-left: 2rem;
+    @include media-breakpoint-up(xxl) {
+      padding: 0 20rem;
+    }
+  }
+  .row-panel {
+    transform: skewY(-3deg);
+    transform-origin: 0;
+    @include media-breakpoint-up(xxl) {
+      padding: 0 10rem;
+    }
+    .panel {
+      @include media-breakpoint-up(lg) {
+        padding: 0 5rem;
+      }
+      .text-container {
+        margin-bottom: 2rem;
+        h2 {
+          margin-bottom: 2rem;
+        }
       }
     }
   }
-
 }

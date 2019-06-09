@@ -8,6 +8,10 @@
   position: absolute;
   z-index: -1;
 }
+.gradient-2 {
+  @extend .gradient;
+  background: linear-gradient(150deg, #ff715b 40%,#f9cb40 94%);
+}
 .gradient-no-back {
   @extend .gradient;
   background: none;

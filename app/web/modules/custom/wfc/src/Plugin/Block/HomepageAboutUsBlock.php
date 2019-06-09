@@ -19,11 +19,16 @@ class HomepageAboutUsBlock extends BlockBase
   public function build()
   {
     if($node = \Drupal::routeMatch()->getParameter('node')) {
+      $title = ($node->field_about_us_title	 ? $node->field_about_us_title->value	 : '');
+      $content = ($node->field_about_us_content	 ? $node->field_about_us_content->value	 : '');
+      $images = ($node->field_about_us_images ? $node->field_about_us_images : '');
 
       return array(
         '#theme' => 'homepage_about_us_template',
         '#vars' => array(
-          'sections' => ($node->field_text_image ? $node->field_text_image : '')
+          'title' => $title,
+          'content' => $content,
+          'images' => $images,
         ),
         '#cache' => array('max-age' => 0),
       );

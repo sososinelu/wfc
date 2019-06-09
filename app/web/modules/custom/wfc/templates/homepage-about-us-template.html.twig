@@ -1,21 +1,28 @@
-<div class="outer-wrapper cols-4">
+<div class="gradient-2"></div>
+<div class="container-fluid">
+  <h2>{{ vars.title }}</h2>
+  <div class="about-us-content">
+    {{ vars.content | raw }}
+  </div>
+  <div class="row row-panel">
 
-  <div class="panel-container">
+    {% for image in vars.images %}
 
-    {% for section in vars.sections %}
-
-        {% if section.entity.field_title %}
-    <div class="panel">
-          <h2>{{ section.entity.field_title.value|raw }}</h2>
-        {% else %}
-            <img src="{{ file_url(section.entity.field_alternative_image.entity.uri.value) }}" alt="" title="">
-            <div class="text-container">
-              {{ section.entity.field_alternative_text.value|raw }}
-            </div>
-          </div>
-        {% endif %}
-
+      <div class="col-md-4 panel">
+        <img src="{{ file_url(image.entity.field_alternative_image.entity.uri.value) }}" alt="" title="">
+        <div class="text-container">
+          {{ image.entity.field_alternative_text.value|raw }}
+        </div>
+      </div>
     {% endfor %}
-
   </div>
 </div>
+
+
+
+
+
+
+
+
+
