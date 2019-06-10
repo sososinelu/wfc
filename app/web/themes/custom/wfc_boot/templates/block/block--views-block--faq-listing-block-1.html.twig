@@ -42,7 +42,6 @@
 %}
 
 <div{{ attributes.addClass(classes) }}>
-  <div class="background-color-white">
     <div class="outer-wrapper">
       {{ title_prefix }}
       {% if label %}
@@ -50,7 +49,11 @@
       {% endif %}
       {{ title_suffix }}
       {% block content %}
-        {{ content }}
+        <div class="container">
+
+            {{ content }}
+
+      </div>
       {% endblock %}
     </div>
   </div>

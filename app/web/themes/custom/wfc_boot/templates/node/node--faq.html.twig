@@ -72,12 +72,15 @@
  * @ingroup themeable
  */
 #}
-{{ attach_library('wfc_theme/faq') }}
-<article{{ attributes }} >
-  <div class="node--faq-question">
-    {{ label }}
-  </div>
-  <div class="node--faq-answer hide">
-    {{ content }}
+<article{{ attributes }} class="col-md-12">
+  <div class="row-{{ node.id }}">
+    <div id="heading-{{ node.id }}">
+      <div class="" data-toggle="collapse" data-target="#collapse-{{ node.id }}" aria-expanded="false" aria-controls="collapse-{{ node.id }}">
+        {{ label }}
+      </div>
+    </div>
+    <div id="collapse-{{ node.id }}" class="collapse" aria-labelledby="heading-{{ node.id }}" data-parent=".row-{{ node.id }}">
+        {{ content }}
+    </div>
   </div>
 </article>
