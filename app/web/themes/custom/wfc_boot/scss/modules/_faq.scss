@@ -15,7 +15,7 @@
     &:after {
       content: '';
       display: inline-block;
-      @include icon($arrow-down-circle, 2.5rem, $prussian_blue);
+      @include icon($arrow-down-circle, 2.5rem, $tonys-purple);
       position: absolute;
       top: 50%;
       margin-top: -1.25rem;
