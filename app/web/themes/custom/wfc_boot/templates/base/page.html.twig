@@ -33,15 +33,21 @@
   {% endif %}
 
   <footer id="site-footer" role="contentinfo">
+    <div class="gradient"></div>
     {% if page.footer_top %}
       <section class="footer_top">
-        {{ page.footer_top }}
+        <div class="container">
+          {{ page.footer_top }}
+        </div>
+         <div class="buildings"></div>
       </section>
     {% endif %}
 
     {% if page.footer_bottom %}
       <section class="footer_bottom">
-        {{ page.footer_bottom }}
+        <div class="container">
+          {{ page.footer_bottom }}
+        </div>
       </section>
     {% endif %}
   </footer>

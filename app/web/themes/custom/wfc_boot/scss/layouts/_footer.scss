@@ -1,16 +1,16 @@
 #site-footer {
-  background-color: $malibu;
   padding-top: 3rem;
+  position: relative;
   .footer_bottom {
-    background-color: $bright-gray;
-    border-top: 1rem solid #000b0d;
+    // background-color: $bright-gray;
+    // border-top: 1rem solid #000b0d;
     color: $white;
     text-align: center;
     h4, a, a:visited, p {
       color: white;
+      text-shadow: 1px 1px 1px #013549;
     }
-    #block-footerblock {
-      @include outer-container();
+    #block-wfc-boot-footerblock {
       .contact {
         padding-top: 5rem;
         padding-bottom: 3rem;

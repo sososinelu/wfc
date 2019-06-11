@@ -45,7 +45,7 @@
         }
       }
       .excursionist-img {
-        background: url("/themes/custom/wfc_theme/images/excursionist.jpg") no-repeat center;
+        background: url("/themes/custom/wfc_boot/images/excursionist.png") no-repeat center;
         background-size: 13rem 24rem;
         @include media-breakpoint-up(xl) {
           background-size: 20rem 37rem;
@@ -55,7 +55,7 @@
         }
       }
       .calator-img {
-        background: url("/themes/custom/wfc_theme/images/calator.jpg") no-repeat center;
+        background: url("/themes/custom/wfc_boot/images/calator.png") no-repeat center;
         background-size: 25rem 24rem;
         @include media-breakpoint-up(xl) {
           background-size: 38rem 37rem;
