@@ -72,15 +72,18 @@
  * @ingroup themeable
  */
 #}
-<article{{ attributes }} class="col-md-12">
-  <div class="row-{{ node.id }}">
+<article{{ attributes }}>
+  <div class="row-{{ node.id }} node-faq">
     <div id="heading-{{ node.id }}">
-      <div class="" data-toggle="collapse" data-target="#collapse-{{ node.id }}" aria-expanded="false" aria-controls="collapse-{{ node.id }}">
+      <div class="node-faq-question " data-toggle="collapse" data-target="#collapse-{{ node.id }}" aria-expanded="false" aria-controls="collapse-{{ node.id }}">
         {{ label }}
       </div>
     </div>
-    <div id="collapse-{{ node.id }}" class="collapse" aria-labelledby="heading-{{ node.id }}" data-parent=".row-{{ node.id }}">
+    <div id="collapse-{{ node.id }}" class="collapse " aria-labelledby="heading-{{ node.id }}" data-parent=".row-{{ node.id }}">
+      {# Extra div requiered for smooth navigation https://stackoverflow.com/questions/27221332/bootstrap-collapse-animation-not-smooth #}
+      <div  class="node-faq-answer ">
         {{ content }}
+      </div>
     </div>
   </div>
 </article>
