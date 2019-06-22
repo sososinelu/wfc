@@ -41,6 +41,8 @@
 ]
 %}
 
+{# Homepage FAQ block #}
+
 <div{{ attributes.addClass(classes) }}>
     <div class="outer-wrapper">
       {{ title_prefix }}
@@ -50,10 +52,8 @@
       {{ title_suffix }}
       {% block content %}
         <div class="container">
-
-            {{ content }}
-
-      </div>
+          {{ content }}
+        </div>
       {% endblock %}
     </div>
   </div>

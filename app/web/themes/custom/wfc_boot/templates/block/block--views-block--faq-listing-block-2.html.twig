@@ -41,17 +41,19 @@
 ]
 %}
 
+{# FAQ listing page block #}
+
 <div{{ attributes.addClass(classes) }}>
-  <div class="background-color-white">
-    <div class="outer-wrapper">
-      {{ title_prefix }}
-      {% if label %}
-        <h2 {{ title_attributes }}>{{ label }}</h2>
-      {% endif %}
-      {{ title_suffix }}
-      {% block content %}
+  <div class="outer-wrapper">
+    {{ title_prefix }}
+    {% if label %}
+      <h2 {{ title_attributes }}>{{ label }}</h2>
+    {% endif %}
+    {{ title_suffix }}
+    {% block content %}
+      <div class="container">
         {{ content }}
-      {% endblock %}
-    </div>
+      </div>
+    {% endblock %}
   </div>
 </div>

@@ -2,17 +2,15 @@
   padding-top: 3rem;
   position: relative;
   .footer_bottom {
-    // background-color: $bright-gray;
-    // border-top: 1rem solid #000b0d;
+    margin-top: -6rem;
     color: $white;
     text-align: center;
-    h4, a, a:visited, p {
+    h4, a, a:visited, p, .copyright {
       color: white;
       text-shadow: 1px 1px 1px #013549;
     }
     #block-wfc-boot-footerblock {
       .contact {
-        padding-top: 5rem;
         padding-bottom: 3rem;
       }
       .social-media {
@@ -38,11 +36,20 @@
       .footer-menu {
         ul {
           text-align: center;
+          @include media-breakpoint-up(md) {
+            flex-direction: initial;
+            justify-content: space-evenly;
+            align-items: stretch;
+          }
+          @include media-breakpoint-up(xl) {
+            padding: 0 200px;
+          }
         }
         li {
           padding-bottom: 1.5rem;
           @include media-breakpoint-up(lg) {
-            display:inline-block;
+            flex: 0 1 auto;
+            display: block;
             padding-bottom: 0;
           }
           a {
@@ -52,11 +59,7 @@
             }
           }
         }
-        @include media-breakpoint-up(lg) {
-          li:not(:last-of-type)>a {
-            border-right: solid 2px #fff;
-          }
-        }
+
       }
       .copyright {
         padding-bottom: 4rem;

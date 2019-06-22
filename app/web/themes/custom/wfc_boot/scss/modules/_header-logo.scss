@@ -1,0 +1,18 @@
+#block-wfc-boot-homepageheaderbrandingblock  {
+  padding-top: 5rem;
+}
+
+#block-headerpageblock {
+  padding-top: 0;
+  .header-logo {
+    margin-bottom: 5rem;
+  }
+}
+
+.homepage-header-logo,
+.header-logo {
+  text-align: center;
+  img {
+    width: 45rem;
+  }
+}
