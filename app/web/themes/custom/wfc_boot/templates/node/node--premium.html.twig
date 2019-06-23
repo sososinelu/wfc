@@ -45,21 +45,23 @@
   <div class="hero-wrapper">
     <h2>{{ content.field_hero_title }}</h2>
     <div class="row">
-        {% for package in content.field_packages['#items'] %}
-          <div class="col-sm-12">
-            <a href="/wanderer" class="btn--block" title="">£{{ package.entity.field_package_price.value }} / {{ package.entity.field_package_length.value }}</a>
-          </div>
-        {% endfor %}
+      {% for package in content.field_packages['#items'] %}
+        <div class="col-sm-12">
+          <a href="/wanderer" class="btn--block" title="">£{{ package.entity.field_package_price.value }} / {{ package.entity.field_package_length.value }}</a>
+        </div>
+      {% endfor %}
     </div>
   </div>
   <div class="conclude-wrapper">
     <h2>{{ content.field_conclude_title }}</h2>
-    {{ content.field_conclude_te }}
+    <div class="row">
+      {% for contentText in content.field_conclude_te['#items'] %}
+        <div class="col-sm-6">{{ contentText.value }}</div>
+      {% endfor %}
+    </div>
   </div>
   <div class="footer-content-wrapper">
-
+      <h2>{{ content.field_payment['#items'] .entity.field_group_title.value }}</h2>
+      {{ content.field_payment['#items'] .entity.field_group_text.value | raw }}
   </div>
-
-
-
 </article>
