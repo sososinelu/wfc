@@ -1,0 +1,20 @@
+#block-premiumheaderblock {
+  text-align: center;
+  .premium-header {
+    margin-bottom: 7rem;
+    img {
+      width: 65rem;
+      margin-right: 8rem;
+    }
+    h2 {
+      margin-bottom: 2rem;
+      font-size: ms(4);
+      text-shadow: 1px 0 0 $white, -1px 0 0 $white, 0 1px 0 $white, 0 -1px 0 $white, 1px 1px $white, -1px -1px 0 $white, 1px -1px 0 $white, -1px 1px 0 $white;
+    }
+    p {
+      color: $white;
+      margin-bottom: 2rem;
+    }
+  }
+
+}
