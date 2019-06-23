@@ -1,0 +1,65 @@
+<article id="node-{{ node.id }}" class="{{ attributes.class }} article-node container"{{ attributes }}>
+
+  <div class="packages-wrapper">
+    <h2>{{ content.field_packages_title }}</h2>
+    <div class="row">
+      <div class="col-sm-7">
+          <div class="row">
+              <div class="col-sm-12">
+                  {{ content.field_packages_intro }}
+              </div>
+              <div class="col-sm-6">
+                  {{ content.field_packages.0 }}
+
+              </div>
+              <div class="col-sm-6">
+                  {{ content.field_packages.1 }}
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-5">
+          {{ content.field_packages.2 }}
+      </div>
+    </div>
+  </div>
+  <div class="benefits-wrapper">
+    <h2>{{ content.field_benefits_title }}</h2>
+    <div class="row">
+      <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-8">
+        <div class="row">
+          {% for item in content.field_benefits['#items'] %}
+            <div class="col-sm-3">
+              {{ item.entity.field_group_title.value | raw }}
+            </div>
+            <div class="col-sm-9">
+                {{ item.entity.field_group_text.value | raw }}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-wrapper">
+    <h2>{{ content.field_hero_title }}</h2>
+    <div class="row">
+        {% for package in content.field_packages['#items'] %}
+          <div class="col-sm-12">
+            <a href="/wanderer" class="btn--block" title="">£{{ package.entity.field_package_price.value }} / {{ package.entity.field_package_length.value }}</a>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+  <div class="conclude-wrapper">
+    <h2>{{ content.field_conclude_title }}</h2>
+    {{ content.field_conclude_te }}
+  </div>
+  <div class="footer-content-wrapper">
+
+  </div>
+
+
+
+</article>

@@ -59,5 +59,9 @@ function wfc_theme($existing, $type, $theme, $path)
       'variables' => array('vars' => NULL),
       'template' => 'footer-building-block-template'
     ),
+    'premium_header_template' => array(
+      'variables' => array('vars' => NULL),
+      'template' => 'premium-header-template'
+    ),
   );
 }
