@@ -2,25 +2,43 @@
 
   <div class="packages-wrapper">
     <h2>{{ content.field_packages_title }}</h2>
-    <div class="row">
-      <div class="col-sm-7">
-          <div class="row">
-              <div class="col-sm-12">
+
+
+            <div class="row">
+              <div class="col-sm-8">
                   {{ content.field_packages_intro }}
               </div>
-              <div class="col-sm-6">
-                  {{ content.field_packages.0 }}
+              <div class="col-sm-4">
+              </div>
+              <div class="col-sm-4 three">
+                <span class="length">{{ content.field_packages['#items'].0.entity.field_package_length.value }}</span>
+                <div class="package-details">
+                  <span class="price">£{{ content.field_packages['#items'].0.entity.field_package_price.value }}</span>
+                  <span class="intro">{{ content.field_packages['#items'].0.entity.field_package_intro_text.value }}</span>
+                  <span class="saving">{{ content.field_packages['#items'].0.entity.field_package_saving.value | raw }}</span>
+                </div>
+              </div>
+              <div class="col-sm-4 six">
+                <span class="length">{{ content.field_packages['#items'].1.entity.field_package_length.value }}</span>
+                <div class="package-details">
+                  <span class="price">£{{ content.field_packages['#items'].1.entity.field_package_price.value }}</span>
+                  <span class="intro">{{ content.field_packages['#items'].1.entity.field_package_intro_text.value }}</span>
+                  <span class="saving">{{ content.field_packages['#items'].1.entity.field_package_saving.value | raw }}</span>
+                </div>
+              </div>
+              <div class="col-sm-4 twelve">
+                <span class="length">{{ content.field_packages['#items'].2.entity.field_package_length.value }}</span>
+                <div class="package-details">
+                  <span class="price">£{{ content.field_packages['#items'].2.entity.field_package_price.value }}</span>
+                  <span class="intro">{{ content.field_packages['#items'].2.entity.field_package_intro_text.value }}</span>
+                  <span class="saving">{{ content.field_packages['#items'].2.entity.field_package_saving.value | raw}}</span>
+                </div>
+                <span class="image"></span>
+              </div>
+            </div>
 
-              </div>
-              <div class="col-sm-6">
-                  {{ content.field_packages.1 }}
-              </div>
-          </div>
-      </div>
-      <div class="col-sm-5">
-          {{ content.field_packages.2 }}
-      </div>
-    </div>
+
+
   </div>
   <div class="benefits-wrapper">
     <h2>{{ content.field_benefits_title }}</h2>
@@ -61,7 +79,7 @@
     </div>
   </div>
   <div class="footer-content-wrapper">
-      <h2>{{ content.field_payment['#items'] .entity.field_group_title.value }}</h2>
-      {{ content.field_payment['#items'] .entity.field_group_text.value | raw }}
+      <h2>{{ content.field_payment['#items'].entity.field_group_title.value }}</h2>
+      {{ content.field_payment['#items'].entity.field_group_text.value | raw }}
   </div>
 </article>
