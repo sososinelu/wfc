@@ -1,8 +1,10 @@
 #site-footer {
-  padding-top: 3rem;
   position: relative;
+  .region-footer-top {
+    padding-top: 5rem;
+  }
   .footer_bottom {
-    margin-top: -6rem;
+    margin-top: -10rem;
     color: $white;
     text-align: center;
     h4, a, a:visited, p, .copyright {
@@ -60,9 +62,6 @@
           }
         }
 
-      }
-      .copyright {
-        padding-bottom: 4rem;
       }
     }
   }

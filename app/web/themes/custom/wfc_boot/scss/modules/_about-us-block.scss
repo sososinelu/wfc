@@ -2,14 +2,14 @@
   z-index: 0;
   position: relative;
   @include media-breakpoint-up(lg) {
-    margin-top: 10rem;
+    margin-top: 3rem;
   }
   h2, p {
     color: white;
     text-shadow: 1px 1px 1px #013549;
   }
   h2 {
-    padding-top: 5rem;
+    padding-top: 10rem;
   }
   p {
     font-size: ms(0);
@@ -39,6 +39,7 @@
       .text-container {
         margin-bottom: 2rem;
         h2 {
+          padding-top: 5rem;
           margin-bottom: 2rem;
         }
       }

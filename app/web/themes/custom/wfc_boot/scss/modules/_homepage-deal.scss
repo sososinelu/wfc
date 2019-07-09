@@ -1,18 +1,11 @@
 #block-wfc-boot-homepagedealsblock {
   z-index: 0;
   position: relative;
-  margin-top: 3rem;
-  @include media-breakpoint-up(lg) {
-    margin-top: 7rem;
-  }
-  @include media-breakpoint-up(xl) {
-    margin-top: 7rem;
-  }
   .deal {
     width: 100%;
     background-size: cover;
     min-height: 45rem;
-    padding-top: 5rem;
+    padding-top: 9rem;
     color: #fff;
     text-align: center;
     @include media-breakpoint-up(md) {
