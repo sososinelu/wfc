@@ -2,12 +2,12 @@
   <div class="packages-wrapper container">
     <h2>{{ content.field_packages_title }}</h2>
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-md-8">
           {{ content.field_packages_intro }}
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4">
       </div>
-      <div class="col-sm-4 three">
+      <div class="col-md-4 three">
         <span class="length">{{ content.field_packages['#items'].0.entity.field_package_length.value }}</span>
         <div class="package-details">
           <span class="price">£{{ content.field_packages['#items'].0.entity.field_package_price.value }}</span>
@@ -15,7 +15,7 @@
           <span class="saving">{{ content.field_packages['#items'].0.entity.field_package_saving.value | raw }}</span>
         </div>
       </div>
-      <div class="col-sm-4 six">
+      <div class="col-md-4 six">
         <span class="length">{{ content.field_packages['#items'].1.entity.field_package_length.value }}</span>
         <div class="package-details">
           <span class="price">£{{ content.field_packages['#items'].1.entity.field_package_price.value }}</span>
@@ -23,7 +23,7 @@
           <span class="saving">{{ content.field_packages['#items'].1.entity.field_package_saving.value | raw }}</span>
         </div>
       </div>
-      <div class="col-sm-4 twelve">
+      <div class="col-md-4 twelve">
         <span class="length">{{ content.field_packages['#items'].2.entity.field_package_length.value }}</span>
         <div class="package-details">
           <span class="price">£{{ content.field_packages['#items'].2.entity.field_package_price.value }}</span>
@@ -34,25 +34,25 @@
       </div>
     </div>
   </div>
-
   <div class="benefits-hero-wrapper">
     <div class="gradient angle--both-right-right"></div>
+
     <div class="benefits-wrapper">
       <div class="gradient-white angle--both-right-left"></div>
       <div class="container">
         <span class="img wanderer-extra-bits-img"></span>
         <h2>{{ content.field_benefits_title }}</h2>
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-md-4">
             <span class="img wanderer-img"></span>
           </div>
-          <div class="col-sm-8">
+          <div class="col-md-8">
             <div class="row">
               {% for item in content.field_benefits['#items'] %}
-                <div class="col-sm-3">
+                <div class="col-md-3">
                   <p>{{ item.entity.field_group_title.value | raw }}</p>
                 </div>
-                <div class="col-sm-9">
+                <div class="col-md-9">
                     {{ item.entity.field_group_text.value | raw }}
                 </div>
               {% endfor %}
@@ -61,14 +61,17 @@
         </div>
       </div>
     </div>
-    <div class="hero-wrapper container">
-      <h2>{{ content.field_hero_title }}</h2>
-      <div class="row">
-        {% for package in content.field_packages['#items'] %}
-          <div class="col-sm-12">
-            <a href="/wanderer" class="btn--block" title="">£{{ package.entity.field_package_price.value }} / {{ package.entity.field_package_length.value }}</a>
-          </div>
-        {% endfor %}
+    <div class="hero-wrapper">
+      <div class="gradient-no-back hero-image angle--both-right-left" style="background: url({{ content.field_hero_image }});background-repeat: no-repeat; background-position: center; background-size: cover;background-color: #02a5ff;"></div>
+      <div class="container">
+        <h2>{{ content.field_hero_title }}</h2>
+        <div class="row">
+          {% for package in content.field_packages['#items'] %}
+            <div class="col-md-12">
+              <a href="/wanderer" class="btn--block" title="">£{{ package.entity.field_package_price.value }} / {{ package.entity.field_package_length.value }}</a>
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
@@ -76,7 +79,7 @@
     <h2>{{ content.field_conclude_title }}</h2>
     <div class="row">
       {% for contentText in content.field_conclude_te['#items'] %}
-        <div class="col-sm-6">{{ contentText.value }}</div>
+        <div class="col-md-6">{{ contentText.value }}</div>
       {% endfor %}
     </div>
   </div>
