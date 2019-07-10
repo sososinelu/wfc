@@ -15,3 +15,7 @@
   @extend .gradient;
   background: none;
 }
+.gradient-white {
+  @extend .gradient;
+  background: $white;
+}

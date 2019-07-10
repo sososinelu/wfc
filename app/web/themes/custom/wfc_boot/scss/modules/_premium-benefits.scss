@@ -1,0 +1,41 @@
+.node--premium {
+  .benefits-hero-wrapper {
+    position: relative;
+    margin-top: 5rem;
+  }
+  .benefits-wrapper {
+    padding-top: 3rem;
+    position: relative;
+    .container {
+      position: relative;
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+    }
+    .col-sm-3 {
+      text-align: right;
+    }
+    p {
+      font-family: $gputek-bold;
+      color: $prussian_blue;
+    }
+    .wanderer-extra-bits-img {
+      background: url("/themes/custom/wfc_boot/images/wanderer_extra_bits.png") no-repeat center;
+      background-size: 12rem 9rem;
+      width: 12rem;
+      height: 9rem;
+      right: 20%;
+    }
+    .wanderer-img {
+      background: url("/themes/custom/wfc_boot/images/wanderer.png") no-repeat center;
+      background-size: 25rem 24rem;
+      @include media-breakpoint-up(xl) {
+        top: -8rem;
+        right: -5rem;
+        background-size: 25rem 35rem;
+        width: 25rem;
+        height: 35rem;
+      }
+    }
+  }
+
+}
