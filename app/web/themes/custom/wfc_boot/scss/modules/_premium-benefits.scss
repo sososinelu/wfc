@@ -1,39 +1,68 @@
 .node--premium {
   .benefits-hero-wrapper {
     position: relative;
-    margin-top: 5rem;
+    padding-bottom: 4rem;
+    @include media-breakpoint-up(md) {
+      margin-top: 5rem;
+    }
   }
   .benefits-wrapper {
-    padding-top: 3rem;
+    padding-top: 4rem;
     position: relative;
     .container {
       position: relative;
-      padding-top: 10rem;
-      padding-bottom: 10rem;
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+      @include media-breakpoint-up(xl) {
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+      }
     }
-    .col-sm-3 {
-      text-align: right;
+    .col-md-3 {
+      text-align: center;
+      padding: 2rem 0;
+      @include media-breakpoint-up(md) {
+        text-align: right;
+        padding: 0;
+      }
+      p::after {
+        @include media-breakpoint-up(md) {
+          content: "-";
+          position: absolute;
+          top: 0;
+          right: -1.3rem;
+        }
+      }
     }
     p {
       font-family: $gputek-bold;
       color: $prussian_blue;
     }
     .wanderer-extra-bits-img {
+      position: absolute;
+      display: block;
       background: url("/themes/custom/wfc_boot/images/wanderer_extra_bits.png") no-repeat center;
       background-size: 12rem 9rem;
       width: 12rem;
       height: 9rem;
-      right: 20%;
+      right: 1rem;
+      top: 12rem;
+      @include media-breakpoint-up(md) {
+        right: 5rem;
+        top: initial;
+      }
+      @include media-breakpoint-up(xl) {
+        right: 20%;
+      }
     }
     .wanderer-img {
       background: url("/themes/custom/wfc_boot/images/wanderer.png") no-repeat center;
-      background-size: 25rem 24rem;
+      background-size: 25rem 35rem;
+      height: 35rem;
       @include media-breakpoint-up(xl) {
         top: -8rem;
         right: -5rem;
-        background-size: 25rem 35rem;
         width: 25rem;
-        height: 35rem;
       }
     }
   }

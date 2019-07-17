@@ -1,11 +1,25 @@
 .node--premium {
   .hero-wrapper {
-    padding-top: 3rem;
     position: relative;
+    margin-top: 5rem;
+    @include media-breakpoint-up(md) {
+      margin-top: 3rem;
+    }
+    @include media-breakpoint-up(xl) {
+      margin-top: -2rem;
+    }
     .container {
       position: relative;
       padding-top: 10rem;
       padding-bottom: 10rem;
+      text-align: center;
+      .btn-yellow {
+        font-size: ms(2);
+        font-family: "Gputeks-Bold";
+        margin-bottom: 3rem;
+        width: 33rem;
+        padding: 2rem 2.8rem;
+      }
     }
   }
 }

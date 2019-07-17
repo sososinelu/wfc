@@ -19,7 +19,9 @@ button, input[type=submit], input[type=reset], .btn--block, .btn {
     color: $white;
   }
 }
-
+.btn-yellow {
+  background-color: $saffron;
+}
 .btn-disabled {
   background-color: #cccccc;
   color: #666666;
@@ -29,7 +31,6 @@ button, input[type=submit], input[type=reset], .btn--block, .btn {
     color: #666666;
   }
 }
-
 .background--dark {
   button, input[type=submit], input[type=reset], .btn--block {
     background: $white;
@@ -39,7 +40,6 @@ button, input[type=submit], input[type=reset], .btn--block, .btn {
     }
   }
 }
-
 .arrow {
   &:after {
     content: '  ↬';
