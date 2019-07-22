@@ -20,7 +20,7 @@ class HomepageHeaderBranding extends BlockBase
   {
     $content = '<div class="homepage-header-logo">';
     $content .= '<a href="/" title="Home" rel="home">';
-    $content .= '<img src="/themes/custom/wfc_theme/images/wfc_logo_stroke_filled.png" title="Wanderers\' Flight Club" alt="Wanderers\' Flight Club logo">';
+    $content .= '<img src="/themes/custom/wfc_boot/images/wfc_logo_stroke_filled.png" title="Wanderers\' Flight Club" alt="Wanderers\' Flight Club logo">';
     $content .= '</a></div>';
 
     return array(

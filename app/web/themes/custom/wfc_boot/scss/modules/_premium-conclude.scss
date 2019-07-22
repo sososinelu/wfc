@@ -1,0 +1,25 @@
+.node--premium {
+  .conclude-wrapper {
+    .blue-text {
+      color: $malibu;
+      text-shadow: 0.1rem 0.1rem 0.1rem $malibu;
+    }
+    p {
+      position: relative;
+      padding-left: 4rem;
+      height: 4.6rem;
+      &::before {
+        content: '';
+        background: url('/themes/custom/wfc_boot/images/premium/snazzy_tick.png');
+        background-size: 3.3rem 3.3rem;
+        background-repeat: no-repeat;
+        line-height: 1rem;
+        position: absolute;
+        height: 3.3rem;
+        width: 3.3rem;
+        left: 0;
+        top: -0.5rem;
+      }
+    }
+  }
+}

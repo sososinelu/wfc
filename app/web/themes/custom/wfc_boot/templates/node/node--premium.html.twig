@@ -76,14 +76,12 @@
   </div>
   <div class="conclude-wrapper">
     <h2>{{ content.field_conclude_title }}</h2>
-    <div class="row">
-      {% for contentText in content.field_conclude_te['#items'] %}
-        <div class="col-md-6">{{ contentText.value }}</div>
-      {% endfor %}
+    <div class="container">
+      <div class="row">
+        {% for contentText in content.field_conclude_te['#items'] %}
+          <div class="col-md-6"><p>{{ contentText.value }}</p></div>
+        {% endfor %}
+      </div>
     </div>
-  </div>
-  <div class="footer-content-wrapper">
-      <h2>{{ content.field_payment['#items'].entity.field_group_title.value }}</h2>
-      {{ content.field_payment['#items'].entity.field_group_text.value | raw }}
   </div>
 </article>
