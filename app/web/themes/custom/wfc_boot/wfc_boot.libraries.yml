@@ -10,18 +10,3 @@ global-styling:
   dependencies:
     - core/jquery
     - core/drupal
-    - wfc_boot/velocity
-velocity:
-  js:
-    js/velocity.min.js: {}
-faq:
-  js:
-    js/faq.js: {}
-  dependencies:
-    - core/jquery.once
-overlay:
-  js:
-    js/overlay.js: {}
-  dependencies:
-    - core/jquery
-    - wfc_boot/velocity

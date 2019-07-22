@@ -9,7 +9,7 @@
       </div>
       <div class="col-md-4 three package">
         <span class="length">{{ content.field_packages['#items'].0.entity.field_package_length.value }}</span>
-        <div class="package-details">
+        <div class="package-details 1-cta">
           <span class="price">£{{ content.field_packages['#items'].0.entity.field_package_price.value }}</span>
           <span class="intro">{{ content.field_packages['#items'].0.entity.field_package_intro_text.value }}</span>
           <span class="saving">{{ content.field_packages['#items'].0.entity.field_package_saving.value | raw }}</span>
@@ -17,7 +17,7 @@
       </div>
       <div class="col-md-4 six package">
         <span class="length">{{ content.field_packages['#items'].1.entity.field_package_length.value }}</span>
-        <div class="package-details">
+        <div class="package-details 2-cta">
           <span class="price">£{{ content.field_packages['#items'].1.entity.field_package_price.value }}</span>
           <span class="intro">{{ content.field_packages['#items'].1.entity.field_package_intro_text.value }}</span>
           <span class="saving">{{ content.field_packages['#items'].1.entity.field_package_saving.value | raw }}</span>
@@ -25,7 +25,7 @@
       </div>
       <div class="col-md-4 twelve package">
         <span class="length">{{ content.field_packages['#items'].2.entity.field_package_length.value }}</span>
-        <div class="package-details">
+        <div class="package-details 3-cta">
           <span class="price">£{{ content.field_packages['#items'].2.entity.field_package_price.value }}</span>
           <span class="intro">{{ content.field_packages['#items'].2.entity.field_package_intro_text.value }}</span>
           <span class="saving">{{ content.field_packages['#items'].2.entity.field_package_saving.value | raw}}</span>
@@ -67,7 +67,7 @@
         <div class="row">
           {% for package in content.field_packages['#items'] %}
             <div class="col-md-12">
-              <a href="/wanderer" class="btn--block btn-yellow" title="">£{{ package.entity.field_package_price.value }} / {{ package.entity.field_package_length.value }}</a>
+              <span class="btn--block btn-yellow {{ loop.index }}-cta" title="">£{{ package.entity.field_package_price.value }} / {{ package.entity.field_package_length.value }}</span>
             </div>
           {% endfor %}
         </div>
@@ -83,5 +83,49 @@
         {% endfor %}
       </div>
     </div>
+  </div>
+  <div class="stripe-forms">
+    <form id="quarterly" action="/plan/quarterly" method="POST">
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_Tg58w3G2WIEhi8qHH9jwHkaS"
+        data-image="/themes/custom/wfc_boot/images/stripe_market_pic.png"
+        data-name="Wanderers' Flights Club"
+        data-description="Premium subscribe: 3 months"
+        data-amount="1000"
+        data-locale="auto"
+        data-currency="gbp"
+        data-label="Subscribe!"
+        data-allow-remember-me="false">
+      </script>
+    </form>
+    <form id="semiannual" action="/plan/semiannual" method="POST">
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_Tg58w3G2WIEhi8qHH9jwHkaS"
+        data-image="/themes/custom/wfc_boot/images/stripe_market_pic.png"
+        data-name="Wanderers' Flights Club"
+        data-description="Premium subscribe: 6 months"
+        data-amount="2000"
+        data-locale="auto"
+        data-currency="gbp"
+        data-label="Subscribe!"
+        data-allow-remember-me="false">
+      </script>
+    </form>
+    <form id="annual" action="/plan/annual" method="POST">
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_Tg58w3G2WIEhi8qHH9jwHkaS"
+        data-image="/themes/custom/wfc_boot/images/stripe_market_pic.png"
+        data-name="Wanderers' Flights Club"
+        data-description="Premium subscribe: 12 months"
+        data-amount="3000"
+        data-locale="auto"
+        data-currency="gbp"
+        data-label="Subscribe!"
+        data-allow-remember-me="false">
+      </script>
+    </form>
   </div>
 </article>
