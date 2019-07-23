@@ -49,7 +49,7 @@
             <div class="row">
               {% for item in content.field_benefits['#items'] %}
                 <div class="col-md-3">
-                  <p>{{ item.entity.field_group_title.value | raw }}</p>
+                  <p class="title">{{ item.entity.field_group_title.value | raw }}</p>
                 </div>
                 <div class="col-md-9">
                     {{ item.entity.field_group_text.value | raw }}

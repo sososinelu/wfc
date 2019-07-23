@@ -35,8 +35,10 @@
       }
     }
     p {
-      font-family: $gputek-bold;
       color: $prussian_blue;
+      &.title {
+        font-family: $gputek-bold;
+      }
     }
     .wanderer-extra-bits-img {
       position: absolute;
