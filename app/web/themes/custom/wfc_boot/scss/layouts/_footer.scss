@@ -9,7 +9,7 @@
     text-align: center;
     h4, a, a:visited, p, .copyright {
       color: white;
-      text-shadow: 0.1rem 0.1rem 0.1rem #013549;
+      text-shadow: 0.1rem 0.1rem 0.1rem $prussian_blue;
     }
     #block-wfc-boot-footerblock {
       .contact {
@@ -44,7 +44,7 @@
             align-items: stretch;
           }
           @include media-breakpoint-up(xl) {
-            padding: 0 200px;
+            padding: 0 10rem;
           }
         }
         li {
@@ -57,7 +57,7 @@
           a {
             text-align: center;
             @include media-breakpoint-up(lg) {
-              padding: 0 16px;
+              padding: 0 1.6rem;
             }
           }
         }

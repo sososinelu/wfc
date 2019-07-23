@@ -28,6 +28,5 @@ class HomepageHeaderBranding extends BlockBase
       '#markup' => $content,
       '#cache' => array('max-age' => 0),
     );
-
   }
 }

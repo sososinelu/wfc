@@ -56,6 +56,27 @@ function wfc_boot_preprocess_block(&$variables) {
 }
 
 /**
+ * Implements hook_form_alter.
+ * @param array $form, &$form_state, $form_id
+ */
+function wfc_boot_form_alter(&$form, &$form_state, $form_id) {
+  $page_url = $_SERVER['REQUEST_URI'];
+  $page_url = rtrim($page_url,"/");
+
+  if ($form_id == 'user_login_form' && $page_url == '/user/login') {
+    $form['name']['#title'] = t('Email address');
+    $form['name']['#description'] = t('Enter your Wanderers\' Flight Club email address.');
+    $form['pass']['#description'] = t('Enter the password that accompanies your email address.');
+    $form['#prefix'] = t('<div class="login-form-wrapper"><h2>Wanderer Login</h2>');
+    $form['#suffix'] = t('<a href="/user/password">Reset your password</a></div>');
+  } else if ($form_id == 'user_pass' && $page_url == '/user/password') {
+    $form['name']['#title'] = t('Email address');
+    $form['#prefix'] = t('<div class="reset-form-wrapper"><h2>Reset Wanderer Password</h2>');
+    $form['#suffix'] = t('<a href="/user/login">Back to Login</a>');
+  }
+}
+
+/**
  * Implements hook_form_system_theme_settings_alter() for settings form.
  *
  * Replace Barrio setting options with subtheme ones.
