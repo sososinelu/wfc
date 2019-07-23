@@ -3,9 +3,11 @@
 namespace Drupal\wfc_stripe\Controller;
 
 
-use Drupal\Core\Controller\ControllerBase;
-use Drupal\wfc_sendgrid\Controller\WfcSendgridController;
+use Drupal\Core\Url;
 use Drupal\user\Entity\User;
+use Drupal\Core\Controller\ControllerBase;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\wfc_sendgrid\Controller\WfcSendgridController;
 
 
 class WfcStripeController extends ControllerBase
@@ -108,6 +110,7 @@ class WfcStripeController extends ControllerBase
       $user->save();
 
        // If new user send custom password confirmation email
+
       if ($newUser) {
         $passResetUrl = user_pass_reset_url($user);
         if(!$this->sendgrid->sendSendgridEmail(
@@ -117,20 +120,62 @@ class WfcStripeController extends ControllerBase
           $passResetUrl,
           false
         )) {
-
-          // Redirect to failed page
+          $response = new RedirectResponse(Url::fromRoute('wfc_stripe.wanderer_registration', ['status' => 'efail'])->setAbsolute()->toString());
+          $response->send();
+          exit('Sendgrid fail');
         }
       }
 
-      // @todo
-      // Redirect to success page / Ajax return
+      $response = new RedirectResponse(Url::fromRoute('wfc_stripe.wanderer_registration', ['status' => 'success'])->setAbsolute()->toString());
+      $response->send();
+
       exit('Stripe success');
     }
     catch(Exception $exception)
     {
-      // @todo Redirect to fail page / Ajax return
       \Drupal::logger('wfc_stripe')->notice('Unable to sign up customer ' . $stripeDetails['email'] . ' >>> '.$exception);
+      $response = new RedirectResponse(Url::fromRoute('wfc_stripe.wanderer_registration', ['status' => 'pfail'])->setAbsolute()->toString());
+      $response->send();
       exit('Stripe fail');
     }
+
+    return [];
+  }
+
+  public function registrationComplete($status)
+  {
+    $markup = '<div class="container registration">';
+
+    if ($status) {
+      switch ($status) {
+        case 'success':
+          $markup .= '<h4>Payment successful</h4><h4>Welcome to the club!</h4>';
+          $markup .= '<p>You should receive an email with details to complete your account creation.</p>';
+          $markup .= '<p class="back-link"><a href="/">Back to homepage</a></p>';
+          break;
+        case 'pfail':
+          $markup .= '<h4>Payment failed.</h4>';
+          $markup .= '<p>Please go back and try again or contact us at <a class="info" href="mailto:info@wanderersflightclub.com">info@wanderersflightclub.com</a>.</p>';
+          $markup .= '<p class="back-link"><a href="/wanderer">Back to Wanderer package page</a></p>';
+          break;
+        case 'efail':
+          $markup .= '<h4>Payment successful</h4><h4>Welcome to the club!</h4>';
+          $markup .= '<h4>Account creation failed.</h4>';
+          $markup .= '<p>Please contact us at <a class="info" href="mailto:info@wanderersflightclub.com">info@wanderersflightclub.com</a>.</p>';
+          $markup .= '<p class="back-link"><a href="/">Back to homepage</a></p>';
+          break;
+        default:
+          $markup .= '<p class="back-link"><a href="/">Back to homepage</a></p>';
+          break;
+      }
+    }
+
+    $markup .= '</div>';
+
+    return [
+      '#type' => 'markup',
+      '#markup' => $markup,
+      '#cache' => ['max-age' => 0],
+    ];
   }
 }

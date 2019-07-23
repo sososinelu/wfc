@@ -1,0 +1,32 @@
+.path--wanderer-success,
+.path--wanderer-pfail,
+.path--wanderer-efail,
+.path--email-confirmation {
+  #block-premiumheaderblock .premium-header img {
+    width: 55rem;
+  }
+  .registration,
+  .email-confirmation {
+    text-align: center;
+    margin-bottom: 5rem;
+    .info::after {
+      content: '↬';
+      padding-left: 0.5rem;
+    }
+    a {
+      color: $prussian_blue;
+      &:visited {
+        color: $prussian_blue;
+      }
+      &:hover {
+        color: $deep-cerulean;
+        text-decoration: underline;
+      }
+    }
+    .back-link {
+      a::before {
+        content: '↫';
+      }
+    }
+  }
+}

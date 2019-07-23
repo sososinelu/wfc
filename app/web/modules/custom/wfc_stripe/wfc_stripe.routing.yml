@@ -4,3 +4,11 @@ wfc_stripe.plan:
     _controller: '\Drupal\wfc_stripe\Controller\WfcStripeController::stripePlan'
   requirements:
     _permission: 'access content'
+wfc_stripe.wanderer_registration:
+  path: '/wanderer/{status}' # Status params: success, pfail, efail
+  defaults:
+    _controller: '\Drupal\wfc_stripe\Controller\WfcStripeController::registrationComplete'
+    _title: 'Wanderer Package registration'
+    _description: 'Wanderer Package registration'
+  requirements:
+    _permission: 'access content'

@@ -4,7 +4,6 @@ wfc_sendgrid.test:
     _controller: '\Drupal\wfc_sendgrid\Controller\WfcSendgridController::testSendgrid'
   requirements:
     _permission: 'access content'
-
 wfc_sendgrid.email_confirmation:
   path: '/email-confirmation'
   defaults:

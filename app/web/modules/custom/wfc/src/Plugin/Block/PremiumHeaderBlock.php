@@ -19,20 +19,21 @@ class PremiumHeaderBlock extends BlockBase
    */
   public function build()
   {
-    if($node = \Drupal::routeMatch()->getParameter('node')) {
-      $title = $node->getTitle();
-      $intro_text = ($node->body ? $node->body->value : '');
+    $title = '';
+    $intro_text = '';
 
-      return array(
-        '#theme' => 'premium_header_template',
-        '#vars' => array(
-          'title' => $title,
-          'intro_text' => $intro_text
-        ),
-        '#cache' => array('max-age' => 0),
-      );
+    if($node = \Drupal::routeMatch()->getParameter('node')) {
+      $title = ($node->getTitle() ? $node->getTitle() : '');
+      $intro_text = ($node->body ? $node->body->value : '');
     }
 
-    return array();
+    return array(
+      '#theme' => 'premium_header_template',
+      '#vars' => array(
+        'title' => $title,
+        'intro_text' => $intro_text
+      ),
+      '#cache' => array('max-age' => 0),
+    );
   }
 }

@@ -23,7 +23,7 @@ class WfcSendgridController extends ControllerBase
   public function emailConfirmationProcessing()
   {
     $token = \Drupal::request()->query->get('token');
-    $markup = '<div class="email-confirmation outer-wrapper">';
+    $markup = '<div class="email-confirmation container">';
 
     if($token) {
       if($localUserRecord = WfcUserConfirmation::getUserByToken($token)) {
