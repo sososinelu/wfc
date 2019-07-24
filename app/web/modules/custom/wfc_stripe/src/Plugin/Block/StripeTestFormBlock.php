@@ -11,6 +11,7 @@
 namespace Drupal\wfc_stripe\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 
+
 class StripeTestFormBlock extends BlockBase
 {
   /**
@@ -19,6 +20,7 @@ class StripeTestFormBlock extends BlockBase
   public function build()
   {
     if($node = \Drupal::routeMatch()->getParameter('node')) {
+
 
       return [
         '#theme' => 'stripe_test_form',

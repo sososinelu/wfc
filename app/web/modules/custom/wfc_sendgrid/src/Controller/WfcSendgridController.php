@@ -82,7 +82,7 @@ class WfcSendgridController extends ControllerBase
 
     $email = new \SendGrid\Mail\Mail();
 
-    $email->setFrom("info@wanderersflightclub.com", "Wanderers\' Flight Club");
+    $email->setFrom("info@wanderersflightclub.com", "Wanderers' Flight Club");
     $email->setSubject($subject);
     $email->addTo($toEmailAddress, "");
 

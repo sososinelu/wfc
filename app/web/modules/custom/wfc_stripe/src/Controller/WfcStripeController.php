@@ -107,6 +107,7 @@ class WfcStripeController extends ControllerBase
       $user->set('field_product_id', $stripeDetails['product_key']);
       $user->set('field_product_name', $stripeDetails['product_name']);
       $user->set('field_stripe_customer_id', $stripeCustomerId);
+      $user->set('field_subscription_date', date('Y-m-d'));
       $user->save();
 
        // If new user send custom password confirmation email
@@ -114,8 +115,8 @@ class WfcStripeController extends ControllerBase
       if ($newUser) {
         $passResetUrl = user_pass_reset_url($user);
         if(!$this->sendgrid->sendSendgridEmail(
-          'Create account on Wanderers\' Flight Club!',
-          $email,
+          "Create account on Wanderers' Flight Club!",
+          $stripeDetails['email'],
           'new_user_template',
           $passResetUrl,
           false
