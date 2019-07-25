@@ -25,6 +25,8 @@ Install [Composer](https://getcomposer.org/download/).
 
 Install [Node.js](https://nodejs.org/en/download/).
 
+Install [Drush](https://docs.drush.org/en/master/install/).
+
 <a id="installing"></a>
 ### 1.2 Installing
 
@@ -32,9 +34,7 @@ Checkout the latest codebase.
 
 Run ```composer install``` in ```/app/``` to build Drupal and dependencies.
 
-Navigate to ```/app/web/themes/contrib/neato``` and run ```bower install``` (if you don't have Bower installed already run  ```npm install bower``` before ```bower install```).
-
-Run ```npm install``` in ```/app/web/themes/custom/wfc_theme``` to install dependencies.
+Run ```npm install``` in ```/app/web/themes/custom/wfc_boot``` to install dependencies.
 
 Navigate to ```/web/sites/default/``` then copy ```default.settings.php``` and rename to ```settings.php``` and configure the database connection.
 
@@ -62,8 +62,8 @@ Prior to deployments to the production site the develop branch should be merged 
 
 <a id="technologies"></a>
 ## 3. Technologies
-
-The Drupal site is scaffolded using the Drupal Composer template (documentation for this is included in drupal-composer.md in the root of the project). Module/theme/patch dependencies should all be managed using Composer.
+The Drupal site is scaffolded using the <a href="https://github.com/drupal-composer/drupal-project">Drupal Composer template</a>.
+Module/theme/patch dependencies should all be managed using Composer.
 
 The Configuration synchronization module is used to manage site config. Any changes made to config should be exported to the ```../config/sync``` directory by running ```drush cex```. Updated config can be imported by running ```drush cim```.
 
@@ -100,7 +100,7 @@ Clear cache using drush:
 drush cr
 ```
 
-Compile assets in ```web/themes/custom/wfc_theme```
+Compile assets in ```web/themes/custom/wfc_boot```
 ```
 gulp
 ```
