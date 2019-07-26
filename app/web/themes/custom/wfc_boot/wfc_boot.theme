@@ -81,7 +81,7 @@ function wfc_boot_form_alter(&$form, &$form_state, $form_id) {
     $form['#suffix'] = t('</div>');
     unset($form['account']['mail']);
     unset($form['field_price']);
-    unset($form['account']['field_price']);
+    unset($form['account']['field_product_id']);
 
 
     // $user->set('field_price',  $stripeDetails['price']);
