@@ -104,7 +104,7 @@ function profile_submit_redirect($form, &$form_state)
 {
   $user = User::load(\Drupal::currentUser()->id());
   if ($user->hasRole('premium')) {
-    $response = new RedirectResponse('/');
+    $response = new RedirectResponse('/user');
   }
   $response->send();
 }
