@@ -72,7 +72,10 @@ function wfc_boot_form_alter(&$form, &$form_state, $form_id) {
   } else if ($form_id == 'user_pass' && $page_url == '/user/password') {
     $form['name']['#title'] = t('Email address');
     $form['#prefix'] = t('<div class="reset-form-wrapper"><h2>Reset Wanderer Password</h2>');
-    $form['#suffix'] = t('<a href="/user/login">Back to Login</a>');
+    $form['#suffix'] = t('<a href="/user/login">Back to Login</a></div>');
+  } else if($form_id == 'user_pass_reset') {
+    $form['#prefix'] = t('<div class="one-time-login-form-wrapper"><h2>One time login</h2>');
+    $form['#suffix'] = t('</div>');
   }
 }
 
