@@ -100,6 +100,8 @@ class WfcStripeController extends ControllerBase
           $user->setEmail($stripeDetails['email']);
           $user->setUsername($stripeDetails['email']);
           $user->addRole('premium'); // premium
+          $user->activate();
+          $user->enforceIsNew();
       }
 
       // set price paid, product ID, product name, stripe customer id, subscription date
