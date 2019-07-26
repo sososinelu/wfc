@@ -5,16 +5,20 @@
  * Functions to support theming in the wfc_boot.
  */
 
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\block\Entity\Block;
 use Drupal\Core\Url;
+use Drupal\user\Entity\User;
+use Drupal\block\Entity\Block;
 use Drupal\Component\Utility\Html;
+use Drupal\Console\Bootstrap\Drupal;
+use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Implements template_preprocess_html().
  * @param array $variables
  */
-function wfc_boot_preprocess_html(&$variables) {
+function wfc_boot_preprocess_html(&$variables)
+{
   $current_path = \Drupal::service('path.current')->getPath();
   $path_alias = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
   $path_alias = ltrim($path_alias, '/');
@@ -25,7 +29,8 @@ function wfc_boot_preprocess_html(&$variables) {
  * Implements template_preprocess_page.
  * @param array $variable  s
  */
-function wfc_boot_preprocess_page(&$variables) {
+function wfc_boot_preprocess_page(&$variables)
+{
   $site_name = \Drupal::configFactory()->get('system.site')->get('name');
   $variables['linked_site_name'] = ['#type' => 'link', '#title' => $site_name, '#url' => Url::fromRoute('<front>')];
 }
@@ -34,7 +39,8 @@ function wfc_boot_preprocess_page(&$variables) {
  * Implements template_preprocess_node.
  * @param array $variables
  */
-function wfc_boot_preprocess_node(&$variables) {
+function wfc_boot_preprocess_node(&$variables)
+{
   $node = $variables['node'];
   $content_type = $node->getType();
   $view_mode = $variables['view_mode'];
@@ -59,7 +65,9 @@ function wfc_boot_preprocess_block(&$variables) {
  * Implements hook_form_alter.
  * @param array $form, &$form_state, $form_id
  */
-function wfc_boot_form_alter(&$form, &$form_state, $form_id) {
+function wfc_boot_form_alter(&$form, &$form_state, $form_id)
+{
+  $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
   $page_url = $_SERVER['REQUEST_URI'];
   $page_url = rtrim($page_url,"/");
 
@@ -80,13 +88,25 @@ function wfc_boot_form_alter(&$form, &$form_state, $form_id) {
     $form['#prefix'] = t('<div class="user-form-wrapper"><h2>Set your password</h2>');
     $form['#suffix'] = t('</div>');
     $form['account']['mail']['#attributes'] = array('readonly' => 'readonly');
-    // unset($form['account']['mail']);
     unset($form['field_price']);
     unset($form['field_product_id']);
     unset($form['field_product_name']);
     unset($form['field_stripe_customer_id']);
     unset($form['field_subscription_date']);
+
+    if ($user->hasRole('premium')) {
+      $form['actions']['submit']['#submit'][] = 'profile_submit_redirect';
+    }
   }
+}
+
+function profile_submit_redirect($form, &$form_state)
+{
+  $user = User::load(\Drupal::currentUser()->id());
+  if ($user->hasRole('premium')) {
+    $response = new RedirectResponse('/');
+  }
+  $response->send();
 }
 
 /**
@@ -94,7 +114,8 @@ function wfc_boot_form_alter(&$form, &$form_state, $form_id) {
  *
  * Replace Barrio setting options with subtheme ones.
  */
-function wfc_boot_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
+function wfc_boot_form_system_theme_settings_alter(&$form, FormStateInterface $form_state)
+{
   $form['components']['navbar']['bootstrap_barrio_navbar_top_background']['#options'] = array(
       'bg-primary' => t('Primary'),
       'bg-secondary' => t('Secondary'),

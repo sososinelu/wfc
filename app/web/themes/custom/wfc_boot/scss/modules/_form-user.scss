@@ -33,8 +33,11 @@
   }
 }
 .user-form-wrapper {
-  #edit-group-wfc-premium {
-    display: none;
+  #edit-group-wfc-premium,
+  #edit-mail--description,
+  .password-strength,
+  .password-suggestions {
+    display: none!important;
   }
   .js-form-item {
     padding: 0;
