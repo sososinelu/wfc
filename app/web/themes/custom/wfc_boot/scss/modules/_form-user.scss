@@ -1,6 +1,7 @@
 .login-form-wrapper,
 .reset-form-wrapper,
-.one-time-login-form-wrapper  {
+.one-time-login-form-wrapper,
+.user-form-wrapper {
   @include make-container();
   @include make-container-max-widths();
   margin-top: -5rem;
@@ -16,6 +17,7 @@
   }
   #edit-submit {
     width: 20rem;
+    margin-top: 3rem;
   }
   a {
     padding-left: 1.5rem;
