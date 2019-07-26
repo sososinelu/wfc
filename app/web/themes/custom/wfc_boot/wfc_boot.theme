@@ -79,16 +79,13 @@ function wfc_boot_form_alter(&$form, &$form_state, $form_id) {
   } else if ($form_id == 'user_form') {
     $form['#prefix'] = t('<div class="user-form-wrapper"><h2>Set your password</h2>');
     $form['#suffix'] = t('</div>');
-    unset($form['account']['mail']);
+    $form['account']['mail']['#attributes'] = array('readonly' => 'readonly');
+    // unset($form['account']['mail']);
     unset($form['field_price']);
-    unset($form['account']['field_product_id']);
-
-
-    // $user->set('field_price',  $stripeDetails['price']);
-    //   $user->set('field_product_id', $stripeDetails['product_key']);
-    //   $user->set('field_product_name', $stripeDetails['product_name']);
-    //   $user->set('field_stripe_customer_id', $stripeCustomerId);
-    //   $user->set('field_subscription_date', date('Y-m-d'));
+    unset($form['field_product_id']);
+    unset($form['field_product_name']);
+    unset($form['field_stripe_customer_id']);
+    unset($form['field_subscription_date']);
   }
 }
 
