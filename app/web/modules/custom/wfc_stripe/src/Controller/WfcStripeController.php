@@ -123,23 +123,22 @@ class WfcStripeController extends ControllerBase
           $passResetUrl,
           false
         )) {
+          // Sendgrid fail
+          \Drupal::logger('wfc_stripe')->notice('Sendgrid fail - ' . $stripeDetails['email'] . ' >>> '.$exception);
           $response = new RedirectResponse(Url::fromRoute('wfc_stripe.wanderer_registration', ['status' => 'efail'])->setAbsolute()->toString());
           $response->send();
-          exit('Sendgrid fail');
         }
       }
-
+      // Stripe success
       $response = new RedirectResponse(Url::fromRoute('wfc_stripe.wanderer_registration', ['status' => 'success'])->setAbsolute()->toString());
       $response->send();
-
-      exit('Stripe success');
     }
     catch(Exception $exception)
     {
-      \Drupal::logger('wfc_stripe')->notice('Unable to sign up customer ' . $stripeDetails['email'] . ' >>> '.$exception);
+      // Stripe fail
+      \Drupal::logger('wfc_stripe')->notice('Stripe fail - Unable to sign up customer ' . $stripeDetails['email'] . ' >>> '.$exception);
       $response = new RedirectResponse(Url::fromRoute('wfc_stripe.wanderer_registration', ['status' => 'pfail'])->setAbsolute()->toString());
       $response->send();
-      exit('Stripe fail');
     }
 
     return [];
