@@ -77,7 +77,7 @@ class WfcStripeController extends ControllerBase
         $this->sendgrid->manageUserLists('add', $userSendgridId, $premiumListId);
 
         // Remove from Sendgrid basic list
-        $this->sendgrid->manageUserLists('remove', $userSendgridId, $premiumListId);
+        $this->sendgrid->manageUserLists('remove', $userSendgridId, $basicListId);
       } else {
         // Add user to Sendgrid premium list
         if($sendgridId = $this->sendgrid->sendUserToSendgrid($stripeDetails['email'])) {
