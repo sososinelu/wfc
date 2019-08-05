@@ -1,9 +1,13 @@
-#main-content {
-  margin-bottom: 5rem;
-  a {
-    color: $prussian_blue;
-    &:visited {
+
+.page-node-type-general-page {
+  #main-content {
+    margin-bottom: 5rem;
+    a {
       color: $prussian_blue;
+      &:visited {
+        color: $prussian_blue;
+      }
     }
   }
 }
+
