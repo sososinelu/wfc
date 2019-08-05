@@ -42,9 +42,9 @@ class SendGridEmailRegistrationForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $formState) {
     $form['email'] = [
       '#type' => 'email',
-      '#title' => t('I want cheap flights!'),
+      '#title' => t('I want cheap flights for FREE!'),
       '#attributes' => [
-        'placeholder' => t('I want cheap flights!'),
+        'placeholder' => t('I want cheap flights for FREE!'),
       ],
       '#required' => FALSE
     ];
@@ -91,7 +91,7 @@ class SendGridEmailRegistrationForm extends FormBase {
       $response->addCommand(
         new HtmlCommand(
           '.result_message',
-          'Please enter your email address to signup.'
+          'Please enter your email address to sign-up.'
         )
       );
 

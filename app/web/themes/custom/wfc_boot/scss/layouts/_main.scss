@@ -1,5 +1,9 @@
 #main-content {
-  #content {
-
+  margin-bottom: 5rem;
+  a {
+    color: $prussian_blue;
+    &:visited {
+      color: $prussian_blue;
+    }
   }
 }
