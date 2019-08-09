@@ -1,0 +1,39 @@
+.path-user {
+  .outer-wrapper {
+    margin-top: -5rem;
+    margin-bottom: 5rem;
+    @include media-breakpoint-up(lg) {
+      padding: 0 10rem;
+    }
+    @include media-breakpoint-up(xl) {
+      padding: 0 25rem;
+    }
+
+    .details-wrapper {
+      h3 {
+        font-size: ms(0);
+        @include media-breakpoint-up(md) {
+          font-size: ms(1);
+        }
+      }
+      margin-top: 3rem;
+      padding: 3rem;
+      background-color: $malibu;
+      span.label {
+        @include media-breakpoint-up(md) {
+          width: 40%;
+          display: inline-block;
+        }
+      }
+      span.text {
+        display: block;
+        @include media-breakpoint-up(md) {
+          width: 60%;
+          display: inline-block;
+        }
+        background-color: $white;
+        padding-left: 1rem;
+      }
+    }
+  }
+}

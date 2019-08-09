@@ -1,0 +1,33 @@
+<article{{ attributes }}>
+  <div class="container ">
+    <div class="row">
+      <div class="col">
+        <div class="outer-wrapper">
+          {% if content %}
+            <h1>{{ intro_title }}</h1>
+            {{ intro_text | raw }}
+            <div class="details-wrapper">
+              <h3>{{ user.mail.value }}</h3>
+              {% if user.field_product_name.0.value  == 'quarterly' %}
+                {% set duration = '3 months' %}
+              {% elseif user.field_product_name.0.value  == 'semiannual' %}
+                {% set duration = '6 months' %}
+              {% elseif user.field_product_name.0.value  == 'annual' %}
+                {% set duration = '12 months' %}
+              {% endif %}
+              <p><span class="label">Membership length:</span><span class="text">{{ duration }}</span>
+              <p><span class="label">Membership price:</span><span class="text">£ {{ user.field_price.0.value }}</span></p>
+              <p><span class="label">Memberhsip start date:</span><span class="text">{{ user.field_active_subscription_start.0.value | date("d/m/Y") }}</span></p>
+              <p><span class="label">Memberhsip end date:</span><span class="text">{{ user.field_active_subscription_end.0.value | date("d/m/Y") }}</span></p>
+              <p><span class="label">Member since:</span><span class="text">{{ user.field_subscription_date.0.value | date("d/m/Y") }}</span></p>
+              </div>
+            </div>
+          {% endif %}
+       </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</article>

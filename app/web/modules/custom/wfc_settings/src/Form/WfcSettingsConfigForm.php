@@ -141,6 +141,33 @@ class WfcSettingsConfigForm extends FormBase
     ];
 
     /**
+     * User profile tab
+     */
+
+    $form['user_profile'] = [
+      '#type' => 'details',
+      '#title' => t('User profile'),
+      '#collapsible' => TRUE,
+      '#group'       => 'wfc'
+    ];
+
+    $form['user_profile']['up_intro_title'] = [
+      '#type' => 'textfield',
+      '#title' => t('Intro title'),
+      '#default_value' => (\Drupal::state()->get('up_intro_title')) ? \Drupal::state()->get('up_intro_title') : '',
+    ];
+
+    // Footer sign up text
+    $upIntroTextDefault = \Drupal::state()->get('up_intro_text');
+    $form['user_profile']['up_intro_text'] = [
+      '#type' => 'text_format',
+      '#title' => t('Intro text'),
+      '#format' => 'basic_html',
+      '#allowed_formats' => ['basic_html'],
+      '#default_value' => ($upIntroTextDefault) ? $upIntroTextDefault['value'] : '',
+    ];
+
+    /**
      * SendGrid tab
      */
 
