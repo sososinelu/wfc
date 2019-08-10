@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "198f0d74072bb2b2a801a6e4ec7b6acf",
+    "content-hash": "8f65c10021bc0b0c7921fb006287e6b6",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2281,6 +2281,53 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/adminimal_theme",
                 "issues": "https://www.drupal.org/project/issues/adminimal_theme"
+            }
+        },
+        {
+            "name": "drupal/ajax_loader",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/ajax_loader.git",
+                "reference": "8.x-1.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/ajax_loader-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "b79957759b6b412971538019a748d64c237311ed"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.4",
+                    "datestamp": "1539678482",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "robin.ingelbrecht",
+                    "homepage": "https://www.drupal.org/user/2339074"
+                }
+            ],
+            "description": "Provides alternative ajax loaders/throbbers.",
+            "homepage": "https://www.drupal.org/project/ajax_loader",
+            "support": {
+                "source": "https://git.drupalcode.org/project/ajax_loader"
             }
         },
         {
@@ -8804,7 +8851,7 @@
             "version": "8.3.5",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/coder.git",
+                "url": "https://git.drupalcode.org/project/coder.git",
                 "reference": "35277fc8675b6a2cbb194f8880145a9c85c845c4"
             },
             "require": {
