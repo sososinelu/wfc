@@ -141,8 +141,7 @@ class SendGridEmailRegistrationForm extends FormBase {
         'Please confirm your subscription to Wanderers\' Flight Club!',
         $email,
         'email_confirmation_template',
-        false,
-        $token
+        ['token' => $token]
       )) {
       $response->addCommand(
         new HtmlCommand(

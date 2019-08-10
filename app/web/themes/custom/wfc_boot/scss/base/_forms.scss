@@ -89,45 +89,6 @@ select {
     }
   }
 }
-
-// form > fieldset {
-//   background: rgba($light-grey, 0.5);
-//   padding: 1rem;
-//   margin: 0 0 2rem 0 !important;
-//   border: none;
-//   > legend {
-//     display: block;
-//     background: $wild-sand;
-//     border-top: 0.2rem solid $breaker-bay;
-//     box-sizing: content-box;
-//     width: 100%;
-//     font-size: ms(2);
-//     font-family: $heading-font;
-//     padding: 1rem;
-//     margin: 0 -1rem;
-//     line-height: 2.9rem;
-//   }
-//   @include media-breakpoint-up(md) {
-//     margin: 0 0 $base-spacing 0 !important;
-//     padding: $base-spacing $small-spacing 2rem;
-//     > legend {
-//       padding: 2.4rem $small-spacing;
-//       margin-left: -$small-spacing;
-//       margin-right: -$small-spacing;
-//     }
-//   }
-//   @include media-breakpoint-up(lg) {
-//     padding-left: $base-spacing;
-//     padding-right: $base-spacing;
-//     > legend {
-//       padding-left: $base-spacing;
-//       padding-right: $base-spacing;
-//       margin-left: -$base-spacing;
-//       margin-right: -$base-spacing;
-//     }
-//   }
-// }
-
 fieldset.form-item.fieldgroup {
   width: 100%;
   margin-left: 0;
@@ -267,35 +228,6 @@ label {
   font-size: ms(0);
   margin-bottom: 0.5rem;
 }
-// input[type=submit],
-// button {
-//   font-size: ms(-1);
-//   text-align: center;
-//   width: 100%;
-//   color: $white;
-//   margin-left: 0;
-//   margin-right: 0;
-//   width: auto;
-//   height: auto;
-//   padding: 2.3rem 3rem;
-//   color: red;
-//   @include media-breakpoint-up(sm) {
-//     padding: 2.3rem 8rem;
-//   }
-// }
-// ::-webkit-input-placeholder {
-//   color: $dark-blue;
-// }
-// :-moz-placeholder {
-//   color: $dark-blue;
-// }
-// ::-moz-placeholder {
-//   color: $dark-blue;
-// }
-// :-ms-input-placeholder {
-//   color: $dark-blue;
-// }
-
 input[type='radio'] {
   -webkit-appearance: none;
   -moz-appearance: none;

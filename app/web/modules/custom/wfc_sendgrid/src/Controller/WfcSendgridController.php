@@ -77,7 +77,7 @@ class WfcSendgridController extends ControllerBase
     return true;
   }
 
-  public function sendSendgridEmail($subject, $toEmailAddress, $template, $passResetUrl, $token)
+  public function sendSendgridEmail($subject, $toEmailAddress, $template, $config)
   {
 
     $email = new \SendGrid\Mail\Mail();
@@ -91,15 +91,18 @@ class WfcSendgridController extends ControllerBase
         $bodyData = [
           '#theme' => 'email_confirmation_template',
           '#vars' => [
-            "unique_url" => \Drupal::request()->getSchemeAndHttpHost().'/email-confirmation?token='.$token
+            'unique_url' => \Drupal::request()->getSchemeAndHttpHost().'/email-confirmation?token='.$config['token']
           ]
         ];
         break;
-      case 'new_user_template':
+      case 'user_template':
         $bodyData = [
-          '#theme' => 'new_user_template',
+          '#theme' => 'user_template',
           '#vars' => [
-            "pass_reset" => $passResetUrl
+            'pass_reset' => $config['passResetUrl'],
+            'duration' => $config['duration'],
+            'price' => $config['price'],
+            'subscription_start' => $config['subscription_start']
           ]
         ];
         break;

@@ -14,9 +14,9 @@ function wfc_sendgrid_theme($existing, $type, $theme, $path)
       'variables' => ['vars' => NULL],
       'template' => 'email-confirmation-template'
     ],
-    'new_user_template' => [
+    'user_template' => [
       'variables' => ['vars' => NULL],
-      'template' => 'new-user-template'
+      'template' => 'user-template'
     ]
   ];
 }

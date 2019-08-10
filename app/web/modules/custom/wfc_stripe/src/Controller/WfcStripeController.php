@@ -79,7 +79,7 @@ class WfcStripeController extends ControllerBase
         // Remove from Sendgrid basic list
         $this->sendgrid->manageUserLists('remove', $userSendgridId, $basicListId);
       } else {
-        // Add user to Sendgrid premium list
+        // Add user to Sendgrid
         if($sendgridId = $this->sendgrid->sendUserToSendgrid($stripeDetails['email'])) {
           // Move user to premium list on SendGrid
           $this->sendgrid->manageUserLists('add', $sendgridId[0], $premiumListId);
@@ -100,37 +100,51 @@ class WfcStripeController extends ControllerBase
           $user->setEmail($stripeDetails['email']);
           $user->setUsername($stripeDetails['email']);
           $user->addRole('premium'); // premium
+          $user->set('field_subscription_date', date('Y-m-d'));
           $user->activate();
           $user->enforceIsNew();
       }
 
       // set price paid, product ID, product name, stripe customer id, subscription date
+      $duration = $this->getMonthsFromProduct($stripeDetails['product_name']);
       $user->set('field_price',  $stripeDetails['price']);
       $user->set('field_product_id', $stripeDetails['product_key']);
       $user->set('field_product_name', $stripeDetails['product_name']);
       $user->set('field_stripe_customer_id', $stripeCustomerId);
-      $user->set('field_subscription_date', date('Y-m-d'));
+      $user->set('field_active_subscription_start', date('Y-m-d'));
+      $user->set('field_active_subscription_end', date('Y-m-d', strtotime('+'.$duration)));
       $user->save();
 
-       // If new user send custom password confirmation email
+      $config = [
+        'duration' => $duration,
+        'price' => $stripeDetails['price'],
+        'subscription_start' => date('d/m/Y'),
+        'passResetUrl' => ''
+      ];
+      $title = '';
+      $confirmationStatus = 'success';
 
+       // If new user send custom password confirmation email
       if ($newUser) {
-        $passResetUrl = user_pass_reset_url($user);
-        if(!$this->sendgrid->sendSendgridEmail(
-          "Create account on Wanderers' Flight Club!",
-          $stripeDetails['email'],
-          'new_user_template',
-          $passResetUrl,
-          false
-        )) {
-          // Sendgrid fail
-          \Drupal::logger('wfc_stripe')->notice('Sendgrid fail - ' . $stripeDetails['email'] . ' >>> '.$exception);
-          $response = new RedirectResponse(Url::fromRoute('wfc_stripe.wanderer_registration', ['status' => 'efail'])->setAbsolute()->toString());
-          $response->send();
-        }
+        $title = "Create account on Wanderers' Flight Club!";
+        $config['passResetUrl'] = user_pass_reset_url($user);
+        $confirmationStatus = 'success-new-user';
       }
+
+      if(!$this->sendgrid->sendSendgridEmail(
+        $title ?: "Welcome to Wanderers' Flight Club!",
+        $stripeDetails['email'],
+        'user_template',
+        $config
+      )) {
+        // Sendgrid fail
+        \Drupal::logger('wfc_stripe')->notice('Sendgrid fail - ' . $stripeDetails['email'] . ' >>> '.$exception);
+        $response = new RedirectResponse(Url::fromRoute('wfc_stripe.wanderer_registration', ['status' => 'efail'])->setAbsolute()->toString());
+        $response->send();
+      }
+
       // Stripe success
-      $response = new RedirectResponse(Url::fromRoute('wfc_stripe.wanderer_registration', ['status' => 'success'])->setAbsolute()->toString());
+      $response = new RedirectResponse(Url::fromRoute('wfc_stripe.wanderer_registration', ['status' => $confirmationStatus])->setAbsolute()->toString());
       $response->send();
     }
     catch(Exception $exception)
@@ -151,6 +165,11 @@ class WfcStripeController extends ControllerBase
     if ($status) {
       switch ($status) {
         case 'success':
+          $markup .= '<h4>Payment successful</h4><h4>Welcome to the club!</h4>';
+          $markup .= '<p>You should receive an email with details of your membership purchase.</p>';
+          $markup .= '<p class="back-link"><a href="/">Back to homepage</a></p>';
+          break;
+          case 'success-new-user':
           $markup .= '<h4>Payment successful</h4><h4>Welcome to the club!</h4>';
           $markup .= '<p>You should receive an email with details to complete your account creation.</p>';
           $markup .= '<p class="back-link"><a href="/">Back to homepage</a></p>';
@@ -179,5 +198,18 @@ class WfcStripeController extends ControllerBase
       '#markup' => $markup,
       '#cache' => ['max-age' => 0],
     ];
+  }
+
+  private function getMonthsFromProduct($product)
+  {
+    $months = '3 months';
+
+    if ($product == 'semiannual') {
+      $months = '6 months';
+    } elseif ($product == 'annual') {
+      $months = '12 months';
+    }
+
+    return $months;
   }
 }

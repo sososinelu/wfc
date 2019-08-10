@@ -151,7 +151,7 @@
 			<td class="mcnTextBlockInner" data-end-index="27906" data-start-index="27838" style="padding-top: 9px;" valign="top">
 			<h1><span style="color:#013549;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;">Hi there,</span></span></h1>
 
-			<div><span style="color:#013549;"><span style="font-size:16px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;">We are glad that you have chosen to join The Wonder Package!</span></span></span></div>
+			<div><span style="color:#013549;"><span style="font-size:16px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;">We are glad that you have chosen to join The Wanderer Package!</span></span></span></div>
 			</td>
 		</tr>
 	</tbody>
@@ -198,9 +198,16 @@
             height="100%"
             valign="top"
             bgcolor="">
-            <p><span style="color:#013549;"><span style="font-size:16px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;">As a Wonder Package member you will receive all our flight deals&nbsp;from the UK towards destinations all over the world!</span></span></span></p>
+            <p><span style="color:#013549;"><span style="font-size:16px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;">As a Wanderer Package member you will receive all our flight deals&nbsp;from the UK towards destinations all over the world!</span></span></span></p>
 
-<p><br />
+<p>&nbsp;</p>
+
+<p><strong><span style="color:#013549;"><span style="font-size:16px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;">Package chosen: {{ vars.duration }} deal - &pound;{{ vars.price }}**</span></span></span></strong><br />
+&nbsp;</p>
+<p><strong><span style="color:#013549;"><span style="font-size:16px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;">Subscription start: {{ vars.subscription_start }}</span></span></span></strong><br />
+&nbsp;</p>
+{% if vars.pass_reset|trim is not empty %}
+<p>
 <span style="color:#013549;"><span style="font-size:16px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;">To confirm your registration and set up your account please click the button below:</span></span></span></p>
 
         </td>
@@ -237,7 +244,7 @@
         </td>
       </tr>
     </table>
-
+{% endif %}
     <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
       <tr>
         <td style="padding:18px 20px 18px 20px;line-height:22px;text-align:inherit;"
@@ -384,7 +391,7 @@
 </p>
 
 <p style="text-align: center;"><br>
-<span style="font-family:lucida sans unicode,lucida grande,sans-serif;"><span style="color:#425968;">© 2019 Wandering Club Limited</span></span></p>
+<span style="font-family:lucida sans unicode,lucida grande,sans-serif;"><span style="color:#425968;">© {{ "now"|date('Y') }} Wandering Club Limited</span></span></p>
 
         </td>
       </tr>

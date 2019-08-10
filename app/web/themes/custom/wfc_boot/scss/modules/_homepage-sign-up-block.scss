@@ -29,8 +29,9 @@
   }
   .ajax-progress-throbber {
     position: absolute;
-    right: 4rem;
-    top: 2rem;
+    right: 2rem;
+    top: 1rem;
+    color: red;
     .message {
       display: none;
     }
