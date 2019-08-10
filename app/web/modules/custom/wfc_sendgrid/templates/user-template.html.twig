@@ -202,18 +202,25 @@
 
 <p>&nbsp;</p>
 
-<p><strong><span style="color:#013549;"><span style="font-size:16px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;">Package chosen: {{ vars.duration }} deal - &pound;{{ vars.price }}**</span></span></span></strong><br />
-&nbsp;</p>
-<p><strong><span style="color:#013549;"><span style="font-size:16px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;">Subscription start: {{ vars.subscription_start }}</span></span></span></strong><br />
-&nbsp;</p>
+<p><strong><span style="color:#013549;"><span style="font-size:16px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;">Package chosen: {{ vars.duration }} deal - &pound;{{ vars.price }}**</span></span></span></strong><br /></p>
+<p><strong><span style="color:#013549;"><span style="font-size:16px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;">Subscription start: {{ vars.subscription_start }}</span></span></span></strong><br /></p>
+        </td>
+      </tr>
+    </table>
 {% if vars.pass_reset|trim is not empty %}
-<p>
+  <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+      <tr>
+        <td style="padding:18px 20px 18px 20px;line-height:22px;text-align:inherit;"
+            height="100%"
+            valign="top"
+            bgcolor="">
+            <p>
 <span style="color:#013549;"><span style="font-size:16px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;">To confirm your registration and set up your account please click the button below:</span></span></span></p>
-
         </td>
       </tr>
     </table>
   <table border="0" cellPadding="0" cellSpacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed" width="100%"><tbody><tr><td align="center" class="outer-td" style="padding:0px 0px 30px 0px"><table border="0" cellPadding="0" cellSpacing="0" class="button-css__deep-table___2OZyb wrapper-mobile" style="text-align:center"><tbody><tr><td align="center" bgcolor="#4F3FFF" class="inner-td" style="border-radius:6px;font-size:16px;text-align:center;background-color:inherit"><a style="background-color:#4F3FFF;border:1px solid #333333;border-color:#4F3FFF;border-radius:6px;border-width:1px;color:#ffffff;display:inline-block;font-family:lucida sans unicode,lucida grande,sans-serif;font-size:22px;font-weight:normal;letter-spacing:0px;line-height:30px;padding:12px 30px 12px 30px;text-align:center;text-decoration:none" href="{{ vars.pass_reset }}" target="_blank">CONFIRM REGISTRATION</a></td></tr></tbody></table></td></tr></tbody></table>
+{% endif %}
     <table class="module"
            role="module"
            data-type="divider"
@@ -244,7 +251,6 @@
         </td>
       </tr>
     </table>
-{% endif %}
     <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
       <tr>
         <td style="padding:18px 20px 18px 20px;line-height:22px;text-align:inherit;"
