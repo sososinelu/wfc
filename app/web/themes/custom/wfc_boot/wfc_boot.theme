@@ -84,6 +84,9 @@ function wfc_boot_form_alter(&$form, &$form_state, $form_id)
   } else if($form_id == 'user_pass_reset') {
     $form['#prefix'] = t('<div class="one-time-login-form-wrapper"><h2>One time login</h2>');
     $form['#suffix'] = t('</div>');
+    if ($user->hasRole('premium')) {
+      $form['actions']['submit']['#submit'][] = 'resetPasswordSubmit';
+    }
   } else if ($form_id == 'user_form') {
     $form['#prefix'] = t('<div class="user-form-wrapper"><h2>Set your password</h2>');
     $form['#suffix'] = t('</div>');
@@ -95,21 +98,9 @@ function wfc_boot_form_alter(&$form, &$form_state, $form_id)
     unset($form['field_subscription_date']);
 
     if ($user->hasRole('premium')) {
-      $form['actions']['submit']['#submit'][] = 'profile_submit_redirect';
+      $form['actions']['submit']['#submit'][] = 'setPasswordSubmitRedirect';
     }
   }
-}
-
-/**
- * Implements profile_submit_redirect
- */
-function profile_submit_redirect($form, &$form_state)
-{
-  $user = User::load(\Drupal::currentUser()->id());
-  if ($user->hasRole('premium')) {
-    $response = new RedirectResponse('/user');
-  }
-  $response->send();
 }
 
 /**
@@ -144,3 +135,34 @@ function wfc_boot_form_system_theme_settings_alter(&$form, FormStateInterface $f
       'bg-transparent' => t('Transparent'),
   );
 }
+
+// ---------------------- HELPER FUNCTIONS ----------------------
+
+/**
+ * Set password form submit redirect
+ */
+function setPasswordSubmitRedirect($form, &$form_state)
+{
+  $user = User::load(\Drupal::currentUser()->id());
+  if ($user->hasRole('premium')) {
+    $response = new RedirectResponse('/user');
+  }
+  $response->send();
+}
+
+/**
+ * Reset password form submit
+ */
+function resetPasswordSubmit($form, &$form_state)
+{
+  $user = User::load(\Drupal::currentUser()->id());
+  if ($user->hasRole('premium')) {
+    $response = new RedirectResponse('/user');
+
+
+
+
+  }
+  $response->send();
+}
+
