@@ -25,10 +25,10 @@ class StripeTestFormBlock extends BlockBase
       return [
         '#theme' => 'stripe_test_form',
         '#vars' => [],
-        '#cache' => array('max-age' => 0),
+        '#cache' => ['max-age' => 0],
       ];
     }
 
-    return array();
+    return [];
   }
 }

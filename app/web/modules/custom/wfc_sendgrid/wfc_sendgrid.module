@@ -17,6 +17,10 @@ function wfc_sendgrid_theme($existing, $type, $theme, $path)
     'user_template' => [
       'variables' => ['vars' => NULL],
       'template' => 'user-template'
+    ],
+    'password_reset_template' => [
+      'variables' => ['vars' => NULL],
+      'template' => 'password-reset-template'
     ]
   ];
 }

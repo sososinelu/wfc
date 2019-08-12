@@ -18,9 +18,9 @@ use Drupal\user\Entity\User;
 function wfc_stripe_theme($existing, $type, $theme, $path)
 {
   return [
-    'stripe_test_form' => array(
-      'variables' => array('vars' => NULL),
+    'stripe_test_form' => [
+      'variables' => ['vars' => NULL],
       'template' => 'stripe-test-form'
-    ),
+    ],
   ];
 }

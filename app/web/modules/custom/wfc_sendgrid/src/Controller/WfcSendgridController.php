@@ -79,7 +79,6 @@ class WfcSendgridController extends ControllerBase
 
   public function sendSendgridEmail($subject, $toEmailAddress, $template, $config)
   {
-
     $email = new \SendGrid\Mail\Mail();
 
     $email->setFrom("info@wanderersflightclub.com", "Wanderers' Flight Club");
@@ -103,6 +102,14 @@ class WfcSendgridController extends ControllerBase
             'duration' => $config['duration'],
             'price' => $config['price'],
             'subscription_start' => $config['subscription_start']
+          ]
+        ];
+        break;
+      case 'password_reset_template':
+        $bodyData = [
+          '#theme' => 'password_reset_template',
+          '#vars' => [
+            'pass_reset' => $config['passResetUrl']
           ]
         ];
         break;

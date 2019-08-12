@@ -12,6 +12,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\Console\Bootstrap\Drupal;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\wfc_sendgrid\Controller\WfcSendgridController;
 
 /**
  * Implements template_preprocess_html().
@@ -90,7 +91,7 @@ function wfc_boot_form_alter(&$form, &$form_state, $form_id)
   } else if ($form_id == 'user_form') {
     $form['#prefix'] = t('<div class="user-form-wrapper"><h2>Set your password</h2>');
     $form['#suffix'] = t('</div>');
-    $form['account']['mail']['#attributes'] = array('readonly' => 'readonly');
+    $form['account']['mail']['#attributes'] = ['readonly' => 'readonly'];
     unset($form['field_price']);
     unset($form['field_product_id']);
     unset($form['field_product_name']);
@@ -118,22 +119,22 @@ function wfc_boot_preprocess_user(&$vars)
  */
 function wfc_boot_form_system_theme_settings_alter(&$form, FormStateInterface $form_state)
 {
-  $form['components']['navbar']['bootstrap_barrio_navbar_top_background']['#options'] = array(
+  $form['components']['navbar']['bootstrap_barrio_navbar_top_background']['#options'] = [
       'bg-primary' => t('Primary'),
       'bg-secondary' => t('Secondary'),
       'bg-light' => t('Light'),
       'bg-dark' => t('Dark'),
       'bg-white' => t('White'),
       'bg-transparent' => t('Transparent'),
-  );
-  $form['components']['navbar']['bootstrap_barrio_navbar_background']['#options'] = array(
+  ];
+  $form['components']['navbar']['bootstrap_barrio_navbar_background']['#options'] = [
       'bg-primary' => t('Primary'),
       'bg-secondary' => t('Secondary'),
       'bg-light' => t('Light'),
       'bg-dark' => t('Dark'),
       'bg-white' => t('White'),
       'bg-transparent' => t('Transparent'),
-  );
+  ];
 }
 
 // ---------------------- HELPER FUNCTIONS ----------------------
@@ -155,14 +156,34 @@ function setPasswordSubmitRedirect($form, &$form_state)
  */
 function resetPasswordSubmit($form, &$form_state)
 {
-  $user = User::load(\Drupal::currentUser()->id());
-  if ($user->hasRole('premium')) {
-    $response = new RedirectResponse('/user');
+  // user email from form
+  $email = '';
+  // load user by email
+  $users = \Drupal::entityTypeManager()->getStorage('user')->loadByProperties(['mail' => $email]);
+  $user = reset($users);
+  if ($user) {
+    // generate pass reset link
+    $config['passResetUrl'] = user_pass_reset_url($user);
 
+    // send email to user
+    $sendgrid = new WfcSendgridController;
 
+    if(!$sendgrid->sendSendgridEmail(
+      $title ?: "Password reset for Wanderers' Flight Club!",
+      $email,
+      'password_reset_template',
+      $config
+    )) {
+      // Sendgrid fail
+      \Drupal::logger('password_reset')->notice('Password reset fail - ' . $email . ' >>> email didn\'t send.');
+    }
 
-
+    // Sendgrid success
+    $response = new RedirectResponse(Url::fromRoute('wfc_stripe.wanderer_registration', ['status' => 'success-password-rest'])->setAbsolute()->toString());
+    $response->send();
+  } else {
+    // USer not found
+    \Drupal::logger('password_reset')->notice('Password reset fail - ' . $email . ' >>> User not found.');
   }
-  $response->send();
 }
 

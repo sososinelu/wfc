@@ -169,9 +169,14 @@ class WfcStripeController extends ControllerBase
           $markup .= '<p>You should receive an email with details of your membership purchase.</p>';
           $markup .= '<p class="back-link"><a href="/">Back to homepage</a></p>';
           break;
-          case 'success-new-user':
+        case 'success-new-user':
           $markup .= '<h4>Payment successful</h4><h4>Welcome to the club!</h4>';
           $markup .= '<p>You should receive an email with details to complete your account creation.</p>';
+          $markup .= '<p class="back-link"><a href="/">Back to homepage</a></p>';
+          break;
+        case 'success-password-rest':
+          $markup .= '<h4>Password reset</h4>';
+          $markup .= '<p>If there is an account with the provided email address you should receive an email with details to reset your password.</p>';
           $markup .= '<p class="back-link"><a href="/">Back to homepage</a></p>';
           break;
         case 'pfail':
