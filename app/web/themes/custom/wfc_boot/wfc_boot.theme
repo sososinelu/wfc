@@ -179,7 +179,7 @@ function resetPasswordSubmit($form, &$form_state)
     }
 
     // Sendgrid success
-    $response = new RedirectResponse(Url::fromRoute('wfc_stripe.wanderer_registration', ['status' => 'success-password-rest'])->setAbsolute()->toString());
+    $response = new RedirectResponse(Url::fromRoute('wfc_stripe.wanderer_registration', ['status' => 'success-password-reset'])->setAbsolute()->toString());
     $response->send();
   } else {
     // USer not found
