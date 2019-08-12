@@ -176,7 +176,7 @@ class WfcStripeController extends ControllerBase
           break;
         case 'success-password-reset':
           $markup .= '<h4>Password reset</h4>';
-          $markup .= '<p>If there is an account with the provided email address you should receive an email with details to reset your password.</p>';
+          $markup .= '<p>If there is an account with the provided email address you </br> should receive an email with details to reset your password.</p>';
           $markup .= '<p class="back-link"><a href="/">Back to homepage</a></p>';
           break;
         case 'pfail':
