@@ -72,13 +72,13 @@ function wfc_boot_form_alter(&$form, &$form_state, $form_id)
   $page_url = $_SERVER['REQUEST_URI'];
   $page_url = rtrim($page_url,"/");
 
-  if ($form_id == 'user_login_form' && $page_url == '/user/login') { // login password
+  if ($form_id == 'user_login_form') {
     $form['name']['#title'] = t('Email address');
     $form['name']['#description'] = t('Enter your Wanderers\' Flight Club email address.');
     $form['pass']['#description'] = t('Enter the password that accompanies your email address.');
     $form['#prefix'] = t('<div class="login-form-wrapper"><h2>Wanderer Login</h2>');
     $form['#suffix'] = t('<a href="/user/password">Reset your password</a></div>');
-  } else if ($form_id == 'user_pass' && $page_url == '/user/password') { // reset password
+  } else if ($form_id == 'user_pass') {
     $form['name']['#title'] = t('Email address');
     $form['#prefix'] = t('<div class="reset-form-wrapper"><h2>Reset Wanderer Password</h2>');
     $form['#suffix'] = t('<a href="/user/login">Back to Login</a></div>');
