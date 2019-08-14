@@ -22,7 +22,7 @@ class FooterSignUpBlock extends BlockBase
     if($node = \Drupal::routeMatch()->getParameter('node')) {
       $footer_sign_up_text = (\Drupal::state()->get('footer_sign_up_text') ? \Drupal::state()->get('footer_sign_up_text')['value'] : '');
       $sign_up_text = (\Drupal::state()->get('sign_up_text') ? \Drupal::state()->get('sign_up_text')['value'] : '');
-      $signup_form = \Drupal::formBuilder()->getForm('Drupal\wfc_sendgrid\Form\SendGridEmailRegistrationForm');
+      $signup_form = \Drupal::formBuilder()->getForm('Drupal\wfc_sendgrid\Form\FooterSendGridEmailRegistrationForm');
 
       return array(
         '#theme' => 'footer_sign_up_template',
