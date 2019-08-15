@@ -27,7 +27,7 @@ class HomepageDealsBlock extends BlockBase
         '#theme' => 'homepage_deal_block_template',
         '#vars' => array(
           'deals' => $deals,
-          'deal_image' => $deal_image,
+          'deal_image' => file_url_transform_relative($deal_image),
         ),
         '#cache' => array('max-age' => 0),
       );

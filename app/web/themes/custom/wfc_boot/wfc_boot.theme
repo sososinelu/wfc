@@ -56,8 +56,7 @@ function wfc_boot_preprocess_node(&$variables)
 function wfc_boot_preprocess_block(&$variables) {
   $block_id = $variables['elements']['#plugin_id'];
 
-  if ($block_id == 'footer_block' || $block_id == 'premium_footer_block') {
-    //  $variables['attributes']['class'] = array_merge($variables['attributes']['class'], ['col-12']);
+  if ($block_id == 'footer_block' || $block_id == 'premium_footer_block' || $block_id == 'footer_sign_up_block') {
      $variables['attributes']['class'][] = 'col-12';
   }
 }

@@ -34,13 +34,12 @@
 
   <footer id="site-footer" role="contentinfo">
     <div class="gradient angle--top-right"></div>
-    {% if page.footer_top %}
-      <section class="footer_top">
+    <section class="footer_top">
+      <div class="container">
         {{ page.footer_top }}
-        <div class="buildings"></div>
-      </section>
-    {% endif %}
-
+      </div>
+      <div class="buildings"></div>
+    </section>
     {% if page.footer_bottom %}
       <section class="footer_bottom">
         <div class="container">

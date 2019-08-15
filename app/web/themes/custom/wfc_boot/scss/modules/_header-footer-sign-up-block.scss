@@ -1,6 +1,9 @@
 #block-wfc-boot-footersignupblock{
   .sign-up-container {
     padding-top: 6rem;
+    @include  media-breakpoint-up(md) {
+      @include make-row();
+    }
     .header-logo {
       text-align: center;
       @include media-breakpoint-up(xl) {

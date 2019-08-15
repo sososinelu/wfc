@@ -18,7 +18,7 @@
               <p><span class="label">Membership length:</span><span class="text">{{ duration }}</span>
               <p><span class="label">Membership price:</span><span class="text">£ {{ user.field_price.0.value }}</span></p>
               <p><span class="label">Memberhsip start date:</span><span class="text">{{ user.field_active_subscription_start.0.value | date("d/m/Y") }}</span></p>
-              <p><span class="label">Memberhsip end date:</span><span class="text">{{ user.field_active_subscription_end.0.value | date("d/m/Y") }}</span></p>
+              <p><span class="label">Memberhsip renewal date:</span><span class="text">{{ user.field_active_subscription_end.0.value | date("d/m/Y") }}</span></p>
               <p><span class="label">Member since:</span><span class="text">{{ user.field_subscription_date.0.value | date("d/m/Y") }}</span></p>
               </div>
             </div>
