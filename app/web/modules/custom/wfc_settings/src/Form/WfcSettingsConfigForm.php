@@ -214,6 +214,13 @@ class WfcSettingsConfigForm extends FormBase
       '#default_value' => (\Drupal::state()->get('stripe_secret_api_key')) ? \Drupal::state()->get('stripe_secret_api_key') : '',
     ];
 
+    // Publishable Api key
+    $form['stripe']['stripe_pub_api_key'] = [
+      '#type' => 'textfield',
+      '#title' => t('Stripe Publishable API Key'),
+      '#default_value' => (\Drupal::state()->get('stripe_pub_api_key')) ? \Drupal::state()->get('stripe_pub_api_key') : '',
+    ];
+
     // Quarterly
     $form['stripe']['quarterly_text'] = [
       '#markup' => '<h3>Quarterly plan</h3>'
