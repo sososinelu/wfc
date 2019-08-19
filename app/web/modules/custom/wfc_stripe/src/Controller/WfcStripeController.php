@@ -25,9 +25,13 @@ class WfcStripeController extends ControllerBase
   public function stripePlan($plan)
   {
     if ($plan) {
-      $stripeDetails['product_key'] = (\Drupal::state()->get($plan.'_key')) ? \Drupal::state()->get($plan.'_key'): '';
+      $type = 'test';
+      if (\Drupal::request()->getHost() == 'wanderersflightclub.com') {
+        $type = 'prod';
+      }
+      $stripeDetails['product_key'] = (\Drupal::state()->get($type.'_'.$plan.'_key')) ? \Drupal::state()->get($type.'_'.$plan.'_key'): '';
       $stripeDetails['product_name'] = $plan;
-      $stripeDetails['price'] = (\Drupal::state()->get($plan.'_price')) ? \Drupal::state()->get($plan.'_price'): '';
+      $stripeDetails['price'] = (\Drupal::state()->get($type.'_'.$plan.'_price')) ? \Drupal::state()->get($type.'_'.$plan.'_price'): '';
       $stripeDetails['stripe_token'] = \Drupal::request()->request->get('stripeToken');
       $stripeDetails['email'] = \Drupal::request()->request->get('stripeEmail');
 

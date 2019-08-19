@@ -197,93 +197,160 @@ class WfcSettingsConfigForm extends FormBase
     ];
 
     /**
-     * Stripe tab
+     * Stripe Production tab
      */
 
-    $form['stripe'] = [
+    $form['stripe_prod'] = [
       '#type' => 'details',
-      '#title' => t('Stripe'),
+      '#title' => t('Stripe Production'),
       '#collapsible' => TRUE,
       '#group'       => 'wfc'
     ];
 
+    // Intro text
+    $form['stripe_prod']['intro_text'] = [
+      '#markup' => '<h2>PRODUCTION DETAILS!</h2>'
+    ];
+
     // Secret Api key
-    $form['stripe']['stripe_secret_api_key'] = [
+    $form['stripe_prod']['stripe_secret_api_key'] = [
       '#type' => 'textfield',
       '#title' => t('Stripe Secret API Key'),
       '#default_value' => (\Drupal::state()->get('stripe_secret_api_key')) ? \Drupal::state()->get('stripe_secret_api_key') : '',
     ];
 
     // Publishable Api key
-    $form['stripe']['stripe_pub_api_key'] = [
+    $form['stripe_prod']['stripe_pub_api_key'] = [
       '#type' => 'textfield',
       '#title' => t('Stripe Publishable API Key'),
       '#default_value' => (\Drupal::state()->get('stripe_pub_api_key')) ? \Drupal::state()->get('stripe_pub_api_key') : '',
     ];
 
+    // Quarterly
+    $form['stripe_prod']['prod_quarterly_text'] = [
+      '#markup' => '<h3>Quarterly plan</h3>'
+    ];
+
+    $form['stripe_prod']['prod_quarterly_key'] = [
+      '#type' => 'textfield',
+      '#title' => t('Quarterly plan product key'),
+      '#default_value' => (\Drupal::state()->get('prod_quarterly_key')) ? \Drupal::state()->get('prod_quarterly_key') : '',
+    ];
+
+    $form['stripe_prod']['prod_quarterly_price'] = [
+      '#type' => 'textfield',
+      '#title' => t('Quarterly plan product price'),
+      '#default_value' => (\Drupal::state()->get('prod_quarterly_price')) ? \Drupal::state()->get('prod_quarterly_price') : '',
+    ];
+
+    // Semi-annual
+    $form['stripe_prod']['prod_semiannual_text'] = [
+      '#markup' => '<h3>Semi-annual plan</h3>'
+    ];
+
+    $form['stripe_prod']['prod_semiannual_key'] = [
+      '#type' => 'textfield',
+      '#title' => t('Semi-annual plan product key'),
+      '#default_value' => (\Drupal::state()->get('prod_semiannual_key')) ? \Drupal::state()->get('prod_semiannual_key') : '',
+    ];
+
+    $form['stripe_prod']['prod_semiannual_price'] = [
+      '#type' => 'textfield',
+      '#title' => t('Semi-annual plan product price'),
+      '#default_value' => (\Drupal::state()->get('prod_semiannual_price')) ? \Drupal::state()->get('prod_semiannual_price' ): '',
+    ];
+
+    // Annual
+    $form['stripe_prod']['prod_annual_text'] = [
+      '#markup' => '<h3>Annual plan</h3>'
+    ];
+
+    $form['stripe_prod']['prod_annual_key'] = [
+      '#type' => 'textfield',
+      '#title' => t('Annual plan product key'),
+      '#default_value' => (\Drupal::state()->get('prod_annual_key')) ? \Drupal::state()->get('prod_annual_key') : '',
+    ];
+
+    $form['stripe_prod']['prod_annual_price'] =[
+      '#type' => 'textfield',
+      '#title' => t('Annual plan product price'),
+      '#default_value' => (\Drupal::state()->get('prod_annual_price')) ? \Drupal::state()->get('prod_annual_price') : '',
+    ];
+
+    /**
+     * Stripe Test tab
+     */
+
+    $form['stripe_test'] = [
+      '#type' => 'details',
+      '#title' => t('Stripe Test'),
+      '#collapsible' => TRUE,
+      '#group'       => 'wfc'
+    ];
+
     // Test Secret Api key
-    $form['stripe']['stripe_test_secret_api_key'] = [
+    $form['stripe_test']['stripe_test_secret_api_key'] = [
       '#type' => 'textfield',
       '#title' => t('Stripe Test Secret API Key'),
       '#default_value' => (\Drupal::state()->get('stripe_test_secret_api_key')) ? \Drupal::state()->get('stripe_test_secret_api_key') : '',
     ];
 
     // Test Publishable Api key
-    $form['stripe']['stripe_test_pub_api_key'] = [
+    $form['stripe_test']['stripe_test_pub_api_key'] = [
       '#type' => 'textfield',
       '#title' => t('Stripe Test Publishable API Key'),
       '#default_value' => (\Drupal::state()->get('stripe_test_pub_api_key')) ? \Drupal::state()->get('stripe_test_pub_api_key') : '',
     ];
 
     // Quarterly
-    $form['stripe']['quarterly_text'] = [
+    $form['stripe_test']['test_quarterly_text'] = [
       '#markup' => '<h3>Quarterly plan</h3>'
     ];
 
-    $form['stripe']['quarterly_key'] = [
+    $form['stripe_test']['test_quarterly_key'] = [
       '#type' => 'textfield',
       '#title' => t('Quarterly plan product key'),
-      '#default_value' => (\Drupal::state()->get('quarterly_key')) ? \Drupal::state()->get('quarterly_key') : '',
+      '#default_value' => (\Drupal::state()->get('test_quarterly_key')) ? \Drupal::state()->get('test_quarterly_key') : '',
     ];
 
-    $form['stripe']['quarterly_price'] = [
+    $form['stripe_test']['test_quarterly_price'] = [
       '#type' => 'textfield',
       '#title' => t('Quarterly plan product price'),
-      '#default_value' => (\Drupal::state()->get('quarterly_price')) ? \Drupal::state()->get('quarterly_price') : '',
+      '#default_value' => (\Drupal::state()->get('test_quarterly_price')) ? \Drupal::state()->get('test_quarterly_price') : '',
     ];
 
     // Semi-annual
-    $form['stripe']['semiannual_text'] = [
+    $form['stripe_test']['test_semiannual_text'] = [
       '#markup' => '<h3>Semi-annual plan</h3>'
     ];
 
-    $form['stripe']['semiannual_key'] = [
+    $form['stripe_test']['test_semiannual_key'] = [
       '#type' => 'textfield',
       '#title' => t('Semi-annual plan product key'),
-      '#default_value' => (\Drupal::state()->get('semiannual_key')) ? \Drupal::state()->get('semiannual_key') : '',
+      '#default_value' => (\Drupal::state()->get('test_semiannual_key')) ? \Drupal::state()->get('test_semiannual_key') : '',
     ];
 
-    $form['stripe']['semiannual_price'] = [
+    $form['stripe_test']['test_semiannual_price'] = [
       '#type' => 'textfield',
       '#title' => t('Semi-annual plan product price'),
-      '#default_value' => (\Drupal::state()->get('semiannual_price')) ? \Drupal::state()->get('semiannual_price' ): '',
+      '#default_value' => (\Drupal::state()->get('test_semiannual_price')) ? \Drupal::state()->get('test_semiannual_price' ): '',
     ];
 
     // Annual
-    $form['stripe']['annual_text'] = [
+    $form['stripe_test']['test_annual_text'] = [
       '#markup' => '<h3>Annual plan</h3>'
     ];
 
-    $form['stripe']['annual_key'] = [
+    $form['stripe_test']['test_annual_key'] = [
       '#type' => 'textfield',
       '#title' => t('Annual plan product key'),
-      '#default_value' => (\Drupal::state()->get('annual_key')) ? \Drupal::state()->get('annual_key') : '',
+      '#default_value' => (\Drupal::state()->get('test_annual_key')) ? \Drupal::state()->get('test_annual_key') : '',
     ];
 
-    $form['stripe']['annual_price'] =[
+    $form['stripe_test']['test_annual_price'] =[
       '#type' => 'textfield',
       '#title' => t('Annual plan product price'),
-      '#default_value' => (\Drupal::state()->get('annual_price')) ? \Drupal::state()->get('annual_price') : '',
+      '#default_value' => (\Drupal::state()->get('test_annual_price')) ? \Drupal::state()->get('test_annual_price') : '',
     ];
 
     /**
