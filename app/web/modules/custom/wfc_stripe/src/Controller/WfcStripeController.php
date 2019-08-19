@@ -41,9 +41,14 @@ class WfcStripeController extends ControllerBase
   {
     // 4242 4242 4242 4242
 
-    // Stripe secret API key
-    $stripeSecretPpiKey = (\Drupal::state()->get('stripe_secret_api_key')) ? \Drupal::state()->get('stripe_secret_api_key'): '';
-    \Stripe\Stripe::setApiKey($stripeSecretPpiKey);
+    // Stripe test secret API key
+    $stripeSecretApiKey = (\Drupal::state()->get('stripe_test_secret_api_key')) ? \Drupal::state()->get('stripe_test_secret_api_key'): '';
+    // Stripe production secret API key
+    if (\Drupal::request()->getHost() == 'wanderersflightclub.com') {
+      $stripeSecretApiKey = (\Drupal::state()->get('stripe_secret_api_key')) ? \Drupal::state()->get('stripe_secret_api_key'): '';
+    }
+
+    \Stripe\Stripe::setApiKey($stripeSecretApiKey);
 
     try
     {

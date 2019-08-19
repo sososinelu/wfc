@@ -50,7 +50,12 @@ function wfc_boot_preprocess_node(&$variables)
   $variables['attributes']['class'][] = 'view-mode--' . $view_mode;
 
   if ($content_type == 'premium') {
-    $variables['stripe_pub_api_key'] = (\Drupal::state()->get('stripe_pub_api_key')) ? \Drupal::state()->get('stripe_pub_api_key') : '';
+    // Stripe test public API key
+    $variables['stripe_pub_api_key'] = (\Drupal::state()->get('stripe_test_pub_api_key')) ? \Drupal::state()->get('stripe_test_pub_api_key'): '';
+    // Stripe production public API key
+    if (\Drupal::request()->getHost() == 'wanderersflightclub.com') {
+      $variables['stripe_pub_api_key'] = (\Drupal::state()->get('stripe_pub_api_key')) ? \Drupal::state()->get('stripe_pub_api_key'): '';
+    }
   }
 }
 
