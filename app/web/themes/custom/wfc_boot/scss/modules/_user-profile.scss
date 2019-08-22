@@ -8,17 +8,21 @@
     @include media-breakpoint-up(xl) {
       padding: 0 25rem;
     }
-
     .details-wrapper {
+      margin-top: 1.5rem;
+      padding: 1.5rem 1rem;
+      background-color: $malibu;
+      @include media-breakpoint-up(md) {
+        margin-top: 3rem;
+        padding: 3rem;
+      }
       h3 {
         font-size: ms(-1);
+        overflow-wrap: break-word;
         @include media-breakpoint-up(md) {
           font-size: ms(1);
         }
       }
-      margin-top: 3rem;
-      padding: 3rem;
-      background-color: $malibu;
       span.label {
         @include media-breakpoint-up(md) {
           width: 40%;
