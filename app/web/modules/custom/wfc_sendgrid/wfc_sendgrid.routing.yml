@@ -8,7 +8,7 @@ wfc_sendgrid.email_confirmation:
   path: '/email-confirmation'
   defaults:
     _controller: '\Drupal\wfc_sendgrid\Controller\WfcSendgridController::emailConfirmationProcessing'
-    _title: 'Confirmă adresa de email'
-    _description: 'Confirmă adresa de email'
+    _title: 'Confirm your email address'
+    _description: 'Confirm your email address'
   requirements:
     _permission: 'access content'
