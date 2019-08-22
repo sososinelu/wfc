@@ -11,7 +11,7 @@
 
     .details-wrapper {
       h3 {
-        font-size: ms(0);
+        font-size: ms(-1);
         @include media-breakpoint-up(md) {
           font-size: ms(1);
         }
