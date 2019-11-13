@@ -7,3 +7,6 @@
 
 # Ignore MySQL data
 /db_data/
+
+# Ignore VSCode project files
+.vscode
