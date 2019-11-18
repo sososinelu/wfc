@@ -37,8 +37,6 @@ class WfcSendgridController extends ControllerBase
             try {
               $localUserRecord->delete();
 
-              // Send Welcome to the club email
-
               $markup .= '<h4>Your email address has been verified. <br> Welcome to the club! </h4>';
               $markup .= '<p class="back-link"><a href="/">Back to homepage.</a></p>';
               $markup .= '</div>';
@@ -49,8 +47,8 @@ class WfcSendgridController extends ControllerBase
                 '#cache' => ['max-age' => 0],
               ];
 
-            }catch (Exception $exception) {
-              \Drupal::logger('wfc_sendgrid')->notice('Delete local user error: $email >>> '.$exception);
+            }catch (Exception $e) {
+              \Drupal::logger('wfc_sendgrid')->error('Delete local user error: $email >>> '.$e);
             }
           }
         }
@@ -132,7 +130,7 @@ class WfcSendgridController extends ControllerBase
       }
 
     } catch (Exception $e) {
-      echo 'Caught exception: ',  $e->getMessage(), "\n";
+      \Drupal::logger('wfc_sendgrid')->error('sendSendgridEmail >>> '.$e->getMessage());
     }
   }
 
@@ -152,7 +150,8 @@ class WfcSendgridController extends ControllerBase
         return $recipients[0]->id;
       }
     } catch (Exception $e) {
-      echo 'Caught exception: ',  $e->getMessage(), "\n";
+      \Drupal::logger('wfc_sendgrid')->error('checkIfUserIsSubscribed >>> '.$e->getMessage());
+
     }
 
     return false;
@@ -192,7 +191,7 @@ class WfcSendgridController extends ControllerBase
           return false;
         }
       } catch (Exception $e) {
-        echo 'Caught exception: ',  $e->getMessage(), "\n";
+        \Drupal::logger('wfc_sendgrid')->error('manageUserLists >>> '.$e->getMessage());
       }
     }
   }
@@ -209,7 +208,7 @@ class WfcSendgridController extends ControllerBase
           return false;
         }
       } catch (Exception $e) {
-        echo 'Caught exception: ',  $e->getMessage(), "\n";
+        \Drupal::logger('wfc_sendgrid')->error('removeUserFromList >>> '.$e->getMessage());
       }
     }
   }
@@ -225,7 +224,6 @@ class WfcSendgridController extends ControllerBase
     ]');
 
     try {
-
       $response = $this->sendgrid->client->contactdb()->recipients()->post($new_contact);
       //print $response->statusCode() . "\n";
       //print_r($response->headers());
@@ -233,13 +231,16 @@ class WfcSendgridController extends ControllerBase
 
       $responseData = json_decode($response->body());
 
-      if($responseData->{"new_count"} == 1) {
+      if($responseData->{"new_count"} > 1 || $responseData->{"updated_count"} > 1) {
         return $responseData->{"persisted_recipients"};
-      }else {
-        return false;
       }
+
+      // Added logging to investigate users who cannot activate their account
+      \Drupal::logger('wfc_sendgrid')->error('sendUserToSendgrid >>> '.$email.' >>> '.$responseData);
     } catch (Exception $e) {
-      echo 'Caught exception: ',  $e->getMessage(), "\n";
+      \Drupal::logger('wfc_sendgrid')->error('sendUserToSendgrid >>> '.$e->getMessage());
     }
+
+    return false;
   }
 }
