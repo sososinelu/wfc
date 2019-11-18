@@ -231,12 +231,12 @@ class WfcSendgridController extends ControllerBase
 
       $responseData = json_decode($response->body());
 
-      if($responseData->{"new_count"} > 1 || $responseData->{"updated_count"} > 1) {
+      if($responseData->{"new_count"} > 0 || $responseData->{"updated_count"} > 0) {
         return $responseData->{"persisted_recipients"};
       }
 
       // Added logging to investigate users who cannot activate their account
-      \Drupal::logger('wfc_sendgrid')->error('sendUserToSendgrid >>> '.$email.' >>> '.$responseData);
+      \Drupal::logger('wfc_sendgrid')->error('sendUserToSendgrid >>> '.$email.' >>> '.$responseData->{'errors'}[0]->{'message'});
     } catch (Exception $e) {
       \Drupal::logger('wfc_sendgrid')->error('sendUserToSendgrid >>> '.$e->getMessage());
     }
