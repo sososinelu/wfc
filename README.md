@@ -1,6 +1,6 @@
 # Wanderers' Flight Club Website
 
-![WFC Logo](https://github.com/sososinelu/wfc/blob/develop/app/web/themes/custom/wfc_theme/images/wfc_logo_stroke_filled.png?raw=true)
+![WFC Logo](https://github.com/sososinelu/wfc/blob/develop/app/web/themes/custom/wfc_boot/images/wfc_logo_stroke_filled.png?raw=true)
 
 Developer information for the Wanderers' Flight Club website.
 

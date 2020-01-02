@@ -27,12 +27,7 @@ class OverlayBlock extends BlockBase {
         ),
         '#cache' => array(
           'max-age' => 0,
-        ),
-//        '#attached' => array(
-//          'library' => array(
-//            'wfc_theme/overlay',
-//          ),
-//        ),
+        )
       );
     }
 
