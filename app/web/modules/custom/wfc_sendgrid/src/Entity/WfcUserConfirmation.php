@@ -39,8 +39,12 @@ class WfcUserConfirmation extends ContentEntityBase implements ContentEntityInte
       ->setSetting('max_length', 128);
 
     $fields['date'] = BaseFieldDefinition::create('string')
-    ->setLabel(t('Date'))
-    ->setSetting('max_length', 128);
+      ->setLabel(t('Date'))
+      ->setSetting('max_length', 128);
+
+    $fields['remainder'] = BaseFieldDefinition::create('integer')
+      ->setLabel(t('Date'))
+      ->setSetting('max_length', 11);
 
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Created'));
