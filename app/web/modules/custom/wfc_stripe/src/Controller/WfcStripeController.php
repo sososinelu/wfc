@@ -191,7 +191,7 @@ class WfcStripeController extends ControllerBase
         case 'pfail':
           $markup .= '<h4>Payment failed.</h4>';
           $markup .= '<p>Please go back and try again or contact us at <a class="info" href="mailto:info@wanderersflightclub.com">info@wanderersflightclub.com</a>.</p>';
-          $markup .= '<p class="back-link"><a href="/wanderer">Back to Wanderer package page</a></p>';
+          $markup .= '<p class="back-link"><a href="/premium">Back to the Premium page</a></p>';
           break;
         case 'efail':
           $markup .= '<h4>Payment successful</h4><h4>Welcome to the club!</h4>';
