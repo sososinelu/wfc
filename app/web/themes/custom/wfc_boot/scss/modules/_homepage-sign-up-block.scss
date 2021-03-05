@@ -11,8 +11,12 @@
   }
 
 }
+
 .sendgrid-email-registration-form,
 .footer-sendgrid-email-registration-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 2rem;
   label {
     display: none;
@@ -23,6 +27,8 @@
     color: $prussian_blue;
     font-weight: $bold;
     padding-bottom: 2rem;
+    padding-top: 2rem;
+    flex-basis: 100%;
     a::after {
       content: '↬';
       padding-left: 0.5rem;
@@ -40,12 +46,6 @@
   input[type="email"] {
     height: 6.5rem;
   }
-  .form-item-email,
-  .submit-wrapper {
-    @include media-breakpoint-up(md) {
-      display: inline-block;
-    }
-  }
   .form-item-email {
     width: 100%;
     @include media-breakpoint-up(md) {
@@ -60,6 +60,14 @@
     }
     @include media-breakpoint-up(md) {
       margin-left: 2rem;
+    }
+  }
+}
+
+.sendgrid-email-registration-form {
+  .result_message {
+    @include media-breakpoint-up(md) {
+      padding-top: 0;
     }
   }
 }
