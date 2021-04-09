@@ -4,4 +4,10 @@
     text-align: center;
     margin-top: 2rem;
   }
+  a:visited {
+    color: $prussian_blue;
+  }
+  a:hover {
+    color: $deep-cerulean;
+  }
 }

@@ -25,6 +25,7 @@ class PremiumFooterBlock extends BlockBase
 
       $markup = '<h2>' . $footer_title . '</h2>';
       $markup .= '<p>' . $footer_text . '</p>';
+      $markup .= '<a href="https://stripe.com/" target="_blank" title="Powered by Stripe"><img src="/themes/custom/wfc_boot/images/premium/powered_by_stripe_white.svg" alt="Stripe logo" class="powered-by-stripe"></a>';
 
       return array(
         '#type' => 'markup',

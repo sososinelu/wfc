@@ -2,8 +2,9 @@
   .benefits-hero-wrapper {
     position: relative;
     padding-bottom: 4rem;
+    margin-top: 5rem;
     @include media-breakpoint-up(md) {
-      margin-top: 5rem;
+      margin-top: 0;
     }
   }
   .benefits-wrapper {

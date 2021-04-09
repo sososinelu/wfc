@@ -36,11 +36,17 @@
       @include media-breakpoint-up(lg) {
         padding: 0 5rem;
       }
+      img {
+        padding: 0 5rem;
+      }
       .text-container {
-        margin-bottom: 2rem;
-        h2 {
-          padding-top: 5rem;
+        margin-bottom: 4rem;
+        @include media-breakpoint-up(lg) {
           margin-bottom: 2rem;
+        }
+        h2 {
+          padding-top: 1rem;
+          margin-bottom: 1rem;
         }
       }
     }

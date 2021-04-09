@@ -1,0 +1,9 @@
+.page-node-type-premium {
+  .powered-by-stripe {
+    width: 200px;
+    margin-top: 25px;
+    @include media-breakpoint-up(md) {
+      margin-top: 50px;
+    }
+  }
+}
