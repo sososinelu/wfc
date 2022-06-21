@@ -1783,6 +1783,20 @@
                 "doctrine",
                 "php"
             ],
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fcommon",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-05T16:46:05+00:00"
         },
         {
@@ -1907,8 +1921,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Doctrine\\Common\\Inflector\\": "lib/Doctrine/Common/Inflector",
-                    "Doctrine\\Inflector\\": "lib/Doctrine/Inflector"
+                    "Doctrine\\Inflector\\": "lib/Doctrine/Inflector",
+                    "Doctrine\\Common\\Inflector\\": "lib/Doctrine/Common/Inflector"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1950,6 +1964,20 @@
                 "strings",
                 "uppercase",
                 "words"
+            ],
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finflector",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-05-29T07:19:59+00:00"
         },
@@ -2012,6 +2040,20 @@
                 "lexer",
                 "parser",
                 "php"
+            ],
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Flexer",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-05-25T17:44:05+00:00"
         },
@@ -2258,7 +2300,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-2.4",
-                    "datestamp": "1601999178",
+                    "datestamp": "1629907119",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2433,9 +2475,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.4",
                     "datestamp": "1539678482",
@@ -2450,6 +2489,10 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
+                {
+                    "name": "mvogel",
+                    "homepage": "https://www.drupal.org/user/3319139"
+                },
                 {
                     "name": "robin.ingelbrecht",
                     "homepage": "https://www.drupal.org/user/2339074"
@@ -2480,9 +2523,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-4.x": "4.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-4.1",
                     "datestamp": "1576877587",
@@ -3149,8 +3189,8 @@
             "autoload": {
                 "psr-4": {
                     "Drupal\\Core\\": "lib/Drupal/Core",
-                    "Drupal\\Component\\": "lib/Drupal/Component",
-                    "Drupal\\Driver\\": "../drivers/lib/Drupal/Driver"
+                    "Drupal\\Driver\\": "../drivers/lib/Drupal/Driver",
+                    "Drupal\\Component\\": "lib/Drupal/Component"
                 },
                 "classmap": [
                     "lib/Drupal.php",
@@ -3228,7 +3268,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-3.4",
-                    "datestamp": "1585763383",
+                    "datestamp": "1620838181",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3317,9 +3357,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-2.1",
                     "datestamp": "1556799496",
@@ -3364,18 +3401,6 @@
                 {
                     "name": "See contributors",
                     "homepage": "https://www.drupal.org/node/3236/committers"
-                },
-                {
-                    "name": "pcambra",
-                    "homepage": "https://www.drupal.org/user/122101"
-                },
-                {
-                    "name": "salvis",
-                    "homepage": "https://www.drupal.org/user/82964"
-                },
-                {
-                    "name": "willzyx",
-                    "homepage": "https://www.drupal.org/user/1043862"
                 }
             ],
             "description": "Various blocks, pages, and functions for developers.",
@@ -3536,9 +3561,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.0-alpha4",
                     "datestamp": "1554911581",
@@ -3553,6 +3575,14 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
+                {
+                    "name": "Anybody",
+                    "homepage": "https://www.drupal.org/user/291091"
+                },
+                {
+                    "name": "Grevil",
+                    "homepage": "https://www.drupal.org/user/3668491"
+                },
                 {
                     "name": "andyg5000",
                     "homepage": "https://www.drupal.org/user/808668"
@@ -3691,7 +3721,7 @@
             "version": "2.1.0",
             "require": {
                 "drupal/core": "^8.8 || ^9",
-                "drupal/file_mdm": "self.version"
+                "drupal/file_mdm": "*"
             },
             "type": "metapackage",
             "extra": {
@@ -3725,7 +3755,7 @@
             "version": "2.1.0",
             "require": {
                 "drupal/core": "^8.8 || ^9",
-                "drupal/file_mdm": "self.version"
+                "drupal/file_mdm": "*"
             },
             "type": "metapackage",
             "extra": {
@@ -3775,7 +3805,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-1.4",
-                    "datestamp": "1591383264",
+                    "datestamp": "1593179846",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3876,7 +3906,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-3.0-beta1",
-                    "datestamp": "1609758293",
+                    "datestamp": "1618261123",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
@@ -4327,9 +4357,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.5",
                     "datestamp": "1541693881",
@@ -4549,7 +4576,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-5.25",
-                    "datestamp": "1614791857",
+                    "datestamp": "1629907242",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4582,28 +4609,8 @@
                     "role": "Contributor"
                 },
                 {
-                    "name": "fenstrat",
-                    "homepage": "https://www.drupal.org/user/362649"
-                },
-                {
-                    "name": "jrockowitz",
-                    "homepage": "https://www.drupal.org/user/371407"
-                },
-                {
-                    "name": "podarok",
-                    "homepage": "https://www.drupal.org/user/116002"
-                },
-                {
                     "name": "quicksketch",
                     "homepage": "https://www.drupal.org/user/35821"
-                },
-                {
-                    "name": "sanchiz",
-                    "homepage": "https://www.drupal.org/user/1671246"
-                },
-                {
-                    "name": "tedbow",
-                    "homepage": "https://www.drupal.org/user/240860"
                 },
                 {
                     "name": "torotil",
@@ -4991,24 +4998,24 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.5",
+            "version": "6.5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e"
+                "reference": "a52f0440530b54fa079ce76e8c5d196a42cad981"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
-                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/a52f0440530b54fa079ce76e8c5d196a42cad981",
+                "reference": "a52f0440530b54fa079ce76e8c5d196a42cad981",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "guzzlehttp/promises": "^1.0",
-                "guzzlehttp/psr7": "^1.6.1",
+                "guzzlehttp/psr7": "^1.9",
                 "php": ">=5.5",
-                "symfony/polyfill-intl-idn": "^1.17.0"
+                "symfony/polyfill-intl-idn": "^1.17"
             },
             "require-dev": {
                 "ext-curl": "*",
@@ -5025,12 +5032,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\": "src/"
-                },
                 "files": [
                     "src/functions_include.php"
-                ]
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5038,9 +5045,39 @@
             ],
             "authors": [
                 {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com",
                     "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Jeremy Lindblom",
+                    "email": "jeremeamia@gmail.com",
+                    "homepage": "https://github.com/jeremeamia"
+                },
+                {
+                    "name": "George Mponos",
+                    "email": "gmponos@gmail.com",
+                    "homepage": "https://github.com/gmponos"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com",
+                    "homepage": "https://github.com/sagikazarmark"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
+                    "homepage": "https://github.com/Tobion"
                 }
             ],
             "description": "Guzzle is a PHP HTTP client library",
@@ -5054,20 +5091,34 @@
                 "rest",
                 "web service"
             ],
-            "time": "2020-06-16T21:01:06+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/guzzlehttp/guzzle",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-06-20T22:16:07+00:00"
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "1.4.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "60d379c243457e073cff02bc323a2a86cb355631"
+                "reference": "fe752aedc9fd8fcca3fe7ad05d419d32998a06da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/60d379c243457e073cff02bc323a2a86cb355631",
-                "reference": "60d379c243457e073cff02bc323a2a86cb355631",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/fe752aedc9fd8fcca3fe7ad05d419d32998a06da",
+                "reference": "fe752aedc9fd8fcca3fe7ad05d419d32998a06da",
                 "shasum": ""
             },
             "require": {
@@ -5079,16 +5130,16 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Promise\\": "src/"
-                },
                 "files": [
                     "src/functions_include.php"
-                ]
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\Promise\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5096,29 +5147,58 @@
             ],
             "authors": [
                 {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com",
                     "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
+                    "homepage": "https://github.com/Tobion"
                 }
             ],
             "description": "Guzzle promises library",
             "keywords": [
                 "promise"
             ],
-            "time": "2020-09-30T07:37:28+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/guzzlehttp/promises",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-10-22T20:56:57+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.7.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "53330f47520498c0ae1f61f7e2c90f55690c06a3"
+                "reference": "e98e3e6d4f86621a9b75f623996e6bbdeb4b9318"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/53330f47520498c0ae1f61f7e2c90f55690c06a3",
-                "reference": "53330f47520498c0ae1f61f7e2c90f55690c06a3",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/e98e3e6d4f86621a9b75f623996e6bbdeb4b9318",
+                "reference": "e98e3e6d4f86621a9b75f623996e6bbdeb4b9318",
                 "shasum": ""
             },
             "require": {
@@ -5139,16 +5219,16 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Psr7\\": "src/"
-                },
                 "files": [
                     "src/functions_include.php"
-                ]
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5156,12 +5236,33 @@
             ],
             "authors": [
                 {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com",
                     "homepage": "https://github.com/mtdowling"
                 },
                 {
+                    "name": "George Mponos",
+                    "email": "gmponos@gmail.com",
+                    "homepage": "https://github.com/gmponos"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com",
+                    "homepage": "https://github.com/sagikazarmark"
+                },
+                {
                     "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
                     "homepage": "https://github.com/Tobion"
                 }
             ],
@@ -5176,7 +5277,21 @@
                 "uri",
                 "url"
             ],
-            "time": "2020-09-30T07:37:11+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/guzzlehttp/psr7",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-06-20T21:43:03+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
@@ -6376,11 +6491,11 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "SendGrid\\Contacts\\": "lib/contacts/",
-                    "SendGrid\\EventWebhook\\": "lib/eventwebhook/",
-                    "SendGrid\\Helper\\": "lib/helper/",
                     "SendGrid\\Mail\\": "lib/mail/",
-                    "SendGrid\\Stats\\": "lib/stats/"
+                    "SendGrid\\Stats\\": "lib/stats/",
+                    "SendGrid\\Helper\\": "lib/helper/",
+                    "SendGrid\\Contacts\\": "lib/contacts/",
+                    "SendGrid\\EventWebhook\\": "lib/eventwebhook/"
                 },
                 "classmap": [
                     "lib/BaseSendGridClientInterface.php",
@@ -6996,6 +7111,7 @@
                     "type": "tidelift"
                 }
             ],
+            "abandoned": "symfony/error-handler",
             "time": "2020-10-24T10:57:07+00:00"
         },
         {
@@ -7527,12 +7643,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Ctype\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -7603,12 +7719,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Iconv\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Iconv\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -7651,16 +7767,16 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.22.1",
+            "version": "v1.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "2d63434d922daf7da8dd863e7907e67ee3031483"
+                "reference": "59a8d271f00dd0e4c2e518104cc7963f655a1aa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/2d63434d922daf7da8dd863e7907e67ee3031483",
-                "reference": "2d63434d922daf7da8dd863e7907e67ee3031483",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/59a8d271f00dd0e4c2e518104cc7963f655a1aa8",
+                "reference": "59a8d271f00dd0e4c2e518104cc7963f655a1aa8",
                 "shasum": ""
             },
             "require": {
@@ -7674,7 +7790,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.22-dev"
+                    "dev-main": "1.26-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -7682,12 +7798,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Intl\\Idn\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Intl\\Idn\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -7731,20 +7847,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-22T09:19:47+00:00"
+            "time": "2022-05-24T11:49:31+00:00"
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
-            "version": "v1.22.1",
+            "version": "v1.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
-                "reference": "43a0283138253ed1d48d352ab6d0bdb3f809f248"
+                "reference": "219aa369ceff116e673852dce47c3a41794c14bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/43a0283138253ed1d48d352ab6d0bdb3f809f248",
-                "reference": "43a0283138253ed1d48d352ab6d0bdb3f809f248",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/219aa369ceff116e673852dce47c3a41794c14bd",
+                "reference": "219aa369ceff116e673852dce47c3a41794c14bd",
                 "shasum": ""
             },
             "require": {
@@ -7756,7 +7872,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.22-dev"
+                    "dev-main": "1.26-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -7764,12 +7880,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Intl\\Normalizer\\": ""
-                },
                 "files": [
                     "bootstrap.php"
                 ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Intl\\Normalizer\\": ""
+                },
                 "classmap": [
                     "Resources/stubs"
                 ]
@@ -7812,7 +7928,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-22T09:19:47+00:00"
+            "time": "2022-05-24T11:49:31+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -7845,12 +7961,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Mbstring\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -8023,16 +8139,16 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.22.1",
+            "version": "v1.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "cc6e6f9b39fe8075b3dabfbaf5b5f645ae1340c9"
+                "reference": "bf44a9fd41feaac72b074de600314a93e2ae78e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/cc6e6f9b39fe8075b3dabfbaf5b5f645ae1340c9",
-                "reference": "cc6e6f9b39fe8075b3dabfbaf5b5f645ae1340c9",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/bf44a9fd41feaac72b074de600314a93e2ae78e2",
+                "reference": "bf44a9fd41feaac72b074de600314a93e2ae78e2",
                 "shasum": ""
             },
             "require": {
@@ -8041,7 +8157,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.22-dev"
+                    "dev-main": "1.26-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -8049,12 +8165,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php72\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php72\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -8092,7 +8208,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-07T16:49:33+00:00"
+            "time": "2022-05-24T11:49:31+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
@@ -8122,12 +8238,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php80\\": ""
-                },
                 "files": [
                     "bootstrap.php"
                 ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php80\\": ""
+                },
                 "classmap": [
                     "Resources/stubs"
                 ]
@@ -9185,6 +9301,7 @@
                 }
             ],
             "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths.",
+            "abandoned": "symfony/filesystem",
             "time": "2015-12-17T08:42:14+00:00"
         },
         {
@@ -9584,6 +9701,9 @@
                 "ext-zip": "Enabling the zip extension allows you to unzip archives",
                 "ext-zlib": "Allow gzip compression of HTTP requests"
             },
+            "bin": [
+                "bin/composer"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -10284,12 +10404,12 @@
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "DeepCopy\\": "src/DeepCopy/"
-                },
                 "files": [
                     "src/DeepCopy/deep_copy.php"
-                ]
+                ],
+                "psr-4": {
+                    "DeepCopy\\": "src/DeepCopy/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
